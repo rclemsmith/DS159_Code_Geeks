@@ -325,9 +325,11 @@ class NewCase extends Component {
     event.preventDefault();
     const lawyerpic = this.image.files[0];
     const adminn = localStorage.getItem("userId");
+    const deptname = localStorage.getItem("deptname");
     const formData = new FormData();
     formData.append("image", lawyerpic);
     formData.append("admin", adminn);
+    formData.append("opposition", this.deptname.value);
     formData.append("judge", this.cjudge.value);
     formData.append("costate", this.cstate.value);
     formData.append("codistrict", this.cdist.value);
@@ -347,7 +349,7 @@ class NewCase extends Component {
     formData.append("exp", this.dob.value);
     formData.append("gender", this.lgender.value);
     formData.append("lname", this.lawyername.value);
-    formData.append("department", this.deptname.value);
+    formData.append("department", deptname);
     formData.append("facts", this.desc.value);
     formData.append("casetype", this.ctype.value);
     formData.append("casename", this.casename.value);
@@ -449,7 +451,7 @@ class NewCase extends Component {
                   </AvGroup>
                   <AvGroup className="ncinput">
                     <Label className="nc" for="deptname">
-                      Department
+                      Opposition name/organization
                     </Label>
                     <InputGroup>
                       <InputGroupAddon addonType="prepend">
