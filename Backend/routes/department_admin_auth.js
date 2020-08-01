@@ -171,20 +171,26 @@ router.post("/signup", (req, res, next) => {
 //@route
 //@description add case
 
-router.delete("/:caseId", (req, res) => {
+router.delete("/:caseId/delete", (req, res) => {
   Case.findByIdAndDelete(req.params.caseId, (err, deletedCase) => {
-
     var now = new Date();
-    var report = " The Nodal Officer has deleted a case called " + deletedCase.name + " at " + now;
-    SuperAdmin.findOneAndUpdate({ name: deletedCasedepartment }, {
-      $push: {
-        reports: report
+    var report =
+      " The Nodal Officer has deleted a case called " +
+      deletedCase.name +
+      " at " +
+      now;
+    SuperAdmin.findOneAndUpdate(
+      { name: deletedCasedepartment },
+      {
+        $push: {
+          reports: report,
+        },
+      },
+      (err, updatedAdmin) => {
+        console.log(updatedAdmin);
+        res.json(deletedCase);
       }
-    }, (err, updatedAdmin) => {
-      console.log(updatedAdmin);
-      res.json(deletedCase);
-    });
-
+    );
   });
 });
 
@@ -239,21 +245,30 @@ router.post(
             res.json(err);
           } else {
             var now = new Date();
-            var report = " The Nodal Officer " + foundAdmin.nodalname + " has added a new case called " + mycase.name + " at " + now;
+            var report =
+              " The Nodal Officer " +
+              foundAdmin.nodalname +
+              " has added a new case called " +
+              mycase.name +
+              " at " +
+              now;
             console.log(report);
-            SuperAdmin.findOneAndUpdate({ name: req.body.department }, {
-              $push: {
-                reports: report
+            SuperAdmin.findOneAndUpdate(
+              { name: req.body.department },
+              {
+                $push: {
+                  reports: report,
+                },
+              },
+              (err, updatedAdmin) => {
+                console.log(updatedAdmin);
+                res.statusCode = 200;
+                res.setHeader("Content-Type", "application/json");
+                res.json(mycase);
               }
-            }, (err, updatedAdmin) => {
-              console.log(updatedAdmin);
-              res.statusCode = 200;
-              res.setHeader("Content-Type", "application/json");
-              res.json(mycase);
-            });
+            );
           }
         });
-
       })
       .catch((err) => console.log(err));
   }
@@ -301,62 +316,70 @@ router.get("/:caseId/casedetails", (req, res, next) => {
     .catch((err) => console.log(err));
 });
 
-router.post("/:caseId/hearing", multerUpload.array("documents", 10), (req, res) => {
-  // console.log(req.files);
-  console.log(req.user);
-  try {
-    var documents = [];
-    req.files.forEach((file) => {
-      documents.push(file.filename);
-    });
-    console.log(documents);
+router.post(
+  "/:caseId/hearing",
+  multerUpload.array("documents", 10),
+  (req, res) => {
+    // console.log(req.files);
+    console.log(req.user);
+    try {
+      var documents = [];
+      req.files.forEach((file) => {
+        documents.push(file.filename);
+      });
+      console.log(documents);
 
-    console.log(req.body);
-    var witness1 = JSON.parse(req.body.witness);
-    witness1.forEach((wit) => console.log(wit));
-    console.log(witness1);
+      console.log(req.body);
+      var witness1 = JSON.parse(req.body.witness);
+      witness1.forEach((wit) => console.log(wit));
+      console.log(witness1);
 
-    var hearing = new Hearing({
-      caseid: req.params.caseId,
-      curhearingdate: req.body.curdate,
-      curhearingfacts: req.body.curfact,
-      curhearingjudge: req.body.judge,
-      curhearinglawyer: req.body.curlawyer,
-      curhearingverdict: req.body.verdict,
-      nexthearingdate: req.body.nexthearing,
-      documents: documents
-    });
+      var hearing = new Hearing({
+        caseid: req.params.caseId,
+        curhearingdate: req.body.curdate,
+        curhearingfacts: req.body.curfact,
+        curhearingjudge: req.body.judge,
+        curhearinglawyer: req.body.curlawyer,
+        curhearingverdict: req.body.verdict,
+        nexthearingdate: req.body.nexthearing,
+        documents: documents,
+      });
 
+      hearing.curhearingwitness.push.apply(hearing.curhearingwitness, witness1);
+      console.log(hearing);
 
-    hearing.curhearingwitness.push.apply(hearing.curhearingwitness, witness1);
-    console.log(hearing);
-
-    Hearing.create(hearing)
-      .then((curhear) => {
-        console.log(curhear);
-        Case.findById(req.params.caseId, (err, foundCase) => {
-          var now = new Date();
-          var report = " A new Hearing has been added to a case called " + foundCase.name + " at " + now;
-          SuperAdmin.findOneAndUpdate({ name: foundCase.department }, {
-            $push: {
-              reports: report
-            }
-          }, (err, updatedAdmin) => {
-            console.log(updatedAdmin);
-            res.statusCode = 200;
-            res.setHeader("Content-Type", "application/json");
-            res.json(curhear);
+      Hearing.create(hearing)
+        .then((curhear) => {
+          console.log(curhear);
+          Case.findById(req.params.caseId, (err, foundCase) => {
+            var now = new Date();
+            var report =
+              " A new Hearing has been added to a case called " +
+              foundCase.name +
+              " at " +
+              now;
+            SuperAdmin.findOneAndUpdate(
+              { name: foundCase.department },
+              {
+                $push: {
+                  reports: report,
+                },
+              },
+              (err, updatedAdmin) => {
+                console.log(updatedAdmin);
+                res.statusCode = 200;
+                res.setHeader("Content-Type", "application/json");
+                res.json(curhear);
+              }
+            );
           });
-
-        });
-
-      })
-      .catch((err) => console.log(err));
-  } catch (err) {
-    console.log(err);
+        })
+        .catch((err) => console.log(err));
+    } catch (err) {
+      console.log(err);
+    }
   }
-
-});
+);
 
 router.get("/:caseId/hearing", (req, res) => {
   Hearing.find({ caseid: req.params.caseId }).then((curhearing) => {
@@ -388,16 +411,23 @@ router.post("/:hearingId/update", (req, res) => {
       } else {
         Case.findById(updated.caseid, (err, foundCase) => {
           var now = new Date();
-          var report = " An Hearing has been Updated to a case called " + foundCase.name + " at " + now;
-          SuperAdmin.findOneAndUpdate({ name: foundCase.department }, {
-            $push: {
-              reports: report
+          var report =
+            " An Hearing has been Updated to a case called " +
+            foundCase.name +
+            " at " +
+            now;
+          SuperAdmin.findOneAndUpdate(
+            { name: foundCase.department },
+            {
+              $push: {
+                reports: report,
+              },
+            },
+            (err, updatedAdmin) => {
+              console.log(updatedAdmin);
+              res.send("Success");
             }
-          }, (err, updatedAdmin) => {
-            console.log(updatedAdmin);
-            res.send("Success");
-          });
-
+          );
         });
       }
     }
@@ -432,16 +462,23 @@ router.post("/:caseId/lupd", multerUpload.single("image"), (req, res) => {
         console.log(err);
       } else {
         var now = new Date();
-          var report = " The Layer for the case " + foundCase.name + " was updated at " + now;
-          SuperAdmin.findOneAndUpdate({ name: updated.department }, {
+        var report =
+          " The Layer for the case " +
+          foundCase.name +
+          " was updated at " +
+          now;
+        SuperAdmin.findOneAndUpdate(
+          { name: updated.department },
+          {
             $push: {
-              reports: report
-            }
-          }, (err, updatedAdmin) => {
+              reports: report,
+            },
+          },
+          (err, updatedAdmin) => {
             console.log(updatedAdmin);
             res.send("Success");
-          });
-        
+          }
+        );
       }
     }
   );
@@ -462,15 +499,20 @@ router.post("/:caseId/modify", (req, res) => {
         res.json(err);
       } else {
         var now = new Date();
-          var report = " The case called" + updated.name + " was updated at " + now;
-          SuperAdmin.findOneAndUpdate({ name: updated.department }, {
+        var report =
+          " The case called" + updated.name + " was updated at " + now;
+        SuperAdmin.findOneAndUpdate(
+          { name: updated.department },
+          {
             $push: {
-              reports: report
-            }
-          }, (err, updatedAdmin) => {
+              reports: report,
+            },
+          },
+          (err, updatedAdmin) => {
             console.log(updatedAdmin);
             res.send("Success");
-          });
+          }
+        );
       }
     }
   );
