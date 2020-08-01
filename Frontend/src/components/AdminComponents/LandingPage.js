@@ -18,11 +18,20 @@ class LandingPage extends Component {
       id: "",
       isModalOpen: false,
     };
+    this.handleLogout = this.handleLogout.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleLogout(event) {
+    event.preventDefault();
+    localStorage.removeItem("adminId");
+    localStorage.removeItem("token");
+
+    window.location.href = "http://localhost:3000/";
   }
 
   handleSelect(id) {
