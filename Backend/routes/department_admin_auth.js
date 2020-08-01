@@ -180,7 +180,7 @@ router.delete("/:caseId/delete", (req, res) => {
       " at " +
       now;
     SuperAdmin.findOneAndUpdate(
-      { name: deletedCasedepartment },
+      { name: deletedCase.department },
       {
         $push: {
           reports: report,
