@@ -53,11 +53,11 @@ router.get("/nodal/:dept", (req, res) => {
 
 });
 
-router.delete("/:userId",(req,res)=>{
-  DepartmentAdmin.findByIdAndDelete(req.params.userId,(err,deletedUser)=>{
-    if(err){
+router.delete("/:userId", (req, res) => {
+  DepartmentAdmin.findByIdAndDelete(req.params.userId, (err, deletedUser) => {
+    if (err) {
       res.json(err);
-    }else{
+    } else {
       res.json(deletedUser);
     }
   });
@@ -171,11 +171,11 @@ router.post("/signup", (req, res, next) => {
 //@route
 //@description add case
 
-router.delete("/:caseId",(req,res)=>{
-  Case.findByIdAndDelete(req.params.caseId,(err,deletedCase)=>{
-    if(err){
+router.delete("/:caseId", (req, res) => {
+  Case.findByIdAndDelete(req.params.caseId, (err, deletedCase) => {
+    if (err) {
       res.json(err);
-    }else{
+    } else {
       res.json(deletedCase);
     }
   });
@@ -276,39 +276,50 @@ router.get("/:caseId/casedetails", (req, res, next) => {
     .catch((err) => console.log(err));
 });
 
-router.post("/:caseId/hearing", multerUpload.array("documents",10),(req, res) => {
+router.post("/:caseId/hearing", multerUpload.array("documents", 10), (req, res) => {
   // console.log(req.files);
-  var documents = [];
-  req.files.forEach((file)=>{
-    documents.push(file.filename);
-  });
-  console.log(documents);
-  var witness1 = req.body.witness;
-  console.log(witness1);
+  try {
+    var documents = [];
+    req.files.forEach((file) => {
+      documents.push(file.filename);
+    });
+    console.log(documents);
 
-  var hearing = new Hearing({
-    caseid: req.params.caseId,
-    curhearingdate: req.body.curdate,
-    curhearingfacts: req.body.curfact,
-    curhearingjudge: req.body.judge,
-    curhearinglawyer: req.body.curlawyer,
-    curhearingverdict: req.body.verdict,
-    nexthearingdate: req.body.nexthearing,
-    documents : documents
-  });
+    console.log(req.body);
+    var witness1 = JSON.parse(req.body.witness);
+    witness1.forEach((wit)=>console.log(wit));
+    console.log(witness1);
 
-  hearing.curhearingwitness.push.apply(hearing.curhearingwitness, witness1);
+    var hearing = new Hearing({
+      caseid: req.params.caseId,
+      curhearingdate: req.body.curdate,
+      curhearingfacts: req.body.curfact,
+      curhearingjudge: req.body.judge,
+      curhearinglawyer: req.body.curlawyer,
+      curhearingverdict: req.body.verdict,
+      nexthearingdate: req.body.nexthearing,
+      documents: documents
+    });
 
-  console.log(hearing);
+    
+    hearing.curhearingwitness.push.apply(hearing.curhearingwitness, witness1);
+    console.log(hearing);
 
-  Hearing.create(hearing)
-    .then((curhear) => {
-      console.log(curhear);
-      res.statusCode = 200;
-      res.setHeader("Content-Type", "application/json");
-      res.json(curhear);
-    })
-    .catch((err) => console.log(err));
+    Hearing.create(hearing)
+      .then((curhear) => {
+        console.log(curhear);
+        res.statusCode = 200;
+        res.setHeader("Content-Type", "application/json");
+        res.json(curhear);
+      })
+      .catch((err) => console.log(err));
+  } catch (err) {
+    console.log(err);
+  }
+
+
+
+
 });
 
 router.get("/:caseId/hearing", (req, res) => {
