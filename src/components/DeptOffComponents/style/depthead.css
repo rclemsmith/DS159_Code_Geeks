@@ -1,0 +1,91 @@
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+  .jj4 {
+    color: azure;
+  }
+
+  .jj7 {
+    color: azure;
+    height: 9%;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .jj4 {
+    color: azure;
+  }
+
+  .jj7 {
+    color: azure;
+    height: 9%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .jj5 {
+    background-color: black;
+    width: 99.99%;
+    overflow-x: hidden;
+    position: sticky;
+    height: 8vh;
+  }
+
+  .jj4 {
+    color: azure;
+  }
+
+  .jj6 {
+    margin-left: 80%;
+    position: fixed;
+  }
+  .jj7 {
+    color: azure;
+    height: 9%;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1199px) {
+  .jj5 {
+    background-color: black;
+    width: 99.99%;
+    overflow-x: hidden;
+    position: sticky;
+    height: 8vh;
+  }
+
+  .jj4 {
+    color: azure;
+  }
+
+  .jj6 {
+    margin-left: 80%;
+    position: fixed;
+  }
+  .jj7 {
+    color: azure;
+    height: 9%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .jj5 {
+    background-color: black;
+    width: 99.99%;
+    overflow-x: hidden;
+    position: sticky;
+    height: 8vh;
+  }
+
+  .jj4 {
+    color: azure;
+  }
+
+  .jj6 {
+    margin-left: 90%;
+    position: fixed;
+  }
+
+  .jj7 {
+    color: azure;
+    height: 9%;
+  }
+}
