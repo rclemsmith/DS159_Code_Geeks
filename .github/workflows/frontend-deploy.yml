@@ -1,4 +1,4 @@
-name: FrontEnd Deploy
+name: Deploy
 
 on:
   push:
@@ -6,23 +6,13 @@ on:
       - master
 
 jobs:
-  release:
+  build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: login
-      uses: actions/heroku@master
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      with:
-        args: container:login
-    - name: set remote
-      uses: actions/heroku@master
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      with:
-        args: git:remote -a deptman
-    - name: push
-      run: |
-        ls
-        git subtree push --prefix Frontend/ heroku master
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.4.6 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "deptman" #Must be unique in Heroku
+          heroku_email: "rclemsmith@gmail.com"
+          appdir: "Frontend" #
