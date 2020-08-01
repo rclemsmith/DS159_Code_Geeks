@@ -458,10 +458,10 @@
 
   .newdash8 {
     background-color: rgb(20, 20, 20);
-    width: 20vh;
+    width: 30vh;
     height: 26vh;
-    margin-top: 12vh;
-    margin-left: 25vh;
+    margin-top: 15vh;
+    margin-left: 13vh;
     box-shadow: 0px 0px 5px 5px rgb(240, 240, 240);
   }
 
@@ -472,10 +472,11 @@
 
   .newdash11 {
     text-align: center;
-    font-size: 35px;
+    font-size: 30px;
     color: white;
-    margin-bottom: 4vh;
-    margin-top: -3vh;
+    margin-bottom: 5vh;
+    margin-top: -2vh;
+    word-spacing: 5px;
   }
 
   .newdash13 {
@@ -513,7 +514,7 @@
 
   .legend {
     margin-left: 60vh;
-    margin-right: 16vh;
+    margin-right: 15vh;
   }
 
   .leg1 {
@@ -521,7 +522,7 @@
     font-weight: bold;
     color: #fc061e;
     margin-left: 7vh;
-    word-spacing: 17px;
+    word-spacing: 22px;
   }
 
   .leg2 {
@@ -530,16 +531,16 @@
     color: #220dfc;
     margin-left: 7vh;
     margin-top: 6.7vh;
-    word-spacing: 8px;
+    word-spacing: 13px;
   }
 
-  .leg3 {
+  .leg4 {
     font-size: 25px;
     font-weight: bold;
     color: #00ff00;
     margin-left: 7vh;
     margin-top: 6.7vh;
-    word-spacing: 7px;
+    word-spacing: 12px;
   }
 
   .d1 {
@@ -592,9 +593,7 @@
 
   .inn2 {
     box-shadow: 0px 0px 2px 2px rgb(220, 220, 220);
-    margin-left: 46vh;
-    margin-top: -5vh;
     width: 20vh;
-    margin-bottom: -6vh;
+    margin-bottom: -5vh;
   }
 }

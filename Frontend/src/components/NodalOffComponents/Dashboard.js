@@ -91,6 +91,8 @@ class Dashboard extends Component {
     var cl = (closeca / total) * 100;
     var ac = (activeca / total) * 100;
     var n = this.state.date.getDate();
+    var n1 = this.state.date.getMonth();
+    var n2 = this.state.date.getFullYear();
     var year = [];
     this.state.cases.map((dashcase) => {
       year.push(dashcase.createdAt.substring(0, 4));
@@ -281,7 +283,7 @@ class Dashboard extends Component {
               </div>
               <div className="row">
                 <div class="color-box2"></div>
-                <span className="leg3">Closed Cases {closeca}</span>
+                <span className="leg4">Closed Cases {closeca}</span>
               </div>
             </div>
 
@@ -291,7 +293,7 @@ class Dashboard extends Component {
                 <hr className="newdash13" />
               </div>
               <div className="card-body newdash10">
-                <h3 className="newdash11">{n}</h3>
+                <h3 className="newdash11">{n} : {n1} : {n2}</h3>
                 <p className="newdash11">
                   <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                 </p>
@@ -351,6 +353,7 @@ class Dashboard extends Component {
           <div className="inn">
             <span>MONTHLY CASE STATISTICS</span>
             <Input
+              style={{marginLeft:'46vh',marginTop:'-5vh'}}
               name="year"
               id="year"
               type="select"

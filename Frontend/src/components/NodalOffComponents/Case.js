@@ -149,7 +149,7 @@ class Case extends Component {
     }
     console.log(this.state.mycases);
     return (
-      <div style={{ backgroundColor: "rgb(240,240,240)", overflow: "hidden",height:'100vh',width:'100vw' }}>
+      <div style={{ backgroundColor: "rgb(240,240,240)",overflowX:'hidden', overflowY: "scroll",height:'100vh',width:'100vw' }}>
         <SideNavBar history={this.props.history} />
         <Head name="My Cases" />
 
@@ -169,6 +169,11 @@ class Case extends Component {
           <option>Closed</option>
         </Input>
 
+        <div hidden={!(hide && hide1)} style={{textAlign:'center',marginLeft:'25vh',marginTop:'25vh'}}>
+          <i style={{fontSize:'120px',color:'rgba(0,0,0,0.2)'}} className="fa fa-fw fa-search"></i>
+          <p style={{fontSize:'35px',fontWeight:'bold',marginTop:'1vh'}}>Search Through Your Cases</p>
+        </div>
+
         <InputGroup className="ssearch-label" hidden={hide}>
           <Input
             className="ssearchinp"
@@ -178,7 +183,7 @@ class Case extends Component {
             onChange={(e) => this.handleChange(e)}
           />
           <InputGroupAddon addonType="append">
-            <InputGroupText style={{ width: "40px",marginTop:'-6vh',height:'5vh',boxShadow:'0px 0px 5px 5px rgb(220,220,220)' }}>
+            <InputGroupText style={{ width: "40px",marginTop:'-6vh',height:'5vh',boxShadow:'0px 0px 2px 2px rgb(220,220,220)' }}>
               <i className="fa fa-search search-icon" />
             </InputGroupText>
           </InputGroupAddon>
@@ -249,7 +254,7 @@ class Case extends Component {
                       <span className="myspan1">{mycase.lawyer.lname}</span>
                     </div> */}
                     <div className="my3">
-                      <span className="my4">Facts : </span>
+                      <span className="my4">Facts :</span>
                       <p className="card-text cardd-text">
                         {desc.charAt(0).toUpperCase() + desc.slice(1)}...
                       </p>

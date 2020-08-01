@@ -111,14 +111,14 @@ class SideNavBar extends Component {
             >
               <h4 className="hh1">
                 <i
-                  className="fa fa-fw fa-plus"
+                  className="fa fa-user-circle-o"
                   style={{
-                    marginLeft: "1vh",
-                    marginRight: "1.8vh",
-                    fontSize: "20px",
+                    marginLeft: "1.2vh",
+                    marginRight: "2vh",
+                    fontSize: "24px",
                   }}
                 ></i>
-                Add User
+                New User
               </h4>
             </NavItem>
             {/* <NavItem

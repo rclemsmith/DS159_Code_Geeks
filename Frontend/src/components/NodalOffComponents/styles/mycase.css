@@ -416,7 +416,7 @@
     margin-top: 1vh;
     margin-left: 1vh;
     padding: 0.75rem;
-    margin-bottom: 2vh;
+    margin-bottom: 4vh;
     margin-right: 6vh;
     border-radius: 5px;
     background-color: white;
@@ -431,13 +431,13 @@
   }
 
   .my2 {
-    margin-left: 20px;
+    margin-left: 2px;
   }
 
   .my3 {
     margin-top: 2vh;
     margin-bottom: 2vh;
-    margin-left: 20px;
+    margin-left: 2px;
   }
 
   .my4 {
