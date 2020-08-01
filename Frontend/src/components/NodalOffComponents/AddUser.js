@@ -4,7 +4,7 @@ import Head from "./Head";
 import axios from "axios";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
 import { AvForm, AvField } from "availity-reactstrap-validation";
-
+import url from "../../backend_url";
 class AddUser extends Component {
   constructor(props) {
     super(props);
@@ -58,8 +58,8 @@ class AddUser extends Component {
   handleOffDelete(event) {
     event.preventDefault();
     axios
-      .delete(
-        "https://indiancourt.azurewebsites.net/department/users/" +
+      .delete(url +
+        "/department/users/" +
           this.state.offid
       )
       .then((res) => {
@@ -78,8 +78,8 @@ class AddUser extends Component {
       email: this.email.value,
     };
     axios
-      .post(
-        "https://indiancourt.azurewebsites.net/department/users/signup",
+      .post(url + 
+        "/department/users/signup",
         data
       )
       .then((res) => {
@@ -96,8 +96,8 @@ class AddUser extends Component {
 
   componentDidMount() {
     axios
-      .get(
-        "https://indiancourt.azurewebsites.net/department/users/officials/" +
+      .get(url + 
+        "/department/users/officials/" +
           localStorage.getItem("deptname")
       )
       .then((res) => {

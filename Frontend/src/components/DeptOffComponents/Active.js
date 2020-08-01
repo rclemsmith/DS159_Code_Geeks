@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Head from "../NodalOffComponents/Head";
 import "./style/active.css";
+import url from "../../backend_url";
 import SideNav, {
   Toggle,
   Nav,
@@ -29,7 +30,7 @@ class Active extends Component {
 
   handleSearch(val) {
     axios
-      .post("https://indiancourt.azurewebsites.net/search/" + this.props.location.state.dept, {
+      .post(url+"/search/" + this.props.location.state.dept, {
         query: val,
       })
       .then((res) => {
@@ -50,8 +51,8 @@ class Active extends Component {
 
   componentDidMount() {
     axios
-      .get(
-        "https://indiancourt.azurewebsites.net/department/users/cases/active/" +
+      .get(url +
+        "/department/users/cases/active/" +
           this.props.location.state.dept
       )
       .then((res) => {

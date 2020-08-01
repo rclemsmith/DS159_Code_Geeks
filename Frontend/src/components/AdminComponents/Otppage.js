@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Input, Button } from "reactstrap";
 import './style/otp.css';
 
+
 class Otppage extends Component {
   constructor(props) {
     super(props);

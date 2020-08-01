@@ -1,0 +1,1 @@
+module.exports = "https://indiancourt.azurewebsites.net/" ;

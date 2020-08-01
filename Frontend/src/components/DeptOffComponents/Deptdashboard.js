@@ -12,7 +12,7 @@ import { Input, Button } from "reactstrap";
 import DeptHead from "./DeptHead";
 import closed from "../../images/closed.jpg";
 import { Bar } from "react-chartjs-2";
-
+import url from "../../backend_url";
 class Deptdashboard extends Component {
   constructor(props) {
     super(props);
@@ -70,8 +70,8 @@ class Deptdashboard extends Component {
 
   componentDidMount() {
     axios
-      .get(
-        "https://indiancourt.azurewebsites.net/department/users/cases/cases/" +
+      .get(url + 
+        "/department/users/cases/cases/" +
           this.props.location.state.dept
       )
       .then((res) => {
@@ -81,8 +81,8 @@ class Deptdashboard extends Component {
       });
 
     axios
-      .get(
-        "https://indiancourt.azurewebsites.net/department/users/cases/hear/" +
+      .get(url + 
+        "/department/users/cases/hear/" +
           this.props.location.state.dept
       )
       .then((res) => {

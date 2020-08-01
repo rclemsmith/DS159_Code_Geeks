@@ -12,7 +12,9 @@ var SuperAdminSchema = new Schema({
         type: String,
         required: true,
     },
-    reports: []
+    reports: [{
+        type: String
+    }]
 }, { timestamps: true });
 
 

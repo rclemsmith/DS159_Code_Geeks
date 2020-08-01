@@ -3,6 +3,7 @@ import axios from "axios";
 import Head from "../NodalOffComponents/Head";
 import "./style/closed.css";
 import DeptHead from "./DeptHead";
+import url from "../../backend_url";
 import { Input, InputGroup, InputGroupAddon, InputGroupText } from "reactstrap";
 class Closed extends Component {
   constructor(props) {
@@ -20,8 +21,8 @@ class Closed extends Component {
 
   componentDidMount() {
     axios
-      .get(
-        "https://indiancourt.azurewebsites.net/department/users/cases/closed/" +
+      .get(url + 
+        "/department/users/cases/closed/" +
           this.props.location.state.dept
       )
       .then((res) => {
@@ -33,8 +34,8 @@ class Closed extends Component {
 
   handleSearch(val) {
     axios
-      .post(
-        "https://indiancourt.azurewebsites.net/search/close/" + this.props.location.state.dept,
+      .post(url + 
+        "/search/close/" + this.props.location.state.dept,
         {
           query: val,
         }

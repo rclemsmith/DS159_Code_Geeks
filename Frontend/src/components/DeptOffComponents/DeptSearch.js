@@ -3,7 +3,7 @@ import axios from "axios";
 import Head from "../NodalOffComponents/Head";
 import "./style/search.css";
 import { InputGroup, InputGroupAddon, Input, InputGroupText } from "reactstrap";
-
+import url from "../../backend_url";
 class DeptSearch extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +19,7 @@ class DeptSearch extends Component {
 
   handleSearch(val) {
     axios
-      .post("https://indiancourt.azurewebsites.net/search/" + this.props.location.state.dept, {
+      .post(url + "/search/" + this.props.location.state.dept, {
         query: val,
       })
       .then((res) => {
