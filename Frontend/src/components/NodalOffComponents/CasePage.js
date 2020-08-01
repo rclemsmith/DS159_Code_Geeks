@@ -30,20 +30,51 @@ class CasePage extends Component {
       lstreet: null,
       luid: null,
       isModalOpen: false,
+      isModallOpen: false,
       courtname: null,
     };
     this.toggleModal = this.toggleModal.bind(this);
+
+    this.toggleMModal = this.toggleMModal.bind(this);
     this.handleHearing = this.handleHearing.bind(this);
     this.handleActive = this.handleActive.bind(this);
     this.handleCurdate = this.handleCurdate.bind(this);
     this.handleCard1 = this.handleCard1.bind(this);
     this.handleUpd = this.handleUpd.bind(this);
     this.handleCaseUpdate = this.handleCaseUpdate.bind(this);
+    this.handleCaseDel = this.handleCaseDel.bind(this);
+  }
+
+  handleCaseDel(event) {
+    event.preventDefault();
+    console.log(this.state.curcase._id);
+    axios
+      .delete(
+        "http://localhost:3006/department/admin/" +
+          this.state.curcase._id +
+          "/delete"
+      )
+      .then((res) => {
+        window.alert(" case deleted successfully");
+        this.props.history.push(
+          "/" + localStorage.getItem("userId") + "/dashboard"
+        );
+      })
+      .catch((err) => {
+        window.alert("unable to delete case");
+        window.location.reload();
+      });
   }
 
   toggleModal() {
     this.setState({
       isModalOpen: !this.state.isModalOpen,
+    });
+  }
+
+  toggleMModal() {
+    this.setState({
+      isModallOpen: !this.state.isModallOpen,
     });
   }
 
@@ -166,65 +197,6 @@ class CasePage extends Component {
     this.state.curcase.isClosed == true
       ? this.setState({ c2: true })
       : this.setState({ c2: false });
-    // const item = [
-    //   {
-    //     name: "01-01-2020",
-    //     active: false,
-    //   },
-    //   {
-    //     name: "15-01-2020",
-    //     active: false,
-    //   },
-    //   {
-    //     name: "01-02-2020",
-    //     active: false,
-    //   },
-    //   {
-    //     name: "15-02-2020",
-    //     active: false,
-    //   },
-    //   {
-    //     name: "01-03-2020",
-    //     active: false,
-    //   },
-    //   {
-    //     name: "02-03-2020",
-    //     active: false,
-    //   },
-    //   {
-    //     name: "03-03-2020",
-    //     active: false,
-    //   },
-    //   {
-    //     name: "04-03-2020",
-    //     active: false,
-    //   },
-    //   {
-    //     name: "05-03-2020",
-    //     active: false,
-    //   },
-    //   {
-    //     name: "06-03-2020",
-    //     active: false,
-    //   },
-    //   {
-    //     name: "07-03-2020",
-    //     active: false,
-    //   },
-    //   {
-    //     name: "08-03-2020",
-    //     active: false,
-    //   },
-    //   {
-    //     name: "09-03-2020",
-    //     active: false,
-    //   },
-    // ];
-
-    // var law = this.state.curcase.lawyer;
-    // if (this.state.curcase.lawyer.name != undefined) {
-    //   console.log(this.state.curcase.lawyer.name);
-    // }
   }
 
   handleActive = (i) => {
@@ -263,16 +235,20 @@ class CasePage extends Component {
         curlawyer: cur[0].curhearinglawyer,
         curverdict: cur[0].curhearingverdict,
         curwitness: cur[0].curhearingwitness,
+        curdoc: cur[0].documents,
         next: cur[0].nexthearingdate,
+        casename: this.state.curcase.name,
       },
     });
   }
 
   render() {
     console.log(this.state.curHearing);
-    console.log(this.state.curcase.isClosed);
+    console.log(this.state.curcase);
     console.log(this.state.items);
     console.log(this.state.c2);
+
+    console.log(this.state.curcase._id);
 
     return (
       <div style={{ backgroundColor: "rgb(240,240,240)", overflow: "hidden" }}>
@@ -376,11 +352,29 @@ class CasePage extends Component {
           </div>
           <div className="cpedit">
             <button className="btn btn-primary" onClick={this.handleCaseUpdate}>
-              <i style={{ marginRight: "10px" }} className="fa fa-edit"></i>
+              <i style={{ marginRight: "15px" }} className="fa fa-edit"></i>
               Update
+            </button>
+            <span style={{ marginRight: "3vh" }}></span>
+            <button className="btn btn-primary" onClick={this.toggleMModal}>
+              <i style={{ marginRight: "10px" }} className="fa fa-trash"></i>
+              Delete
             </button>
           </div>
         </div>
+        <Modal isOpen={this.state.isModallOpen} toggle={this.toggleMModal}>
+          <ModalHeader toggle={this.toggleMModal}>Delete</ModalHeader>
+          <ModalBody>
+            <p>Are you sure you want to delete</p>
+            <button className="btn btn-primary" onClick={this.handleCaseDel}>
+              YES
+            </button>
+            <span style={{ marginRight: "3vh" }}></span>
+            <button className="btn btn-primary" onClick={this.toggleMModal}>
+              NO
+            </button>
+          </ModalBody>
+        </Modal>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>Lawyer Details</ModalHeader>
           <ModalBody>
