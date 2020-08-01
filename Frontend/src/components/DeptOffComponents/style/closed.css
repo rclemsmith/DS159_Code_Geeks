@@ -185,8 +185,8 @@
     padding: 10px;
     word-spacing: 6px;
     background-color: white(228, 228, 228);
-    margin-bottom: 7vh;
-    margin-top: 8vh;
+    margin-bottom: 5vh;
+    margin-top: 0vh;
     margin-left: 9vh;
     margin-right: 9vh;
   }
@@ -228,7 +228,9 @@
 
   .actssearch-label{
     margin-top: 20vh;
-    margin-left: 76vh;
+    margin-left: 75.7vh;
+    margin-bottom: 4vh;
+    width: 50vh;
  }
 
  .fact{

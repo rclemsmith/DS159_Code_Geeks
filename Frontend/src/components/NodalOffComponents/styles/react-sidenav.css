@@ -804,4 +804,8 @@
     border-radius: 50%;
     background-color: rgb(190,190,190);
   }  
+
+  .active {
+    background-color: rgb(227, 227, 227, 0.2);
+  }
 }

@@ -911,7 +911,6 @@
 
   .legend {
     margin-top: 11vh;
-    margin-left: 20vh;
   }
 
   .leg1 {
@@ -936,7 +935,7 @@
     font-weight: bold;
     color: #16e442;
     margin-left: 7vh;
-    word-spacing: 8px;
+    word-spacing: 8.5px;
   }
 
   .vertical {

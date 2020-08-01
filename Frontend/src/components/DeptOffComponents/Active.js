@@ -104,7 +104,7 @@ class Active extends Component {
       <div>
         <DeptHead name="Active Cases" />
 
-        <div className="act8">
+        <div style={{overflowY:'scroll',overflowX:'hidden'}} className="act8">
           <InputGroup className="actssearch-label">
             <Input
               className="ssearchinp"

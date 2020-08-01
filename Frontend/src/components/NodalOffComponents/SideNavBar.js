@@ -12,7 +12,12 @@ class SideNavBar extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      h : true,
+      nc : false,
+      mc : false,
+      nu : false
+    };
     this.handleUser = this.handleUser.bind(this);
     this.handleDash = this.handleDash.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
@@ -22,18 +27,42 @@ class SideNavBar extends Component {
   }
 
   handleUser() {
-    this.props.history.push("/" + localStorage.getItem("userId") + "/addUser");
+    this.setState({
+      h: false,
+      nc: false,
+      mc: false,
+      nu: true
+    },() => {})
+    this.props.history.push("/" + localStorage.getItem("userId") + "/addUser");    
   }
 
   handleCase() {
+    this.setState({
+      h: false,
+      nc: false,
+      mc: true,
+      nu: false
+    },() => {})
     this.props.history.push("/" + localStorage.getItem("userId") + "/myCases");
   }
 
   handleAdd() {
+    this.setState({
+      h: false,
+      nc: true,
+      mc: false,
+      nu: false
+    },() => {})
     this.props.history.push("/" + localStorage.getItem("userId") + "/newCase");
   }
 
   handleDash() {
+    this.setState({
+      h: true,
+      nc: false,
+      mc: false,
+      nu: false
+    },() => {})
     this.props.history.push(
       "/" + localStorage.getItem("userId") + "/dashboard"
     );
@@ -62,7 +91,7 @@ class SideNavBar extends Component {
           <Nav className="nav1">
             <img src={user} className="nav2" />
             <NavItem
-              className="navitem"
+              className={this.state.h ? "navitem active" : "navitem"}
               onClick={this.handleDash}
               eventKey="home"
             >
@@ -75,7 +104,7 @@ class SideNavBar extends Component {
               </h4>
             </NavItem>
             <NavItem
-              className="navitem"
+              className={this.state.nc ? "navitem active" : "navitem"}
               eventKey="charts"
               onClick={this.handleAdd}
             >
@@ -88,7 +117,7 @@ class SideNavBar extends Component {
               </h4>
             </NavItem>
             <NavItem
-              className="navitem"
+              className={this.state.mc ? "navitem active" : "navitem"}
               eventKey="case"
               onClick={this.handleCase}
             >
@@ -105,7 +134,7 @@ class SideNavBar extends Component {
               </h4>
             </NavItem>
             <NavItem
-              className="navitem"
+              className={this.state.nu ? "navitem active" : "navitem"}
               eventKey="case"
               onClick={this.handleUser}
             >

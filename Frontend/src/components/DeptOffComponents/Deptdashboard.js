@@ -375,7 +375,7 @@ class Deptdashboard extends Component {
                 >
                   <div className="newdash3">
                     <CircularProgressbarWithChildren
-                      value={cl}
+                      value={ac}
                       className="newdash6 "
                       styles={buildStyles({
                         pathColor: "#220dfc",
@@ -383,7 +383,7 @@ class Deptdashboard extends Component {
                     >
                       <div className="newdash5">
                         <CircularProgressbarWithChildren
-                          value={ac}
+                          value={cl}
                           className="newdash6"
                           styles={buildStyles({
                             pathColor: "#16e442",
@@ -397,7 +397,7 @@ class Deptdashboard extends Component {
                 </CircularProgressbarWithChildren>
               </div>
             </div>
-            <div className="legend">
+            <div style={{marginLeft:'17vh'}} className="legend">
               <div className="row">
                 <div class="color-box"></div>
                 <span className="leg1">
@@ -412,8 +412,8 @@ class Deptdashboard extends Component {
               </div>
               <div className="row">
                 <div class="color-box2"></div>
-                <span className="leg3">
-                  Closed Cases <span>&nbsp;&nbsp;&nbsp;</span> {activeca}
+                <span style={{marginTop:'6.5vh'}} className="leg3">
+                  Closed Cases <span>&nbsp;&nbsp;&nbsp;&nbsp;</span> {activeca}
                 </span>
               </div>
             </div>

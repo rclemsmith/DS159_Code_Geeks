@@ -93,7 +93,7 @@ class Closed extends Component {
       <div>
         <DeptHead name="Closed Cases" />
 
-        <div className="close8">
+        <div style={{overflowY:'scroll',overflowX:'hidden'}} className="close8">
           <InputGroup className="actssearch-label">
             <Input
               className="ssearchinp"

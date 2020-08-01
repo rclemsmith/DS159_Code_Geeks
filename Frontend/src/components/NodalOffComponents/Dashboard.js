@@ -91,7 +91,7 @@ class Dashboard extends Component {
     var cl = (closeca / total) * 100;
     var ac = (activeca / total) * 100;
     var n = this.state.date.getDate();
-    var n1 = this.state.date.getMonth();
+    var n1 = this.state.date.getMonth() +1;
     var n2 = this.state.date.getFullYear();
     var year = [];
     this.state.cases.map((dashcase) => {
@@ -249,7 +249,7 @@ class Dashboard extends Component {
                 >
                   <div className="newdash3">
                     <CircularProgressbarWithChildren
-                      value={cl}
+                      value={ac}
                       className="newdash6 "
                       styles={buildStyles({
                         pathColor: "#220dfc",
@@ -257,7 +257,7 @@ class Dashboard extends Component {
                     >
                       <div className="newdash5">
                         <CircularProgressbarWithChildren
-                          value={ac}
+                          value={cl}
                           className="newdash6"
                           styles={buildStyles({
                             pathColor: "#00ff00",
