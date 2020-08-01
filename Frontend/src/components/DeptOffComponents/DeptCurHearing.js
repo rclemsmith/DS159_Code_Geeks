@@ -41,6 +41,22 @@ class DeptCurHearing extends Component {
               {nex.replace(/T.*/, "").split("-").reverse().join("-")}
             </span>
           </div>
+          {this.props.location.state.curdoc.map((c) => {
+            console.log(c);
+            return (
+              <div className="cch12">
+                <span className="cch13">Document:</span>
+                <span className="cch14">
+                  <a
+                    href={"https://indiancourt.azurewebsites.net/image/" + c}
+                    download
+                  >
+                    Click to download
+                  </a>
+                </span>
+              </div>
+            );
+          })}
           <div className="row">
             <div className="col-12">
               <div className="table-responsive">
