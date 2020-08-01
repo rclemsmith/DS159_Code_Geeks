@@ -70,7 +70,6 @@ class Closed extends Component {
     }
     const closed = this.state.closedcases.map((close) => {
       return (
-        <div className="col-xl-4">
           <div
             className="card close1"
             onClick={() => this.handleAct(close._id)}
@@ -81,14 +80,12 @@ class Closed extends Component {
                 <p className="close4">Type : {close.type}</p>
               </div>
 
-              <div>
-                <p className="close4">
-                  Facts : {close.facts.substring(0, 14)} ...
-                </p>
+              <div className="row" style={{marginLeft:'0vh'}}>
+                <p style={{wordSpacing:'4px'}} className="close4">Facts : </p>
+                <span className="fact">{close.facts.substring(0, 70)} ...</span>
               </div>
             </div>
           </div>
-        </div>
       );
     });
     return (
@@ -105,7 +102,7 @@ class Closed extends Component {
               onChange={(e) => this.handleChange(e)}
             />
             <InputGroupAddon addonType="append">
-              <InputGroupText style={{ width: "40px" }}>
+              <InputGroupText style={{ width: "40px",marginTop:'-6.1vh',height:'5.2vh',boxShadow:'0px 0px 1px 1px rgb(220,220,220)' }}>
                 <i className="fa fa-search search-icon" />
               </InputGroupText>
             </InputGroupAddon>

@@ -737,7 +737,7 @@
   }
 
   .date {
-    margin-left: 4%;
+    margin-left: 5%;
     margin-bottom: 7%;
     margin-top: 7%;
   }
@@ -755,7 +755,7 @@
     box-shadow: 0px 0px 4px 4px rgb(30, 30, 30);
     margin-right: 5%;
     margin-left: 6%;
-    border-radius: 50%;
+    /* border-radius: 50%; */
   }
 
   .chartd {
@@ -770,7 +770,7 @@
 
   .heardate {
     box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
-    border-radius: 10px;
+    border-radius: 5px;
     width: 35%;
     height: 35vh;
     margin-left: 3%;
@@ -787,7 +787,7 @@
   .tabless {
     margin-top: 1vh;
     width: 140vh;
-    margin-left: 45vh;
+    margin-left: 36vh;
     margin-right: 1vh;
   }
 
@@ -826,11 +826,6 @@
     margin-top: 2vh;
   }
 
-  .iinn {
-    width: 50vh;
-    margin-top: 20vh;
-    margin-left: 85vh;
-  }
 
   .tablecase {
     margin-top: 4vh;
@@ -910,12 +905,12 @@
 
   .color-box2 {
     margin-left: -3.3vh;
-    background-color: #ff5e00;
+    background-color: #16e442;
     border-radius: 50%;
   }
 
   .legend {
-    margin-top: 8vh;
+    margin-top: 11vh;
     margin-left: 20vh;
   }
 
@@ -939,8 +934,9 @@
   .leg3 {
     font-size: 25px;
     font-weight: bold;
-    color: #ff5e00;
+    color: #16e442;
     margin-left: 7vh;
+    word-spacing: 8px;
   }
 
   .vertical {
@@ -1008,5 +1004,25 @@
     height: 13px;
     margin-top: 75vh;
     margin-left: 75vh;
+  }
+
+  .tablehead{
+    font-size: 23px;
+    font-weight: bold;
+    margin-left: 38vh;
+    margin-top: 7vh;
+  }
+
+  .inn2{
+    box-shadow: 0px 0px 5px 5px rgb(220,220,220);  
+    margin-left: 95vh;
+    margin-top: -7vh;
+  }
+
+  
+  .iinn {
+    width: 50vh;
+    margin-top: 10vh;
+    margin-left: 50vh;
   }
 }

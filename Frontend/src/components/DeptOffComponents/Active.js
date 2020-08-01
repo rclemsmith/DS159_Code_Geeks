@@ -88,10 +88,9 @@ class Active extends Component {
                   <p className="act4">Type : {active.type}</p>
                 </div>
 
-                <div>
-                  <p className="act4">
-                    Facts : {active.facts.substring(0, 15)} ...
-                  </p>
+                <div className="row" style={{marginLeft:'0vh'}}>
+                  <p style={{wordSpacing:'4px'}} className="act4"> Facts : </p>
+                  <span className="fact">{active.facts.substring(0, 70)} ...</span>
                 </div>
               </div>
             </div>
@@ -114,7 +113,7 @@ class Active extends Component {
               onChange={(e) => this.handleChange(e)}
             />
             <InputGroupAddon addonType="append">
-              <InputGroupText style={{ width: "40px" }}>
+              <InputGroupText style={{ width: "40px",marginTop:'-6.1vh',height:'5.2vh',boxShadow:'0px 0px 1px 1px rgb(220,220,220)' }}>
                 <i className="fa fa-search search-icon" />
               </InputGroupText>
             </InputGroupAddon>
