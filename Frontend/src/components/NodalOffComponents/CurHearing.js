@@ -92,7 +92,7 @@ class CurHearing extends Component {
                 <span className="ch13">Document:</span>
                 <span className="ch14">
                   <a
-                    href={"https://indiancourt.azurewebsites.net/images/" + c}
+                    href={"https://indiancourt.azurewebsites.net/image/" + c}
                     download
                   >
                     Click to download
