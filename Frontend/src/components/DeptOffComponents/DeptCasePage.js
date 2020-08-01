@@ -60,8 +60,9 @@ class DeptCasePage extends Component {
 
   componentDidMount() {
     axios
-      .get(url +
-        "/department/users/cases/" +
+      .get(
+        url +
+          "/department/users/cases/" +
           this.props.location.state.info +
           "/hearing"
       )
@@ -96,8 +97,9 @@ class DeptCasePage extends Component {
       .catch((err) => console.log(err));
 
     axios
-      .get(url + 
-        "/department/users/cases/" +
+      .get(
+        url +
+          "/department/users/cases/" +
           this.props.location.state.info +
           "/casedetails"
       )
@@ -163,6 +165,7 @@ class DeptCasePage extends Component {
         curlawyer: cur[0].curhearinglawyer,
         curverdict: cur[0].curhearingverdict,
         curwitness: cur[0].curhearingwitness,
+        curdoc: cur[0].documents,
         next: cur[0].nexthearingdate,
       },
     });
@@ -280,12 +283,20 @@ class DeptCasePage extends Component {
             </div>
             <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
               <ModalHeader toggle={this.toggleModal}>
-                <p style={{fontWeight:'bold', marginBottom:'0vh',fontSize:'18px'}}>LAWYER DETAILS</p>
+                <p
+                  style={{
+                    fontWeight: "bold",
+                    marginBottom: "0vh",
+                    fontSize: "18px",
+                  }}
+                >
+                  LAWYER DETAILS
+                </p>
               </ModalHeader>
               <ModalBody>
                 <div className="card ll1">
                   <img
-                    src={url +"/image/" + this.state.limage}
+                    src={url + "/image/" + this.state.limage}
                     alt="Display Picture"
                     height="200px"
                   />
