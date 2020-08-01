@@ -7,7 +7,7 @@ import { Link, Redirect } from "react-router-dom";
 import AvField from "availity-reactstrap-validation/lib/AvField";
 import AvForm from "availity-reactstrap-validation/lib/AvForm";
 import { Input, InputGroup, InputGroupAddon, InputGroupText } from "reactstrap";
-
+import url from "../../backend_url";
 class Case extends Component {
   constructor(props) {
     super(props);
@@ -36,8 +36,8 @@ class Case extends Component {
 
   handleSearch(val) {
     axios
-      .post(
-        "https://indiancourt.azurewebsites.net/search/" + localStorage.getItem("deptname"),
+      .post(url + 
+        "/search/" + localStorage.getItem("deptname"),
         {
           query: val,
         }
@@ -53,8 +53,8 @@ class Case extends Component {
 
   handleClose(val) {
     axios
-      .post(
-        "https://indiancourt.azurewebsites.net/search/close/" +
+      .post(url + 
+        "/search/close/" +
           localStorage.getItem("deptname"),
         {
           query: val,
@@ -95,8 +95,8 @@ class Case extends Component {
 
   componentDidMount() {
     axios
-      .get(
-        "https://indiancourt.azurewebsites.net/department/admin/active/" +
+      .get(url + 
+        "/department/admin/active/" +
           localStorage.getItem("deptname")
       )
       .then((res) => {
@@ -106,8 +106,8 @@ class Case extends Component {
       });
 
     axios
-      .get(
-        "https://indiancourt.azurewebsites.net/department/admin/closed/" +
+      .get(url + 
+        "/admin/closed/" +
           localStorage.getItem("deptname")
       )
       .then((res) => {

@@ -4,7 +4,7 @@ import { InputGroup, InputGroupAddon, Input, InputGroupText } from "reactstrap";
 import SideNavBar from "./SideNavBar";
 import Head from "./Head";
 import "./styles/search.css";
-
+import url from "../../backend_url";
 class Search extends Component {
   constructor(props) {
     super(props);
@@ -19,8 +19,8 @@ class Search extends Component {
   }
   handleSearch(val) {
     axios
-      .post(
-        "https://indiancourt.azurewebsites.net/search/" + localStorage.getItem("deptname"),
+      .post(url + 
+        "/search/" + localStorage.getItem("deptname"),
         {
           query: val,
         }
@@ -49,8 +49,8 @@ class Search extends Component {
 
   componentDidMount() {
     axios
-      .get(
-        "https://indiancourt.azurewebsites.net/department/users/cases/cases/" +
+      .get(url + 
+        "/department/users/cases/cases/" +
           localStorage.getItem("deptname")
       )
       .then((res) => {

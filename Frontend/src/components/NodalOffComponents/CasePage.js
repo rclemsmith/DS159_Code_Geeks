@@ -6,7 +6,7 @@ import Head from "./Head";
 import { Link } from "react";
 import axios from "axios";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
-
+import url from "../../backend_url";
 class CasePage extends Component {
   constructor(props) {
     super(props);
@@ -97,8 +97,8 @@ class CasePage extends Component {
 
   componentDidMount() {
     axios
-      .get(
-        "https://indiancourt.azurewebsites.net/department/admin/" +
+      .get(url + 
+        "/department/admin/" +
           this.props.location.state.info +
           "/hearing"
       )
@@ -133,8 +133,8 @@ class CasePage extends Component {
       .catch((err) => console.log(err));
 
     axios
-      .get(
-        "https://indiancourt.azurewebsites.net/department/admin/" +
+      .get(url + 
+        "/department/admin/" +
           this.props.location.state.info +
           "/casedetails"
       )
@@ -386,7 +386,10 @@ class CasePage extends Component {
           <ModalBody>
             <div className="card cpll1">
               <img
-                src={"http://localhost:3006/image/" + this.state.limage}
+                src={url + 
+                  "/image/" +
+                  this.state.limage
+                }
                 alt="Display Picture"
                 height="200px"
               />

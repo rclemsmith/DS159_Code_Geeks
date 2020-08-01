@@ -5,6 +5,7 @@ import axios from "axios";
 import { AvForm, AvField } from "availity-reactstrap-validation";
 import { Button, Card } from "reactstrap";
 import "./styles/lawyerupdate.css";
+import url from "../../backend_url";
 class LawyerUpdate extends Component {
   constructor(props) {
     super(props);
@@ -76,8 +77,8 @@ class LawyerUpdate extends Component {
     formData.append("image", lawyerpic);
     console.log(formData);
     axios
-      .post(
-        "https://indiancourt.azurewebsites.net/department/admin/" + this.state.caseid + "/lupd",
+      .post(url + 
+        "/department/admin/" + this.state.caseid + "/lupd",
         formData
       )
       .then((res) => {
