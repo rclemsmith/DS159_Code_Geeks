@@ -1,0 +1,1012 @@
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+  .d1 {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(190, 190, 190, 0.5),
+      rgba(190, 190, 190, 0.7)
+    );
+    margin-top: 4%;
+    overflow: hidden;
+  }
+
+  .date {
+    margin-left: 4%;
+    margin-bottom: 7%;
+    margin-top: 7%;
+  }
+
+  .dates {
+    letter-spacing: 2px;
+    text-align: center;
+    padding-top: 3%;
+    width: 20%;
+    height: 10vh;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(50, 50, 50);
+    box-shadow: 0px 0px 4px 4px rgb(30, 30, 30);
+    margin-right: 5%;
+    margin-left: 6%;
+    border-radius: 50%;
+  }
+
+  .heardate {
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+    border-radius: 10px;
+    width: 83%;
+    margin-left: 9%;
+    margin-top: 4%;
+    background-color: rgb(50, 50, 50);
+  }
+
+  .tables {
+    margin-top: 5%;
+    margin-left: -17%;
+    margin-right: 1%;
+  }
+
+  .dd14 {
+    margin-top: 2vh;
+    width: 220px;
+    height: 280px;
+  }
+
+  .dd15 {
+    width: 260px;
+    margin-top: 3%;
+    margin-left: 20%;
+  }
+
+  .tabb1 {
+    color: white;
+    margin-left: 10vh;
+    background-color: rgb(50, 50, 50);
+  }
+
+  .tab2,
+  .tab3 {
+    margin-left: 22%;
+    font-size: 20px;
+  }
+
+  .tab4 {
+    margin-left: 13%;
+    font-size: 20px;
+  }
+
+  .tablemonth {
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 2vh;
+  }
+
+  .tablecase {
+    margin-top: 4vh;
+    margin-left: -2%;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .table222 {
+    margin-top: 2vh;
+    margin-left: -12%;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .table333 {
+    margin-top: 4vh;
+    font-weight: 600;
+  }
+
+  .tablename {
+    margin-left: 113%;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .ddselect {
+    margin-top: 7vh;
+    width: 150px;
+    margin-left: 5%;
+  }
+
+  .ddhead3 {
+    margin-top: 7vh;
+    color: black;
+    margin-left: 3.4%;
+  }
+
+  .ddchart {
+    width: 2000px;
+  }
+
+  .newdash7 {
+    font-size: 30px;
+  }
+
+  .buttons {
+    padding: 12px;
+    margin-top: 15%;
+    margin-left: 24%;
+    margin-bottom: 2%;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    background-color: rgb(50, 50, 50);
+    font-size: 25px;
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+  }
+
+  .buttons:hover {
+    padding: 12px;
+    margin-top: 15%;
+    margin-left: 24%;
+    margin-bottom: 2%;
+    border: none;
+    font-weight: bold;
+    background-color: white;
+    background-color: rgb(50, 50, 50);
+    font-size: 25px;
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+  }
+
+  .buttons1 {
+    padding: 12px;
+    margin-top: 5%;
+    margin-left: 24%;
+    margin-bottom: 2%;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    background-color: rgb(50, 50, 50);
+    font-size: 25px;
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+  }
+
+  .buttons1:hover {
+    padding: 12px;
+    margin-top: 5%;
+    margin-left: 24%;
+    margin-bottom: 2%;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    background-color: rgb(50, 50, 50);
+    font-size: 25px;
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .d1 {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(190, 190, 190, 0.5),
+      rgba(190, 190, 190, 0.7)
+    );
+    margin-top: 4%;
+    overflow: hidden;
+  }
+
+  .date {
+    margin-left: 4%;
+    margin-bottom: 7%;
+    margin-top: 7%;
+  }
+
+  .dates {
+    letter-spacing: 2px;
+    text-align: center;
+    padding-top: 3%;
+    width: 20%;
+    height: 10vh;
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(50, 50, 50);
+    box-shadow: 0px 0px 4px 4px rgb(30, 30, 30);
+    margin-right: 5%;
+    margin-left: 6%;
+    border-radius: 50%;
+  }
+
+  .heardate {
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+    border-radius: 10px;
+    width: 87%;
+    margin-left: 9%;
+    margin-top: 4%;
+    background-color: rgb(50, 50, 50);
+  }
+
+  .tables {
+    margin-top: 5%;
+    margin-left: -14%;
+    margin-right: 1%;
+  }
+
+  .dd14 {
+    margin-top: 2vh;
+    width: 220px;
+    height: 280px;
+  }
+
+  .dd15 {
+    width: 260px;
+    margin-top: 3%;
+    margin-left: 20%;
+  }
+
+  .tabb1 {
+    color: white;
+    margin-left: 9vh;
+    width: 800px;
+    background-color: rgb(50, 50, 50);
+  }
+
+  .tab2,
+  .tab3 {
+    margin-left: 22%;
+    font-size: 20px;
+  }
+
+  .tab4 {
+    margin-left: 13%;
+    font-size: 20px;
+  }
+
+  .tablemonth {
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 2vh;
+  }
+
+  .tablecase {
+    margin-top: 4vh;
+    margin-left: -2%;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .table222 {
+    margin-top: 2vh;
+    margin-left: -12%;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .table333 {
+    margin-top: 4vh;
+    font-weight: 600;
+  }
+
+  .tablename {
+    margin-left: 113%;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .ddselect {
+    margin-top: 7vh;
+    width: 150px;
+    margin-left: 5%;
+  }
+
+  .ddhead3 {
+    margin-top: 7vh;
+    color: black;
+    margin-left: 1%;
+  }
+
+  .ddchart {
+    width: 2000px;
+  }
+
+  .newdash7 {
+    font-size: 30px;
+  }
+
+  .buttons {
+    padding: 12px;
+    margin-top: 15%;
+    margin-left: 34%;
+    margin-bottom: 2%;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    background-color: rgb(50, 50, 50);
+    font-size: 25px;
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+  }
+
+  .buttons:hover {
+    padding: 12px;
+    margin-top: 15%;
+    margin-left: 34%;
+    margin-bottom: 2%;
+    border: none;
+    font-weight: bold;
+    background-color: white;
+    background-color: rgb(50, 50, 50);
+    font-size: 25px;
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+  }
+
+  .buttons1 {
+    padding: 12px;
+    margin-top: 5%;
+    margin-left: 34.9%;
+    margin-bottom: 2%;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    background-color: rgb(50, 50, 50);
+    font-size: 25px;
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+  }
+
+  .buttons1:hover {
+    padding: 12px;
+    margin-top: 5%;
+    margin-left: 34.9%;
+    margin-bottom: 2%;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    background-color: rgb(50, 50, 50);
+    font-size: 25px;
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .d1 {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(190, 190, 190, 0.5),
+      rgba(190, 190, 190, 0.7)
+    );
+    margin-top: 4%;
+    overflow: hidden;
+  }
+
+  .date {
+    margin-left: 4%;
+    margin-bottom: 7%;
+    margin-top: 7%;
+  }
+
+  .dates {
+    letter-spacing: 2px;
+    text-align: center;
+    padding-top: 3%;
+    width: 20%;
+    height: 10vh;
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(50, 50, 50);
+    box-shadow: 0px 0px 4px 4px rgb(30, 30, 30);
+    margin-right: 5%;
+    margin-left: 6%;
+    border-radius: 50%;
+  }
+
+  .heardate {
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+    border-radius: 10px;
+    width: 77%;
+    margin-left: 13%;
+    margin-top: 4%;
+    background-color: rgb(50, 50, 50);
+  }
+
+  .tables {
+    margin-top: 5%;
+    margin-left: -10%;
+    margin-right: 1%;
+  }
+
+  .dd14 {
+    margin-top: 2vh;
+    width: 220px;
+    height: 280px;
+  }
+
+  .dd15 {
+    width: 260px;
+    margin-top: 3%;
+    margin-left: 20%;
+  }
+
+  .tabb1 {
+    color: white;
+    margin-left: 10vh;
+    width: 800px;
+    background-color: rgb(50, 50, 50);
+  }
+
+  .tab2,
+  .tab3 {
+    margin-left: 22%;
+    font-size: 20px;
+  }
+
+  .tab4 {
+    margin-left: 13%;
+    font-size: 20px;
+  }
+
+  .tablemonth {
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 2vh;
+  }
+
+  .tablecase {
+    margin-top: 4vh;
+    margin-left: -2%;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .table222 {
+    margin-top: 2vh;
+    margin-left: -12%;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .table333 {
+    margin-top: 4vh;
+    font-weight: 600;
+  }
+
+  .tablename {
+    margin-left: 113%;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .ddselect {
+    margin-top: 7vh;
+    width: 150px;
+    margin-left: 5%;
+  }
+
+  .ddhead3 {
+    margin-top: 7vh;
+    color: black;
+    margin-left: 4%;
+  }
+
+  .ddchart {
+    width: 2000px;
+  }
+
+  .newdash7 {
+    font-size: 30px;
+  }
+
+  .buttons {
+    padding: 12px;
+    margin-top: 15%;
+    margin-left: 40%;
+    margin-bottom: 2%;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    background-color: rgb(50, 50, 50);
+    font-size: 25px;
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+  }
+
+  .buttons:hover {
+    padding: 12px;
+    margin-top: 15%;
+    margin-left: 40%;
+    margin-bottom: 2%;
+    border: none;
+    font-weight: bold;
+    background-color: white;
+    background-color: rgb(50, 50, 50);
+    font-size: 25px;
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+  }
+
+  .buttons1 {
+    padding: 12px;
+    margin-top: 5%;
+    margin-left: 40%;
+    margin-bottom: 2%;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    background-color: rgb(50, 50, 50);
+    font-size: 25px;
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+  }
+
+  .buttons1:hover {
+    padding: 12px;
+    margin-top: 5%;
+    margin-left: 40%;
+    margin-bottom: 2%;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    background-color: rgb(50, 50, 50);
+    font-size: 25px;
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1199px) {
+  .d1 {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(190, 190, 190, 0.5),
+      rgba(190, 190, 190, 0.7)
+    );
+    margin-top: 4%;
+    overflow: hidden;
+  }
+
+  .date {
+    margin-left: 4%;
+    margin-bottom: 7%;
+    margin-top: 7%;
+  }
+
+  .dates {
+    letter-spacing: 2px;
+    text-align: center;
+    padding-top: 3%;
+    width: 20%;
+    height: 10vh;
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(50, 50, 50);
+    box-shadow: 0px 0px 4px 4px rgb(30, 30, 30);
+    margin-right: 5%;
+    margin-left: 6%;
+    border-radius: 50%;
+  }
+
+  .heardate {
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+    border-radius: 10px;
+    width: 67%;
+    margin-left: 19%;
+    margin-top: 4%;
+    background-color: rgb(50, 50, 50);
+  }
+
+  .tables {
+    margin-top: 5%;
+    margin-left: -2%;
+    margin-right: 1%;
+  }
+
+  .dd14 {
+    margin-top: 2vh;
+    width: 220px;
+    height: 280px;
+  }
+
+  .dd15 {
+    width: 260px;
+    margin-top: 3%;
+    margin-left: 20%;
+  }
+
+  .tabb1 {
+    color: white;
+    margin-left: 11vh;
+    width: 800px;
+    background-color: rgb(50, 50, 50);
+  }
+
+  .tab2,
+  .tab3 {
+    margin-left: 22%;
+    font-size: 20px;
+  }
+
+  .tab4 {
+    margin-left: 13%;
+    font-size: 20px;
+  }
+
+  .tablemonth {
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 2vh;
+  }
+
+  .tablecase {
+    margin-top: 4vh;
+    margin-left: -2%;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .table222 {
+    margin-top: 2vh;
+    margin-left: -12%;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .table333 {
+    margin-top: 4vh;
+    font-weight: 600;
+  }
+
+  .tablename {
+    margin-left: 113%;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .ddselect {
+    margin-top: 7vh;
+    width: 150px;
+    margin-left: 5%;
+  }
+
+  .ddhead3 {
+    margin-top: 7vh;
+    color: black;
+    margin-left: 4%;
+  }
+
+  .ddchart {
+    width: 2000px;
+  }
+
+  .newdash7 {
+    font-size: 30px;
+  }
+
+  .buttons {
+    padding: 12px;
+    margin-top: 15%;
+    margin-left: 40%;
+    margin-bottom: 2%;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    background-color: rgb(50, 50, 50);
+    font-size: 25px;
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+  }
+
+  .buttons:hover {
+    padding: 12px;
+    margin-top: 15%;
+    margin-left: 40%;
+    margin-bottom: 2%;
+    border: none;
+    font-weight: bold;
+    background-color: white;
+    background-color: rgb(50, 50, 50);
+    font-size: 25px;
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+  }
+
+  .buttons1 {
+    padding: 12px;
+    margin-top: 5%;
+    margin-left: 40%;
+    margin-bottom: 2%;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    background-color: rgb(50, 50, 50);
+    font-size: 25px;
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+  }
+
+  .buttons1:hover {
+    padding: 12px;
+    margin-top: 5%;
+    margin-left: 40%;
+    margin-bottom: 2%;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    background-color: rgb(50, 50, 50);
+    font-size: 25px;
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .d1 {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(190, 190, 190, 0.5),
+      rgba(190, 190, 190, 0.7)
+    );
+    margin-top: 4%;
+    overflow: hidden;
+  }
+
+  .date {
+    margin-left: 4%;
+    margin-bottom: 7%;
+    margin-top: 7%;
+  }
+
+  .dates {
+    letter-spacing: 2px;
+    text-align: center;
+    padding-top: 3%;
+    width: 20%;
+    height: 10vh;
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(50, 50, 50);
+    box-shadow: 0px 0px 4px 4px rgb(30, 30, 30);
+    margin-right: 5%;
+    margin-left: 6%;
+    border-radius: 50%;
+  }
+
+  .chartd {
+    margin-left: 35vh;
+    margin-top: -20vh;
+    width: 100%;
+  }
+
+  .tdciv {
+    margin-top: 5vh;
+  }
+
+  .heardate {
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+    border-radius: 10px;
+    width: 35%;
+    height: 35vh;
+    margin-left: 3%;
+    margin-top: 4%;
+    background-color: rgb(50, 50, 50);
+  }
+
+  .tables {
+    margin-top: 5%;
+    margin-left: 17.8%;
+    margin-right: 1%;
+  }
+
+  .tabless {
+    margin-top: 1vh;
+    width: 140vh;
+    margin-left: 45vh;
+    margin-right: 1vh;
+  }
+
+  .dd14 {
+    margin-top: 2vh;
+    width: 220px;
+    height: 280px;
+  }
+
+  .dd15 {
+    width: 260px;
+    margin-top: 3%;
+    margin-left: 20%;
+  }
+
+  .tabb1 {
+    color: white;
+    margin-left: 16vh;
+    background-color: rgb(50, 50, 50);
+  }
+
+  .tab2,
+  .tab3 {
+    margin-left: 22%;
+    font-size: 20px;
+  }
+
+  .tab4 {
+    margin-left: 13%;
+    font-size: 20px;
+  }
+
+  .tablemonth {
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 2vh;
+  }
+
+  .iinn {
+    width: 50vh;
+    margin-top: 20vh;
+    margin-left: 85vh;
+  }
+
+  .tablecase {
+    margin-top: 4vh;
+    margin-left: 2%;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .table222 {
+    margin-top: 2vh;
+    font-weight: 600;
+  }
+
+  .table333 {
+    margin-top: 4vh;
+    font-weight: 600;
+  }
+
+  .tablename {
+    margin-left: 113%;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .ddselect {
+    margin-top: 7vh;
+    width: 150px;
+    margin-left: 5%;
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+  }
+
+  .ddhead3 {
+    margin-top: 7vh;
+    color: black;
+    margin-left: 1%;
+  }
+
+  .newdash7 {
+    font-size: 30px;
+  }
+
+  .newdash2 {
+    margin-top: 0.5vh;
+    width: 33vh;
+    margin-left: 10vh;
+  }
+
+  .newdash3 {
+    margin-top: 4.2vh;
+    width: 23vh;
+    margin-left: 0vh;
+  }
+
+  .newdash5 {
+    margin-top: -2vh;
+    width: 15vh;
+  }
+
+  .newdash15 {
+    margin-left: 15vh;
+    margin-top: 9vh;
+    margin-right: 0vh;
+  }
+
+  .color-box {
+    margin-left: -3.3vh;
+    background-color: #fc061e;
+    border-radius: 50%;
+    margin-top: 2.5vh;
+  }
+
+  .color-box1 {
+    margin-left: -3.3vh;
+    background-color: #220dfc;
+    border-radius: 50%;
+  }
+
+  .color-box2 {
+    margin-left: -3.3vh;
+    background-color: #ff5e00;
+    border-radius: 50%;
+  }
+
+  .legend {
+    margin-top: 8vh;
+    margin-left: 20vh;
+  }
+
+  .leg1 {
+    font-size: 25px;
+    font-weight: bold;
+    color: #fc061e;
+    margin-left: 7.2vh;
+    margin-top: 1vh;
+    margin-bottom: -1vh;
+  }
+
+  .leg2 {
+    font-size: 25px;
+    font-weight: bold;
+    color: #220dfc;
+    margin-left: 7.5vh;
+    margin-bottom: -1vh;
+  }
+
+  .leg3 {
+    font-size: 25px;
+    font-weight: bold;
+    color: #ff5e00;
+    margin-left: 7vh;
+  }
+
+  .vertical {
+    border-left: 4px solid white;
+    height: 50px;
+    margin-left: 10px;
+    margin-right: 20px;
+  }
+
+  .buttons {
+    padding: 15px;
+    margin-top: 5%;
+    margin-left: 3%;
+    margin-bottom: 2%;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    background-color: rgb(50, 50, 50);
+    font-size: 25px;
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+  }
+
+  .buttons:hover {
+    padding: 15px;
+    margin-top: 5%;
+    margin-left: 3%;
+    margin-bottom: 2%;
+    border: none;
+    font-weight: bold;
+    background-color: white;
+    background-color: rgb(50, 50, 50);
+    font-size: 25px;
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+  }
+
+  .buttons1 {
+    padding: 15px;
+    margin-top: 5%;
+    margin-left: 23%;
+    margin-bottom: 2%;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    background-color: rgb(50, 50, 50);
+    font-size: 25px;
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+  }
+
+  .buttons1:hover {
+    padding: 15px;
+    margin-top: 5%;
+    margin-left: 23%;
+    margin-bottom: 2%;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    background-color: rgb(50, 50, 50);
+    font-size: 25px;
+    box-shadow: 0px 0px 4px 4px rgba(190, 190, 190, 0.5);
+  }
+
+  .bar {
+    background-color: red;
+    width: 100px;
+    height: 13px;
+    margin-top: 75vh;
+    margin-left: 75vh;
+  }
+}
