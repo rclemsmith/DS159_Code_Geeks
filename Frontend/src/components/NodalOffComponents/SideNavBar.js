@@ -13,11 +13,16 @@ class SideNavBar extends Component {
     super(props);
 
     this.state = {};
+    this.handleUser = this.handleUser.bind(this);
     this.handleDash = this.handleDash.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handleCase = this.handleCase.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  handleUser() {
+    this.props.history.push("/" + localStorage.getItem("userId") + "/addUser");
   }
 
   handleCase() {
@@ -90,9 +95,30 @@ class SideNavBar extends Component {
               <h4 className="hh1">
                 <i
                   className="fa fa-fw fa-list"
-                  style={{ marginLeft: "1vh", marginRight: "1.8vh", fontSize:'20px' }}
+                  style={{
+                    marginLeft: "1vh",
+                    marginRight: "1.8vh",
+                    fontSize: "20px",
+                  }}
                 ></i>
                 My Cases
+              </h4>
+            </NavItem>
+            <NavItem
+              className="navitem"
+              eventKey="case"
+              onClick={this.handleUser}
+            >
+              <h4 className="hh1">
+                <i
+                  className="fa fa-fw fa-plus"
+                  style={{
+                    marginLeft: "1vh",
+                    marginRight: "1.8vh",
+                    fontSize: "20px",
+                  }}
+                ></i>
+                Add User
               </h4>
             </NavItem>
             {/* <NavItem
