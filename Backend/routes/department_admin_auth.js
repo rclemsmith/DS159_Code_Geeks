@@ -175,7 +175,7 @@ router.delete("/:caseId", (req, res) => {
   Case.findByIdAndDelete(req.params.caseId, (err, deletedCase) => {
 
     var now = new Date();
-    var report = " The Nodal Officer " + req.user.nodalname + " has deleted a case called " + deletedCase.name + " at " + now;
+    var report = " The Nodal Officer has deleted a case called " + deletedCase.name + " at " + now;
     SuperAdmin.findOneAndUpdate({ name: deletedCasedepartment }, {
       $push: {
         reports: report
