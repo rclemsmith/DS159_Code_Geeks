@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Head from "../NodalOffComponents/Head";
 import "./style/curhear.css";
 import DeptHead from "./DeptHead";
-
+import url from "../../backend_url";
 class DeptCurHearing extends Component {
   constructor(props) {
     super(props);

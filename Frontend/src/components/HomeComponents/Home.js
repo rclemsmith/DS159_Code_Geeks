@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./styles/homestyle.css";
 import Header from "./Header";
 import home from "../../images/home.png";
+import url from "../../backend_url";
 import {
   Button,
   InputGroup,
@@ -11,7 +12,6 @@ import {
 } from "reactstrap";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -163,7 +163,7 @@ class Home extends Component {
           btn2: false,
         });
         axios
-          .post("http://localhost:3006/department/admin/login", {
+          .post(url+"/department/admin/login", {
             username: this.state.username,
             password: this.state.password,
           })
@@ -194,7 +194,7 @@ class Home extends Component {
           btn2: false,
         });
         axios
-          .post("http://localhost:3006/department/users/login", {
+          .post(url+"/department/users/login", {
             username: this.state.username,
             password: this.state.password,
           })
@@ -225,7 +225,7 @@ class Home extends Component {
           btn2: false,
         });
         axios
-          .post("http://localhost:3006/superadmin/login", {
+          .post(url+"/superadmin/login", {
             username: this.state.username,
             password: this.state.password,
           })

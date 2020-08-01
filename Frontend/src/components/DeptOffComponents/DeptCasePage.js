@@ -5,7 +5,7 @@ import axios from "axios";
 import { Button, ModalHeader, ModalBody, Modal } from "reactstrap";
 import "./style/deptcasepage.css";
 import DeptHead from "./DeptHead";
-
+import url from "../../backend_url";
 class DeptCasePage extends Component {
   constructor(props) {
     super(props);
@@ -60,8 +60,8 @@ class DeptCasePage extends Component {
 
   componentDidMount() {
     axios
-      .get(
-        "https://indiancourt.azurewebsites.net/department/users/cases/" +
+      .get(url +
+        "/department/users/cases/" +
           this.props.location.state.info +
           "/hearing"
       )
@@ -96,8 +96,8 @@ class DeptCasePage extends Component {
       .catch((err) => console.log(err));
 
     axios
-      .get(
-        "https://indiancourt.azurewebsites.net/department/users/cases/" +
+      .get(url + 
+        "/department/users/cases/" +
           this.props.location.state.info +
           "/casedetails"
       )
@@ -285,7 +285,7 @@ class DeptCasePage extends Component {
               <ModalBody>
                 <div className="card ll1">
                   <img
-                    src={"https://indiancourt.azurewebsites.net/image/" + this.state.limage}
+                    src={url +"/image/" + this.state.limage}
                     alt="Display Picture"
                     height="200px"
                   />

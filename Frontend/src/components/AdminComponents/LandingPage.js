@@ -4,6 +4,7 @@ import "./style/landing.css";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import axios from "axios";
 import { bind } from "lodash";
+import url from "../../backend_url";
 
 class LandingPage extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class LandingPage extends Component {
     localStorage.removeItem("adminId");
     localStorage.removeItem("token");
 
-    window.location.href = "http://localhost:3000/";
+    window.location.href = url;
   }
 
   handleSelect(id) {
@@ -60,7 +61,7 @@ class LandingPage extends Component {
 
     axios
       .post(
-        "https://indiancourt.azurewebsites.net/department/admin/signup",
+        url +"/department/admin/signup",
         data
       )
       .then((res) => {
@@ -86,7 +87,7 @@ class LandingPage extends Component {
     event.preventDefault();
     axios
       .delete(
-        "https://indiancourt.azurewebsites.net/department/admin/" +
+        url +"/department/admin/" +
           this.state.id
       )
       .then((res) => {
@@ -97,7 +98,7 @@ class LandingPage extends Component {
   componentDidMount() {
     axios
       .get(
-        "https://indiancourt.azurewebsites.net/department/admin/nodal/" +
+        url +"/department/admin/nodal/" +
           this.props.location.state.dept
       )
       .then((res) => {

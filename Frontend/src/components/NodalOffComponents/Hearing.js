@@ -6,6 +6,7 @@ import { Button, Card } from "reactstrap";
 import _ from "lodash";
 import "./styles/hearing.css";
 import axios from "axios";
+import url from "../../backend_url";
 var count = 0;
 class Hearing extends Component {
   constructor(props) {
@@ -92,8 +93,8 @@ class Hearing extends Component {
     console.log(formData.get("witness"));
     axios.defaults.withCredentials = true;
     axios
-      .post(
-        "http://localhost:3006/department/admin/" +
+      .post(url + 
+        "/department/admin/" +
           this.props.location.state.caseinfo +
           "/hearing",
         formData

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SideNavbar from "./SideNavBar";
 import axios from "axios";
 import Head from "./Head";
+import url from "../../backend_url";
 import {
   AvForm,
   AvField,
@@ -355,8 +356,8 @@ class NewCase extends Component {
     formData.append("casename", this.casename.value);
     console.log(formData);
     axios
-      .post(
-        "http://localhost:3006/department/admin/" +
+      .post(url + 
+        "/department/admin/" +
           localStorage.getItem("userId") +
           "/addCase",
         formData

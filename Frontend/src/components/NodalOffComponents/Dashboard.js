@@ -12,7 +12,7 @@ import {
 import "./styles/ndash.css";
 import LineTo, { Line } from "react-lineto";
 import axios from "axios";
-
+import url from "../../backend_url";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -37,8 +37,8 @@ class Dashboard extends Component {
 
   componentDidMount() {
     axios
-      .get(
-        "https://indiancourt.azurewebsites.net/department/admin/cases/" +
+      .get(url + 
+        "/department/admin/cases/" +
           localStorage.getItem("deptname")
       )
       .then((res) => {

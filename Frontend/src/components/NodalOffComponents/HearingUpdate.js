@@ -6,6 +6,7 @@ import { Button, Card } from "reactstrap";
 import _ from "lodash";
 import "./styles/hearing.css";
 import axios from "axios";
+import url from "../../backend_url";
 var count = 0;
 class HearingUpdate extends Component {
   constructor(props) {
@@ -84,8 +85,8 @@ class HearingUpdate extends Component {
     };
 
     axios
-      .post(
-        "http://localhost:3006/department/admin/" +
+      .post(url + 
+        "/department/admin/" +
           this.props.location.state.id +
           "/update",
         data

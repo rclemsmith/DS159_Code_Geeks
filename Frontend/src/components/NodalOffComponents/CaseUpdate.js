@@ -6,6 +6,7 @@ import { AvForm, AvField } from "availity-reactstrap-validation";
 import { Button, Card } from "reactstrap";
 import axios from "axios";
 
+import url from "../../backend_url";
 class CaseUpdate extends Component {
   constructor(props) {
     super(props);
@@ -35,8 +36,8 @@ class CaseUpdate extends Component {
     }
 
     axios
-      .post(
-        "http://localhost:3006/department/admin/" +
+      .post(url + 
+        "/department/admin/" +
           this.props.location.state.caseid +
           "/modify",
         data
