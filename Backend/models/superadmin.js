@@ -3,16 +3,17 @@ var Schema = mongoose.Schema;
 var passportLocalMongoose = require("passport-local-mongoose");
 
 var SuperAdminSchema = new Schema({
-    name : {
-        type : String ,
-        unique : true,
-        required : true
+    name: {
+        type: String,
+        unique: true,
+        required: true
     },
-    email : {
-        type : String,
-        required : true,
-    }
-},{timestamps : true});
+    email: {
+        type: String,
+        required: true,
+    },
+    reports: []
+}, { timestamps: true });
 
 
 SuperAdminSchema.plugin(passportLocalMongoose);

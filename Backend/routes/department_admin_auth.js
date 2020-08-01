@@ -7,6 +7,7 @@ var multer = require("multer");
 const multerUpload = require("../services/multer_service");
 const Case = require("../models/cases");
 const DepartmentAdmin = require("../models/deptadmin");
+const SuperAdmin = require("../models/superadmin");
 const Hearing = require("../models/hearing");
 const transporter = require("../services/mailservice");
 
@@ -226,9 +227,21 @@ router.post(
     Case.create(addCase)
       .then((mycase) => {
         console.log(mycase);
-        res.statusCode = 200;
-        res.setHeader("Content-Type", "application/json");
-        res.json(mycase);
+        DepartmentAdmin.findById(req.params.userId, (err, foundAdmin) => {
+          if (err) {
+            res.json(err);
+          } else {
+            SuperAdmin.findOne({ name: req.body.department }, (err, foundSuper) => {
+              var now = new Date();
+              var report = " The Nodal Officer : " + foundAdmin.nodalname + "has added a new case called " + mycase.name + " at " + now;
+              foundSuper.reports.push.apply(foundSuper.reports, report);
+              res.statusCode = 200;
+              res.setHeader("Content-Type", "application/json");
+              res.json(mycase);
+            });
+          }
+        });
+
       })
       .catch((err) => console.log(err));
   }
@@ -287,7 +300,7 @@ router.post("/:caseId/hearing", multerUpload.array("documents", 10), (req, res) 
 
     console.log(req.body);
     var witness1 = JSON.parse(req.body.witness);
-    witness1.forEach((wit)=>console.log(wit));
+    witness1.forEach((wit) => console.log(wit));
     console.log(witness1);
 
     var hearing = new Hearing({
@@ -301,7 +314,7 @@ router.post("/:caseId/hearing", multerUpload.array("documents", 10), (req, res) 
       documents: documents
     });
 
-    
+
     hearing.curhearingwitness.push.apply(hearing.curhearingwitness, witness1);
     console.log(hearing);
 
