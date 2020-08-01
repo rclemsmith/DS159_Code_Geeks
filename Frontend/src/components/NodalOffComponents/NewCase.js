@@ -354,7 +354,7 @@ class NewCase extends Component {
     console.log(formData);
     axios
       .post(
-        "https://indiancourt.azurewebsites.net/department/admin/" +
+        "http://localhost:3006/department/admin/" +
           localStorage.getItem("userId") +
           "/addCase",
         formData

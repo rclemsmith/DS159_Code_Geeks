@@ -36,7 +36,7 @@ class CaseUpdate extends Component {
 
     axios
       .post(
-        "https://indiancourt.azurewebsites.net/department/admin/" +
+        "http://localhost:3006/department/admin/" +
           this.props.location.state.caseid +
           "/modify",
         data

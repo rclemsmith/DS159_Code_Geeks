@@ -163,7 +163,7 @@ class Home extends Component {
           btn2: false,
         });
         axios
-          .post("https://indiancourt.azurewebsites.net/department/admin/login", {
+          .post("http://localhost:3006/department/admin/login", {
             username: this.state.username,
             password: this.state.password,
           })
@@ -194,7 +194,7 @@ class Home extends Component {
           btn2: false,
         });
         axios
-          .post("https://indiancourt.azurewebsites.net/department/users/login", {
+          .post("http://localhost:3006/department/users/login", {
             username: this.state.username,
             password: this.state.password,
           })
@@ -225,7 +225,7 @@ class Home extends Component {
           btn2: false,
         });
         axios
-          .post("https://indiancourt.azurewebsites.net/superadmin/login", {
+          .post("http://localhost:3006/superadmin/login", {
             username: this.state.username,
             password: this.state.password,
           })
