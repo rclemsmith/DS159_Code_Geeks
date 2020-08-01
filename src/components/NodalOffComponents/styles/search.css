@@ -1,0 +1,53 @@
+.search-label {
+  margin-top: 3vh;
+  position: absolute;
+  margin-left: 30vh;
+  width: 18%;
+  box-shadow: 0px 0px 5px 5px rgb(220,220,220);
+}
+
+.search-icon {
+  position: absolute;
+  margin-top: 0vh;
+  font-size: 17px;
+  color: rgb(4, 21, 255);
+  right: 10px;
+}
+
+.searchcard {
+  width: 430px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 5px rgb(220,220,220);
+  padding: 10px;
+  word-spacing: 4px;
+  background-color: rgb(245, 245, 245);
+  margin-top: 3vh;
+  margin-left: 75vh;
+  margin-right: -65vh;
+  margin-bottom: 3vh;
+}
+
+.searchcard:hover {
+  background-color: rgb(50, 50, 50);
+  transform: rotateY(720deg);
+  transition: ease-in-out;
+  transition-duration: 1.75s;
+  color: white;
+  cursor: pointer;
+}
+
+.card-title {
+  text-align: center;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.searchbody {
+  font-weight: bold;
+  font-size: 20px;
+  text-align: justify;
+}
+
+.searchinp {
+  letter-spacing: 0.5px;
+}
