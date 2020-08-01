@@ -115,7 +115,7 @@ class AddUser extends Component {
       <div style={{backgroundColor:'rgb(220,220,220)',height:'100vh',overflow:'hidden'}}>
         <SideNavBar history={this.props.history} />
         <Head name="New User" />
-        <div className="row landpage2" hidden={this.state.hide}>
+        <div className="row landdpage2" hidden={this.state.hide}>
           <div style={{marginLeft:'20vh'}} className="card landpg">
             <span style={{ marginTop: "10px" }} className="card-title">
               DETAILS

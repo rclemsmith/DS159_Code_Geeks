@@ -321,18 +321,18 @@ router.post(
   multerUpload.array("documents", 10),
   (req, res) => {
     // console.log(req.files);
-    console.log(req.user);
+    // console.log(req.user);
     try {
       var documents = [];
       req.files.forEach((file) => {
         documents.push(file.filename);
       });
-      console.log(documents);
+      // console.log(documents);
 
-      console.log(req.body);
+      // console.log(req.body);
       var witness1 = JSON.parse(req.body.witness);
       witness1.forEach((wit) => console.log(wit));
-      console.log(witness1);
+      // console.log(witness1);
 
       var hearing = new Hearing({
         caseid: req.params.caseId,
@@ -346,11 +346,11 @@ router.post(
       });
 
       hearing.curhearingwitness.push.apply(hearing.curhearingwitness, witness1);
-      console.log(hearing);
+      // console.log(hearing);
 
       Hearing.create(hearing)
         .then((curhear) => {
-          console.log(curhear);
+          // console.log(curhear);
           Case.findById(req.params.caseId, (err, foundCase) => {
             var now = new Date();
             var report =

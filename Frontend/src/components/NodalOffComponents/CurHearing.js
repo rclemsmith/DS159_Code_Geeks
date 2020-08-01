@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import SideNavBar from "./SideNavBar";
 import Head from "./Head";
 import "./styles/curhearing.css";
-
+import url from "../../backend_url";
 class CurHearing extends Component {
   constructor(props) {
     super(props);
@@ -92,7 +92,7 @@ class CurHearing extends Component {
                 <span className="ch13">Document:</span>
                 <span className="ch14">
                   <a
-                    href={"https://indiancourt.azurewebsites.net/image/" + c}
+                    href={url +"/image/" + c}
                     download
                   >
                     Click to download

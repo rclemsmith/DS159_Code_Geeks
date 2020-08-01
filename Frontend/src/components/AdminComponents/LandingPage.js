@@ -19,6 +19,7 @@ class LandingPage extends Component {
       id: "",
       isModalOpen: false,
     };
+    this.handleUser = this.handleUser.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
@@ -76,6 +77,13 @@ class LandingPage extends Component {
       });
   }
 
+  handleUser(event){
+    event.preventDefault();
+    this.setState({
+      hide : false
+    });
+  }
+
   handleClose(event) {
     event.preventDefault();
     this.setState({
@@ -92,6 +100,7 @@ class LandingPage extends Component {
       )
       .then((res) => {
         window.alert("Deleted Successfully");
+        window.location.reload();
       });
   }
 
@@ -146,7 +155,7 @@ class LandingPage extends Component {
           </button>
         </h3>
         <div className="cont123">
-          <div className="row landpage2" hidden={this.state.hide}>
+          <div className="landpage2" hidden={this.state.hide}>
             <div className="card landpg">
               <span style={{ marginTop: "10px" }} className="card-title">
                 DETAILS
