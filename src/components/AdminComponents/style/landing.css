@@ -1,0 +1,176 @@
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .lpadmin1 {
+    background-image: radial-gradient(rgba(1, 1, 1, 0.8), rgba(1, 1, 1, 0.9));
+    height: 100vh;
+    overflow-y: scroll;
+  }
+
+  .ad {
+    color: azure;
+  }
+
+  .landpage2 {
+    color: black;
+  }
+
+  .addoff {
+    margin-left: 6vh;
+    margin-top: 40px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .addnodal {
+    margin-left: 3.6vh;
+    margin-top: 40px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .official,
+  .nodal {
+    background-color: blue;
+    border-radius: 100%;
+    color: azure;
+    width: 30vh;
+    height: 20vh;
+  }
+
+  .lpbtn11 {
+    margin-top: -10vh;
+  }
+
+  .official {
+    margin-bottom: 10vh;
+    margin-left: 18vh;
+  }
+
+  .nodal {
+    margin-left: 18vh;
+  }
+
+  .official:hover,
+  .nodal:hover {
+    background-color: rgb(216, 120, 24);
+    border-radius: 100%;
+    width: 30vh;
+    height: 20vh;
+  }
+
+  .lptable1,
+  .lptable2 {
+    margin-top: 15vh;
+  }
+
+  .landpage2 {
+    margin-left: 31vh;
+    margin-top: 12vh;
+  }
+
+  .landpg {
+    width: 90vh;
+  }
+
+  .bt {
+    float: right;
+    margin-top: -40px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .cont {
+    width: 95%;
+    margin-left: 5vh;
+  }
+
+  .lpadmin1 {
+    background-color: rgb(240, 240, 240);
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .ad {
+    color: azure;
+    border: 2px solid black;
+    padding: 20px;
+    background-image: radial-gradient(rgba(1, 1, 1, 0.8), rgba(1, 1, 1, 0.9));
+  }
+
+  .landpage2 {
+    color: black;
+  }
+
+  .addoff {
+    margin-left: 8vh;
+    margin-top: 50px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .addnodal {
+    margin-left: 6vh;
+    margin-top: 50px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .official,
+  .nodal {
+    background-color: blue;
+    border-radius: 100%;
+    color: azure;
+    width: 50%;
+    height: 140%;
+  }
+
+  .official {
+    margin-left: 20vh;
+  }
+
+  .nodal {
+    margin-left: 15vh;
+  }
+
+  .official:hover,
+  .nodal:hover {
+    background-color: rgb(216, 120, 24);
+    border-radius: 100%;
+    width: 50%;
+    height: 140%;
+  }
+
+  .lptable1,
+  .lptable2 {
+    margin-top: 15vh;
+    background-image: radial-gradient(rgba(1, 1, 1, 0.8), rgba(1, 1, 1, 0.9));
+  }
+
+  .landpage2 {
+    margin-left: 50vh;
+    margin-top: 12vh;
+  }
+
+  .landpg {
+    width: 90vh;
+  }
+
+  .bt {
+    float: right;
+    margin-right: 10px;
+    margin-top: -45px;
+    border-radius: 50%;
+  }
+
+  .offt1 {
+    display: inline;
+    font-size: 22px;
+  }
+
+  .tabhead {
+    font-size: 19px;
+  }
+
+  .lppbt {
+    margin-left: 20px;
+  }
+}

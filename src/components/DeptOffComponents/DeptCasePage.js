@@ -280,12 +280,12 @@ class DeptCasePage extends Component {
             </div>
             <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
               <ModalHeader toggle={this.toggleModal}>
-                <p style={{fontWeight:'bold', marginBottom:'0vh',fontSize:'18px'}}>LAWYER DETAILS</p>
+                Lawyer Details
               </ModalHeader>
               <ModalBody>
                 <div className="card ll1">
                   <img
-                    src={"https://indiancourt.azurewebsites.net/image/" + this.state.limage}
+                    src={"http://localhost:3006/image/" + this.state.limage}
                     alt="Display Picture"
                     height="200px"
                   />

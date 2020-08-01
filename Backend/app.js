@@ -30,12 +30,12 @@ var passport = require("passport");
 
 const url = config.mongoUrl;
 
-var corsOption = {
-  origin: "http://localhost:3000",
-  credentials: true,
-};
+// var corsOption = {
+//   origin: "http://localhost:3000",
+//   credentials: true,
+// };
 
-app.use(cors(corsOption));
+app.use(cors());
 app.use(express.json());
 
 var connect = mongoose.connect(url, {
