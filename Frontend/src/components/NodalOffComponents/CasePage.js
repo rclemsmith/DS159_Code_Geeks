@@ -386,7 +386,10 @@ class CasePage extends Component {
           <ModalBody>
             <div className="card cpll1">
               <img
-                src={"http://localhost:3006/image/" + this.state.limage}
+                src={
+                  "https://indiancourt.azurewebsites.net/image/" +
+                  this.state.limage
+                }
                 alt="Display Picture"
                 height="200px"
               />
