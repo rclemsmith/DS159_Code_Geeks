@@ -1,0 +1,18 @@
+.otpbox{
+    padding: 30px;
+    margin-top: 20vh;
+    width: 62%;
+    margin-left: 30vh;
+    box-shadow: 0px 0px 5px 5px rgb(220,220,220);
+}
+
+.headings{
+    margin-left: 2.5vh;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#otp{
+    width: 99%;
+    margin-bottom: 5vh;
+}
