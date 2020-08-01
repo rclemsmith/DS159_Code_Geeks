@@ -173,11 +173,18 @@ router.post("/signup", (req, res, next) => {
 
 router.delete("/:caseId", (req, res) => {
   Case.findByIdAndDelete(req.params.caseId, (err, deletedCase) => {
-    if (err) {
-      res.json(err);
-    } else {
+
+    var now = new Date();
+    var report = " The Nodal Officer " + req.user.nodalname + " has deleted a case called " + deletedCase.name + " at " + now;
+    SuperAdmin.findOneAndUpdate({ name: deletedCasedepartment }, {
+      $push: {
+        reports: report
+      }
+    }, (err, updatedAdmin) => {
+      console.log(updatedAdmin);
       res.json(deletedCase);
-    }
+    });
+
   });
 });
 
@@ -231,10 +238,15 @@ router.post(
           if (err) {
             res.json(err);
           } else {
-            SuperAdmin.findOne({ name: req.body.department }, (err, foundSuper) => {
-              var now = new Date();
-              var report = " The Nodal Officer : " + foundAdmin.nodalname + "has added a new case called " + mycase.name + " at " + now;
-              foundSuper.reports.push.apply(foundSuper.reports, report);
+            var now = new Date();
+            var report = " The Nodal Officer " + foundAdmin.nodalname + " has added a new case called " + mycase.name + " at " + now;
+            console.log(report);
+            SuperAdmin.findOneAndUpdate({ name: req.body.department }, {
+              $push: {
+                reports: report
+              }
+            }, (err, updatedAdmin) => {
+              console.log(updatedAdmin);
               res.statusCode = 200;
               res.setHeader("Content-Type", "application/json");
               res.json(mycase);
@@ -291,6 +303,7 @@ router.get("/:caseId/casedetails", (req, res, next) => {
 
 router.post("/:caseId/hearing", multerUpload.array("documents", 10), (req, res) => {
   // console.log(req.files);
+  console.log(req.user);
   try {
     var documents = [];
     req.files.forEach((file) => {
@@ -321,9 +334,22 @@ router.post("/:caseId/hearing", multerUpload.array("documents", 10), (req, res) 
     Hearing.create(hearing)
       .then((curhear) => {
         console.log(curhear);
-        res.statusCode = 200;
-        res.setHeader("Content-Type", "application/json");
-        res.json(curhear);
+        Case.findById(req.params.caseId, (err, foundCase) => {
+          var now = new Date();
+          var report = " A new Hearing has been added to a case called " + foundCase.name + " at " + now;
+          SuperAdmin.findOneAndUpdate({ name: foundCase.department }, {
+            $push: {
+              reports: report
+            }
+          }, (err, updatedAdmin) => {
+            console.log(updatedAdmin);
+            res.statusCode = 200;
+            res.setHeader("Content-Type", "application/json");
+            res.json(curhear);
+          });
+
+        });
+
       })
       .catch((err) => console.log(err));
   } catch (err) {
@@ -360,7 +386,19 @@ router.post("/:hearingId/update", (req, res) => {
       if (err) {
         res.json(err);
       } else {
-        res.send("Success");
+        Case.findById(updated.caseid, (err, foundCase) => {
+          var now = new Date();
+          var report = " An Hearing has been Updated to a case called " + foundCase.name + " at " + now;
+          SuperAdmin.findOneAndUpdate({ name: foundCase.department }, {
+            $push: {
+              reports: report
+            }
+          }, (err, updatedAdmin) => {
+            console.log(updatedAdmin);
+            res.send("Success");
+          });
+
+        });
       }
     }
   );
@@ -393,7 +431,17 @@ router.post("/:caseId/lupd", multerUpload.single("image"), (req, res) => {
         res.json(err);
         console.log(err);
       } else {
-        res.send("Success");
+        var now = new Date();
+          var report = " The Layer for the case " + foundCase.name + " was updated at " + now;
+          SuperAdmin.findOneAndUpdate({ name: updated.department }, {
+            $push: {
+              reports: report
+            }
+          }, (err, updatedAdmin) => {
+            console.log(updatedAdmin);
+            res.send("Success");
+          });
+        
       }
     }
   );
@@ -413,7 +461,16 @@ router.post("/:caseId/modify", (req, res) => {
       if (err) {
         res.json(err);
       } else {
-        res.send("Success");
+        var now = new Date();
+          var report = " The case called" + updated.name + " was updated at " + now;
+          SuperAdmin.findOneAndUpdate({ name: updated.department }, {
+            $push: {
+              reports: report
+            }
+          }, (err, updatedAdmin) => {
+            console.log(updatedAdmin);
+            res.send("Success");
+          });
       }
     }
   );
