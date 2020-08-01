@@ -386,7 +386,7 @@ class Deptdashboard extends Component {
                           value={ac}
                           className="newdash6"
                           styles={buildStyles({
-                            pathColor: "#ff5e00",
+                            pathColor: "#16e442",
                           })}
                         >
                           <h1 className="newdash7">Cases</h1>
@@ -448,9 +448,8 @@ class Deptdashboard extends Component {
               </CircularProgressbarWithChildren>
             </div> */}
           </div>
-
-          <div className="iinn">
-            <Input
+          <p className="tablehead">MONTHLY CASE STATISTICS</p>
+          <Input
               name="year"
               id="year"
               type="select"
@@ -465,11 +464,11 @@ class Deptdashboard extends Component {
                 return <option>{n}</option>;
               })}
             </Input>
+          <div className="iinn">            
           </div>
           <div className="row tabless">
             <div className="col-12">
               <div className="table-responsive">
-                <h3>Monthly Count of Different Case Types</h3>
                 <table
                   className="table tabb1 "
                   style={{ width: "96%", marginLeft: "0vh" }}

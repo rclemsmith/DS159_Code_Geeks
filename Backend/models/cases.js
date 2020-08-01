@@ -5,6 +5,7 @@ var caseSchema = new Schema({
   name: String,
   type: String,
   facts: String,
+  opposition: String,
   lawyer: {
     lname: String,
     gender: String,
@@ -22,7 +23,7 @@ var caseSchema = new Schema({
     image: String,
     pincode: String,
   },
-  isClosed : Boolean,
+  isClosed: Boolean,
   createdAt: { type: Date, default: Date.now },
   status: String,
   court: {

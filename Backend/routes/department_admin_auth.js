@@ -51,7 +51,6 @@ router.get("/nodal/:dept", (req, res) => {
       console.log(foundDept);
     }
   });
-
 });
 
 router.delete("/:userId", (req, res) => {
@@ -215,6 +214,7 @@ router.post(
       admin: req.body.admin,
       name: req.body.casename,
       type: req.body.casetype,
+      opposition: req.body.opposition,
       facts: req.body.facts,
       status: req.body.status,
       isClosed: req.body.isClosed,
@@ -329,9 +329,6 @@ router.post("/:caseId/hearing", multerUpload.array("documents", 10), (req, res) 
   } catch (err) {
     console.log(err);
   }
-
-
-
 
 });
 

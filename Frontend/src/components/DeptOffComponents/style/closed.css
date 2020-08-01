@@ -180,14 +180,15 @@
 
 @media only screen and (min-width: 1200px) {
   .close1 {
-    width: 340px;
+    width: 380px;
     border-radius: 10px;
     padding: 10px;
-    word-spacing: 4px;
+    word-spacing: 6px;
     background-color: white(228, 228, 228);
     margin-bottom: 7vh;
-    margin-top: 13vh;
-    margin-left: 6vh;
+    margin-top: 8vh;
+    margin-left: 9vh;
+    margin-right: 9vh;
   }
 
   .close1:hover {
@@ -212,7 +213,9 @@
   .close2 {
     text-align: center;
     font-size: 25px;
-    font-weight: 700;
+    font-weight: bold;
+    margin-top: 2vh;
+    margin-bottom: 0vh;
   }
 
   .close4 {
@@ -220,5 +223,21 @@
     font-size: 20px;
     text-align: justify;
     text-transform: capitalize;
+    word-spacing: 6px;
   }
+
+  .actssearch-label{
+    margin-top: 20vh;
+    margin-left: 76vh;
+ }
+
+ .fact{
+   margin-left: 9.7vh;
+   margin-top: -5.9vh;
+   font-weight: bold;
+   font-size: 19px;
+   text-align: justify;
+   margin-right: 1vh;
+   text-transform: capitalize;
+ }
 }
