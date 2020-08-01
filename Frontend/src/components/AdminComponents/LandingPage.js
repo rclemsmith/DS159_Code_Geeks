@@ -32,7 +32,7 @@ class LandingPage extends Component {
     localStorage.removeItem("adminId");
     localStorage.removeItem("token");
 
-    window.location.href = url;
+    window.location.href = "/";
   }
 
   handleSelect(id) {
