@@ -8,21 +8,14 @@ const Department = require("../models/department");
 const { route } = require(".");
 
 router.get("/active/:departmentName", (req, res) => {
-  Case.find(
-    { department: req.params.departmentName, isClosed: false },
-    (err, foundCases) => {
-      if (err) {
-        res.json(err);
-      } else {
-        res.statusCode = 200;
-
-        res.setHeader("Content-Type", "application/json");
-        res.json(foundCases);
-        console.log(foundCases);
-        console.log(req.params.departmentName);
-      }
-    }
-  );
+  Case.find({ department: req.params.departmentName, isClosed: false })
+    .sort({ createdAt: "desc" })
+    .then((foundCases) => {
+      console.log(foundCases);
+      res.statusCode = 200;
+      res.json(foundCases);
+    })
+    .catch((err)=>res.json(err));
 });
 
 router.get("/closed/:departmentName", (req, res) => {
@@ -74,17 +67,14 @@ router.get("/hear/:departmentName", (req, res) => {
 });
 
 router.get("/closed/:departmentName", (req, res) => {
-  Case.find(
-    { department: req.params.departmentName, isClosed: true },
-    (err, foundCases) => {
-      if (err) {
-        res.json(err);
-      } else {
-        res.statusCode = 200;
-        res.json(foundCases);
-      }
-    }
-  );
+  Case.find({ department: req.params.departmentName, isClosed: true })
+    .sort({ createdAt: "desc" })
+    .then((foundCases) => {
+      console.log(foundCases);
+      res.statusCode = 200;
+      res.json(foundCases);
+    })
+    .catch((err)=>res.json(err));
 });
 
 router.get("/cases/:departmentName", (req, res) => {

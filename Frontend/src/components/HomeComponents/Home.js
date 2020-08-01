@@ -257,7 +257,7 @@ class Home extends Component {
   render() {
     return (
       <div className="homediv">
-        <Header name="Management System" />
+        <Header name="Management Information System" />
         <div className="row">
           <div className="col-6 col-md-6 col-sm-12">
             <img

@@ -239,31 +239,31 @@ class Dashboard extends Component {
         <div style={{ width: "100%" }}>
           <div style={{ marginLeft: "15vh" }} className="row">
             <div style={{ marginRight: "10vh" }} className="newdash15">
-              <div className="newdash2">
+              <div className="newdash22">
                 <CircularProgressbarWithChildren
                   value={100}
-                  className="newdash6 "
+                  className="newdash66"
                   styles={buildStyles({
                     pathColor: "#fc061e",
                   })}
                 >
-                  <div className="newdash3">
+                  <div className="newdash33">
                     <CircularProgressbarWithChildren
                       value={ac}
-                      className="newdash6 "
+                      className="newdash66 "
                       styles={buildStyles({
                         pathColor: "#220dfc",
                       })}
                     >
-                      <div className="newdash5">
+                      <div className="newdash55">
                         <CircularProgressbarWithChildren
                           value={cl}
-                          className="newdash6"
+                          className="newdash66"
                           styles={buildStyles({
                             pathColor: "#00ff00",
                           })}
                         >
-                          <h1 className="newdash7">Cases</h1>
+                          <h3 className="newdash77">Cases</h3>
                         </CircularProgressbarWithChildren>
                       </div>
                     </CircularProgressbarWithChildren>
@@ -272,18 +272,18 @@ class Dashboard extends Component {
               </div>
             </div>
 
-            <div className="legend">
+            <div className="legendd">
               <div style={{ marginTop: "3vh" }} className="row">
-                <div class="color-box"></div>
-                <span className="leg1">Total Cases {total}</span>
+                <div class="color-boxx"></div>
+                <span className="legg1">Total Cases {total}</span>
               </div>
               <div className="row">
-                <div class="color-box1"></div>
-                <span className="leg2">Active Cases {activeca}</span>
+                <div class="color-boxx1"></div>
+                <span className="legg2">Active Cases {activeca}</span>
               </div>
               <div className="row">
-                <div class="color-box2"></div>
-                <span className="leg4">Closed Cases {closeca}</span>
+                <div class="color-boxx2"></div>
+                <span className="legg4">Closed Cases {closeca}</span>
               </div>
             </div>
 
