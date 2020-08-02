@@ -260,7 +260,7 @@ class Case extends Component {
             className="ssearchinp"
             value={this.state.valu1}
             name="search-input"
-            placeholder="Search..."
+            placeholder="Search By Synopsis"
             onChange={(e) => this.handleCloseChange(e)}
           />
           <InputGroupAddon addonType="append">

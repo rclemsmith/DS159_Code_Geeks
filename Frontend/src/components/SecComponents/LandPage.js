@@ -148,6 +148,9 @@ class LandPage extends Component {
             >
               <p className="card-title act2">{active.name}</p>
               <div className="card-body act3">
+              <div>
+                  <p className="act4">Case No : {active.caseno}</p>
+                </div>
                 <div>
                   <p className="act4">Type : {active.type}</p>
                 </div>
@@ -175,7 +178,7 @@ class LandPage extends Component {
             className="ssearchinpu"
             value={this.state.value}
             name="search-input"
-            placeholder="Search..."
+            placeholder="Search By Synopsis"
             onChange={(e) => this.handleChange(e)}
           />
 

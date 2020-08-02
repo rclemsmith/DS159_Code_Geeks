@@ -14,6 +14,13 @@ class Synopsis extends Component {
     };
   }
 
+  handleLogout(event) {
+    event.preventDefault();
+    localStorage.removeItem("secId");
+    localStorage.removeItem("token");
+    window.location.href = "/";
+  }
+
   componentDidMount() {
     axios
       .get(url + "/secretary/" + this.props.location.state.info + "/sec")
@@ -46,9 +53,9 @@ class Synopsis extends Component {
         <div className="container clt2">
           <h2 className="clth1">{this.state.case.name}</h2>
 
-          <h4 style={{ fontWeight: "bold" }}>Case No :</h4>
+          <h4 style={{ fontWeight: "bold",color : "white" }}>Case No :</h4>
 
-          <p className="casedesc">{this.state.case.caseno}</p>
+          <p style={{ fontWeight: "bold",color : "white",marginTop : "-5vh" }} className="casedesc">{this.state.case.caseno}</p>
 
           <h4 style={{ fontWeight: "bold" }}>Case Synopsis :</h4>
 

@@ -37,7 +37,7 @@ class Otppage extends Component {
         <div className="container">
           <div className="card otpbox">
             <p className="title headings">
-              Admin Verification : OTP has been sent to Email .!
+              Admin Verification : OTP has been sent to Email !
             </p>
             <div className="card-body">
               <Input
