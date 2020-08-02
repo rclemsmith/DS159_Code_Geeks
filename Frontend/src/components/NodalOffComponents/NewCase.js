@@ -66,10 +66,12 @@ class NewCase extends Component {
       image: null,
       docs: null,
       rescount: 0,
+      respondent: [],
     };
     this.Case = this.Case.bind(this);
     this.Respdes = this.Respdes.bind(this);
     this.Resp = this.Resp.bind(this);
+    this.Resemail = this.Resemail.bind(this);
     this.CaseID = this.CaseID.bind(this);
     this.Type = this.Type.bind(this);
     this.Status = this.Status.bind(this);
@@ -96,6 +98,7 @@ class NewCase extends Component {
     this.Ldist = this.Ldist.bind(this);
     this.Lstate = this.Lstate.bind(this);
     this.handleDocs = this.handleDocs.bind(this);
+    this.handleRes = this.handleRes.bind(this);
     this.handleResCount = this.handleResCount.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handleNext1 = this.handleNext1.bind(this);
@@ -303,6 +306,16 @@ class NewCase extends Component {
     });
   };
 
+  handleRes() {
+    var data = {
+      name: this.state.resp,
+      des: this.state.respdes,
+      email: this.state.resemail,
+    };
+    this.state.respondent.push(data);
+    console.log(this.state.respondent);
+  }
+
   handleResCount() {
     this.setState(
       {
@@ -312,7 +325,6 @@ class NewCase extends Component {
         console.log(this.state.rescount);
       }
     );
-    count = count + 1;
   }
 
   handleDocs(event) {
@@ -505,6 +517,7 @@ class NewCase extends Component {
   }
 
   render() {
+    console.log(this.state.respondent);
     if (this.state.status == "Active") {
       isclosed = false;
     } else if (this.state.status == "Closed") {
@@ -645,7 +658,7 @@ class NewCase extends Component {
                         name="apllawyer"
                         id="apllawyer"
                         onChange={this.AplLawyer}
-                        value={this.state.AplLawyer}
+                        value={this.state.aplLawyer}
                         innerRef={(input) => (this.apllawyer = input)}
                         placeholder="Name"
                       />
@@ -689,31 +702,30 @@ class NewCase extends Component {
                       </Button>
                     </span>
                   </div>
-                  {_.times(count, (i) => (
-                    <div>
-                      <AvGroup>
+                  {_.times(this.state.rescount, (i) => (
+                    <div style={{marginTop:'3vh'}}>
+                      <AvGroup className="ncinput">
                         <Label className="nc" for="respdes">
-                          Respondent Designation{" "}
-                          <i
-                            style={{ marginLeft: "1vw", fontSize: "18px" }}
-                            class="fas fa-restroom"
-                            aria-hidden="true"
-                          ></i>
+                          Respondent Designation
                         </Label>
-                        <AvField
-                          value={this.state.Respdes}
-                          onChange={this.respdes}
-                          innerRef={(input) => (this.respdes = input)}
-                          type="select"
-                          name="respdes"
-                          id="respdes"
-                        >
-                          <option hidden>Select Designation</option>
-                          <option>Dr</option>
-                          <option>Mr</option>
-                          <option>Mrs</option>
-                          <option>Ms</option>
-                        </AvField>
+                        <InputGroup>
+                          <InputGroupAddon addonType="prepend">
+                            <InputGroupText>
+                              <i
+                                class="fas fa-user-circle"
+                                style={{ fontSize: "17px" }}
+                              ></i>
+                            </InputGroupText>
+                          </InputGroupAddon>
+                          <Input
+                            name="respdes"
+                            id="respdes"
+                            onChange={this.Respdes}
+                            value={this.state.respdes}
+                            innerRef={(input) => (this.respdes = input)}
+                            placeholder="Designation"
+                          />
+                        </InputGroup>
                       </AvGroup>
                       <AvGroup className="ncinput">
                         <Label className="nc" for="respname">
@@ -761,6 +773,16 @@ class NewCase extends Component {
                           />
                         </InputGroup>
                       </AvGroup>
+                      <div>
+                      <Button
+                        color="primary"
+                        outline="none"
+                        style={{marginLeft:'40%'}}
+                        onClick={this.handleRes}
+                      >
+                       <i style={{marginRight:'7px'}} class="fa fa-floppy-o" aria-hidden="true"></i> Save
+                      </Button>
+                    </div>
                     </div>
                   ))}
                   <AvGroup className="ncinput">
@@ -1213,7 +1235,7 @@ class NewCase extends Component {
                     </InputGroup>
                   </AvGroup>
                   <AvGroup className="ncinput">
-                    <Label className="nc" for="state">
+                    <Label className="nc" for="lstate">
                       State
                     </Label>
                     <InputGroup>
@@ -1226,11 +1248,11 @@ class NewCase extends Component {
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
-                        name="state"
-                        id="state"
+                        name="lstate"
+                        id="lstate"
                         onChange={this.Lstate}
                         value={this.state.lstate}
-                        innerRef={(input) => (this.state = input)}
+                        innerRef={(input) => (this.lstate = input)}
                       />
                     </InputGroup>
                   </AvGroup>
