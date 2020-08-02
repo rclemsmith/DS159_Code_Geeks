@@ -36,12 +36,9 @@ class Case extends Component {
 
   handleSearch(val) {
     axios
-      .post(url + 
-        "/search/" + localStorage.getItem("deptname"),
-        {
-          query: val,
-        }
-      )
+      .post(url + "/search/" + localStorage.getItem("deptname"), {
+        query: val,
+      })
       .then((res) => {
         console.log(res);
         this.setState({
@@ -53,13 +50,9 @@ class Case extends Component {
 
   handleClose(val) {
     axios
-      .post(url + 
-        "/search/close/" +
-          localStorage.getItem("deptname"),
-        {
-          query: val,
-        }
-      )
+      .post(url + "/search/close/" + localStorage.getItem("deptname"), {
+        query: val,
+      })
       .then((res) => {
         console.log(res);
         this.setState({
@@ -95,10 +88,7 @@ class Case extends Component {
 
   componentDidMount() {
     axios
-      .get(url + 
-        "/department/admin/active/" +
-          localStorage.getItem("deptname")
-      )
+      .get(url + "/department/admin/active/" + localStorage.getItem("deptname"))
       .then((res) => {
         this.setState({
           mycases: res.data,
@@ -106,10 +96,7 @@ class Case extends Component {
       });
 
     axios
-      .get(url + 
-        "/department/admin/closed/" +
-          localStorage.getItem("deptname")
-      )
+      .get(url + "/department/admin/closed/" + localStorage.getItem("deptname"))
       .then((res) => {
         this.setState({
           closecase: res.data,
@@ -118,7 +105,7 @@ class Case extends Component {
   }
 
   render() {
-    var hide = true;
+    var hide = false;
     var hide1 = true;
     if (this.state.casetype == "Active") {
       hide = false;
@@ -149,7 +136,15 @@ class Case extends Component {
     }
     console.log(this.state.mycases);
     return (
-      <div style={{ backgroundColor: "rgb(240,240,240)",overflowX:'hidden', overflowY: "scroll",height:'100vh',width:'100vw' }}>
+      <div
+        style={{
+          backgroundColor: "rgb(240,240,240)",
+          overflowX: "hidden",
+          overflowY: "scroll",
+          height: "100vh",
+          width: "100vw",
+        }}
+      >
         <SideNavBar history={this.props.history} />
         <Head name="My Cases" />
 
@@ -169,10 +164,10 @@ class Case extends Component {
           <option>Closed</option>
         </Input>
 
-        <div hidden={!(hide && hide1)} style={{textAlign:'center',marginLeft:'25vh',marginTop:'25vh'}}>
+        {/* <div hidden={!(hide && hide1)} style={{textAlign:'center',marginLeft:'25vh',marginTop:'25vh'}}>
           <i style={{fontSize:'120px',color:'rgba(0,0,0,0.2)'}} className="fa fa-fw fa-search"></i>
           <p style={{fontSize:'35px',fontWeight:'bold',marginTop:'1vh'}}>Search Through Your Cases</p>
-        </div>
+        </div> */}
 
         <InputGroup className="ssearch-label" hidden={hide}>
           <Input
@@ -183,26 +178,40 @@ class Case extends Component {
             onChange={(e) => this.handleChange(e)}
           />
           <InputGroupAddon addonType="append">
-            <InputGroupText style={{ width: "40px",marginTop:'-6vh',height:'5vh',boxShadow:'0px 0px 2px 2px rgb(220,220,220)' }}>
+            <InputGroupText
+              style={{
+                width: "40px",
+                marginTop: "-6vh",
+                height: "5vh",
+                boxShadow: "0px 0px 2px 2px rgb(220,220,220)",
+              }}
+            >
               <i className="fa fa-search search-icon" />
             </InputGroupText>
           </InputGroupAddon>
-        </InputGroup>    
+        </InputGroup>
 
         <InputGroup className="ssearch-label" hidden={hide1}>
-            <Input
-              className="ssearchinp"
-              value={this.state.valu1}
-              name="search-input"
-              placeholder="Search..."
-              onChange={(e) => this.handleCloseChange(e)}
-            />
-            <InputGroupAddon addonType="append">
-              <InputGroupText style={{ width: "40px",marginTop:'-6vh',height:'5vh',boxShadow:'0px 0px 2px 2px rgb(220,220,220)' }}>
-                <i className="fa fa-search search-icon" />
-              </InputGroupText>
-            </InputGroupAddon>
-          </InputGroup>    
+          <Input
+            className="ssearchinp"
+            value={this.state.valu1}
+            name="search-input"
+            placeholder="Search..."
+            onChange={(e) => this.handleCloseChange(e)}
+          />
+          <InputGroupAddon addonType="append">
+            <InputGroupText
+              style={{
+                width: "40px",
+                marginTop: "-6vh",
+                height: "5vh",
+                boxShadow: "0px 0px 2px 2px rgb(220,220,220)",
+              }}
+            >
+              <i className="fa fa-search search-icon" />
+            </InputGroupText>
+          </InputGroupAddon>
+        </InputGroup>
 
         <div className="my1">
           <div className="row roww" hidden={hide}>
@@ -233,7 +242,7 @@ class Case extends Component {
                 </div>
               );
             })}
-          </div>         
+          </div>
 
           <div className="row roww" hidden={hide1}>
             {this.state.closecase.map((mycase) => {
