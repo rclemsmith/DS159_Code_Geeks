@@ -234,7 +234,7 @@ class Dashboard extends Component {
       <div
         style={{ backgroundColor: "rgb(240, 240, 240)", overflow: "hidden" }}
       >
-        <Head name="Dashboard"></Head>
+        <Head name="Welcome Nodal Officer"></Head>
         <SideNavBar history={this.props.history}></SideNavBar>
         <div style={{ width: "100%" }}>
           <div style={{ marginLeft: "15vh" }} className="row">

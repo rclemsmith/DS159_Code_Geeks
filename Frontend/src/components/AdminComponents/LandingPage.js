@@ -128,7 +128,7 @@ class LandingPage extends Component {
     return (
       <div className="lpadmin1">
         <h3 className="ad">
-          <span>&nbsp;&nbsp;</span>Dashboard
+          <span>&nbsp;&nbsp;</span>Welcome Admin
           <button
             className="btn btn-primary lpbtn11"
             onClick={this.handleLogout}

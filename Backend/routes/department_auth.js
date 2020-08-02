@@ -31,6 +31,7 @@ router.post("/login", passport.authenticate("department"), (req, res) => {
         userId: req.user._id,
         name: req.user.name,
         otp: rand,
+        officialname : req.user.officialname
       });
     }
   });

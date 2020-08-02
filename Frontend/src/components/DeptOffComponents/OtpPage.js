@@ -19,6 +19,7 @@ class Otppage extends Component {
         pathname: "/" + localStorage.getItem("deptId") + "/dept",
         state: {
           dept: this.props.location.state.dept,
+          offname : this.props.location.state.offname
         },
       });
     }

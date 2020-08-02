@@ -104,6 +104,7 @@ class Deptdashboard extends Component {
   }
 
   render() {
+    console.log(this.props.location.state);
     var total = 0;
     total = this.state.cases.length;
     var activeca = 0;
@@ -301,7 +302,7 @@ class Deptdashboard extends Component {
     console.log(this.state.year);
     return (
       <>
-        <DeptHead name="Dashboard" />
+        <DeptHead name= {"Welcome " + this.props.location.state.offname}  />
         <div className="d1">
           <div className="row">
             <Button
