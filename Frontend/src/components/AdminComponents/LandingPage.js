@@ -19,6 +19,7 @@ class LandingPage extends Component {
       id: "",
       isModalOpen: false,
     };
+    this.handleUser = this.handleUser.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
@@ -60,10 +61,7 @@ class LandingPage extends Component {
     };
 
     axios
-      .post(
-        url +"/department/admin/signup",
-        data
-      )
+      .post(url + "/department/admin/signup", data)
       .then((res) => {
         if (res.data.success) {
           console.log(res);
@@ -85,22 +83,14 @@ class LandingPage extends Component {
   }
   handleDelete(event) {
     event.preventDefault();
-    axios
-      .delete(
-        url +"/department/admin/" +
-          this.state.id
-      )
-      .then((res) => {
-        window.alert("Deleted Successfully");
-      });
+    axios.delete(url + "/department/admin/" + this.state.id).then((res) => {
+      window.alert("Deleted Successfully");
+    });
   }
 
   componentDidMount() {
     axios
-      .get(
-        url +"/department/admin/nodal/" +
-          this.props.location.state.dept
-      )
+      .get(url + "/department/admin/nodal/" + this.props.location.state.dept)
       .then((res) => {
         this.setState({
           nodalad: res.data,
