@@ -7,6 +7,7 @@ var caseSchema = new Schema({
   facts: String,
   opposition: String,
   oppositionlawyer : String,
+  respondants : [],
   respondantname : String,
   respondantdesignation : String,
   respondantmail: String,
