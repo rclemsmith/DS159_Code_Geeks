@@ -28,6 +28,7 @@ import SOtpage from "./SecComponents/SOtpage";
 import LandPage from "./SecComponents/LandPage";
 import AddSummary from "./NodalOffComponents/AddSummary";
 import Synopsis from "./SecComponents/Synopsis";
+import AdminCase from "./AdminComponents/AdminCase";
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -65,8 +66,10 @@ class Main extends Component {
           <Route path="/verifySec" component={SOtpage} />
           <Route path="/:secId/landpage" component={LandPage} />
           <Route path="/:secId/synopsis" component={Synopsis} />
+          <Route path="/:adminId/admincase" component={AdminCase} />
           <Route path="/:userId/addUser" component={AddUser} />
           <Route path="/:secId/casepg" component={DeptCasePage} />
+          <Route path="/:adminId/casepg" component={DeptCasePage} />
         </Switch>
       </div>
     );

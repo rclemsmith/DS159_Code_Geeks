@@ -30,7 +30,10 @@ class LandingPage extends Component {
 
   handleFor(event) {
     event.preventDefault();
-    this.props.history.push("/");
+    this.props.history.push({
+      pathname: "/" + localStorage.getItem("adminId") + "/admincase",
+      state: { dept: this.props.location.state.dept },
+    });
   }
 
   handleLogout(event) {
