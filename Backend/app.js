@@ -110,6 +110,13 @@ app.get("/image/:filename", (req, res) => {
   });
 });
 
+// app.get("/dummy",(req,res)=>{
+//   Cases.updateMany({},{$set :{caseno : "02000034CFMA"}})
+//   .then((done)=>{
+//     res.send("Success");
+//   });
+// });
+
 app.use("/client", clientRouter);
 app.use("/lawyer", lawyerRouter);
 app.use("/court", courtAuth);
@@ -185,5 +192,7 @@ function sendMail(receivemail, subject, text) {
     }
   });
 }
+
+
 
 module.exports = app;
