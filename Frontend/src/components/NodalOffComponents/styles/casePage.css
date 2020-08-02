@@ -131,7 +131,7 @@
 
 .cpll1 {
   margin-bottom: 5vh;
-  margin-left: 5vh;
+  margin-left: 6vh;
   margin-top: 0vh;
   width: 50vh;
   color: white;
@@ -178,6 +178,7 @@
 .cpll16 {
   margin-left: 13px;
   letter-spacing: 0.5px;
+  word-break: break-all;
 }
 
 .cpll18 {

@@ -251,7 +251,7 @@ class CasePage extends Component {
     console.log(this.state.curcase._id);
 
     return (
-      <div style={{ backgroundColor: "rgb(240,240,240)", overflow: "hidden" }}>
+      <div style={{ backgroundColor: "rgb(240,240,240)", overflow: "scroll" }}>
         <SideNavBar history={this.props.history}></SideNavBar>
         <Head name="Case Page" />
         <div className="cp1">
@@ -308,7 +308,7 @@ class CasePage extends Component {
                   <>
                     <span>Active</span>
                     <div className="cp6" hidden={this.state.c2}>
-                      <span className="cp7">Hearing Update :</span>
+                      <span className="cp7">New Hearing :</span>
                       <i
                         style={{ marginLeft: "15px" }}
                         onClick={this.handleHearing}
@@ -418,7 +418,7 @@ class CasePage extends Component {
                   <i className="fa fa-map-pin"></i>
                   <span className="cpll18">{this.state.lpincode}</span>
                 </p>
-                <div className="cpll19">
+                <div style={{marginTop:'3vh'}} className="cpll19">
                   <button className="btn btn-light" onClick={this.handleUpd}>
                     <i
                       style={{ marginRight: "10px" }}
