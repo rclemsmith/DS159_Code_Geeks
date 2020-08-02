@@ -21,6 +21,7 @@ var HearingSchema = new Schema({
   curhearingverdict: String,
   nexthearingdate: Date,
   department: String,
+  finalverdict : String,
   documents : []
 });
 

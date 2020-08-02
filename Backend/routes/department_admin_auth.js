@@ -283,8 +283,8 @@ router.get("/active/:departmentName", (req, res) => {
       res.statusCode = 200;
       res.json(foundCases);
     })
-    .catch((err)=>res.json(err));
-  
+    .catch((err) => res.json(err));
+
 });
 
 router.get("/closed/:departmentName", (req, res) => {
@@ -295,7 +295,7 @@ router.get("/closed/:departmentName", (req, res) => {
       res.statusCode = 200;
       res.json(foundCases);
     })
-    .catch((err)=>res.json(err));
+    .catch((err) => res.json(err));
 });
 
 router.get("/:caseId/casedetails", (req, res, next) => {
@@ -518,8 +518,18 @@ router.get("/cases/:departmentName", (req, res) => {
       res.statusCode = 200;
       res.json(foundCases);
     })
-    .catch((err)=>res.json(err));
-  
+    .catch((err) => res.json(err));
+
+});
+
+router.get("/cases/filter/:departmentName/:courtType/:isClosed", (req, res) => {
+  Case.find({ department: req.params.departmentName, 'court.ccategory' : req.params.courtType  ,isClosed: req.params.isClosed})
+    .then((foundCases) => {
+      console.log(foundCases);
+      res.statusCode = 200;
+      res.json(foundCases);
+    })
+    .catch((err) => res.json(err));
 });
 
 module.exports = router;

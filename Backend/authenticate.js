@@ -7,11 +7,25 @@ const jwt = require("jsonwebtoken"); // used to create, sign, and verify tokens
 const Lawyer = require("./models/lawyer");
 const config = require("./config.js");
 const Court = require("./models/court");
+const Secretary = require("./models/secretary");
 
 const SuperAdmin = require("./models/superadmin");
 
 const DepartmentAdmin = require("./models/deptadmin");
 const Department = require("./models/department");
+
+passport.use(
+  "secretary",
+  new LocalStrategy(
+    {
+      usernameField: "username",
+      passwordField: "password",
+    },
+    Secretary.authenticate()
+  )
+);
+passport.serializeUser(Secretary.serializeUser());
+passport.deserializeUser(Secretary.deserializeUser());
 
 passport.use(
   "superadmin",

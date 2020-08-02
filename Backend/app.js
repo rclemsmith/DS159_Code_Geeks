@@ -14,6 +14,7 @@ var departmentAdminAuth = require("./routes/department_admin_auth");
 var departmentAuth = require("./routes/department_auth");
 var departmentHandler = require("./routes/department_handler");
 var superAdminHandler = require("./routes/super_admin_handlers");
+var secretaryHandler = require("./routes/secretary_handler");
 var cors = require("cors");
 var session = require("express-session");
 var passport = require("passport");
@@ -116,6 +117,7 @@ app.use("/department/users",departmentAuth);
 app.use("/department/users/cases",departmentHandler);
 
 app.use("/superadmin",superAdminHandler)
+app.use("/secretary",secretaryHandler);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

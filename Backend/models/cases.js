@@ -6,6 +6,10 @@ var caseSchema = new Schema({
   type: String,
   facts: String,
   opposition: String,
+  oppositionLayer : String,
+  respondantName : String,
+  respondantDesignation : String,
+  caseNo : String,
   lawyer: {
     lname: String,
     gender: String,
