@@ -9,6 +9,10 @@ var clientRouter = require("./routes/client");
 var lawyerRouter = require("./routes/lawyer");
 var courtAuth = require("./routes/court_auth");
 var courtHandler = require("./routes/court_handlers");
+var cron = require('node-cron');
+var transporter = require("./services/mailservice");
+const Hearing = require("./models/hearing");
+const Cases = require("./models/cases");
 var searchRouter = require("./routes/search");
 var departmentAdminAuth = require("./routes/department_admin_auth");
 var departmentAuth = require("./routes/department_auth");
@@ -108,16 +112,16 @@ app.get("/image/:filename", (req, res) => {
 
 app.use("/client", clientRouter);
 app.use("/lawyer", lawyerRouter);
-app.use("/court",courtAuth);
-app.use("/court/cases",courtHandler);
-app.use("/search",searchRouter);
+app.use("/court", courtAuth);
+app.use("/court/cases", courtHandler);
+app.use("/search", searchRouter);
 
-app.use("/department/admin",departmentAdminAuth);
-app.use("/department/users",departmentAuth);
-app.use("/department/users/cases",departmentHandler);
+app.use("/department/admin", departmentAdminAuth);
+app.use("/department/users", departmentAuth);
+app.use("/department/users/cases", departmentHandler);
 
-app.use("/superadmin",superAdminHandler)
-app.use("/secretary",secretaryHandler);
+app.use("/superadmin", superAdminHandler)
+app.use("/secretary", secretaryHandler);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -134,5 +138,52 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
+
+cron.schedule('0 0 0 * * *', () => {
+  console.log("Runs EveryDay");
+  Hearing.find({})
+    .then((hearings) => {
+      hearings.forEach((hearing) => {
+        const date1 = new Date();
+        const diffTime = Math.abs(hearing.nexthearingdate - date1);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        if (diffDays < 5) {
+          console.log(diffDays + " days");
+          Cases.findById(hearing.caseid)
+            .then((foundCase) => {
+              if (foundCase != null) {
+                if (foundCase.respondantmail) {
+                  console.log(foundCase.respondantmail);
+                  var subject = "Upcoming Hearing Alert" ;
+                  var text = "Hello, You have a hearing coming up on " + hearing.nexthearingdate.toDateString() + " for the Case " + foundCase.name;
+                  console.log(text);
+                  sendMail(foundCase.respondantmail,subject,text);
+                }
+
+              }
+
+            });
+        }
+      });
+    })
+    .catch((err) => console.log(err));
+});
+
+function sendMail(receivemail, subject, text) {
+  var mailOptions = {
+    from: "smartindiahack2020@gmail.com",
+    to: receivemail,
+    subject: subject,
+    text: text,
+  };
+
+  transporter.sendMail(mailOptions, (err, info) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Mail Sent Success Fully");
+    }
+  });
+}
 
 module.exports = app;
