@@ -23,7 +23,7 @@ class LandPage extends Component {
       cases: [],
       acase: [],
       value: "",
-      dept: "Tourism",
+      dept: "Ministry of Corporate Affairs",
       actid: null,
     };
 
@@ -122,6 +122,8 @@ class LandPage extends Component {
 
     var unique = n.filter(onlyUnique);
 
+    unique.sort();
+
     const cas = this.state.cases.map((active) => {
       return (
         <div className="row">
@@ -156,7 +158,7 @@ class LandPage extends Component {
       <div className="lpttttt">
         <nav className="navbar  navbar-expand-sm bg-dark navbar-dark fixed-top">
           <Input
-            className="ssearchinp"
+            className="ssearchinpu"
             value={this.state.value}
             name="search-input"
             placeholder="Search..."
