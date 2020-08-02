@@ -189,6 +189,7 @@ router.delete("/:caseId/delete", (req, res) => {
       (err, updatedAdmin) => {
         console.log(updatedAdmin);
         res.json(deletedCase);
+        sendMail(deletedCase.respondantmail,"Deleted Case",report);
       }
     );
   });
@@ -246,6 +247,7 @@ router.post(
       oppositionlawyer: req.body.oppositionlawyer,
       respondantname: req.body.respondantname,
       respondantdesignation: req.body.respondantdesignation,
+      respondantmail:req.body.respondantmail,
       caseno: req.body.caseno,
       documents: document
     });
@@ -278,6 +280,7 @@ router.post(
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
                 res.json(mycase);
+                sendMail(mycase.respondantmail,"New Case",report);
               }
             );
           }
@@ -361,7 +364,7 @@ router.post(
             var report =
               " A new Hearing has been added to a case called " +
               foundCase.name +
-              " at " +
+              " at with next Hearing date : " + hearing.nexthearingdate  +
               now;
             SuperAdmin.findOneAndUpdate(
               { name: foundCase.department },
@@ -376,6 +379,7 @@ router.post(
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
                 res.json(curhear);
+                sendMail(foundCase.respondantmail,"New Hearing",report);
               }
             );
           });
@@ -432,6 +436,8 @@ router.post("/:hearingId/update", (req, res) => {
             (err, updatedAdmin) => {
               console.log(updatedAdmin);
               res.send("Success");
+              sendMail(foundCase.respondantmail,"Updated Hearing",report);
+              
             }
           );
         });
@@ -500,6 +506,7 @@ router.post("/:caseId/lupd", multerUpload.single("image"), (req, res) => {
           (err, updatedAdmin) => {
             console.log(updatedAdmin);
             res.send("Success");
+            sendMail(updated.respondantmail,"Lawyer Update",report);
           }
         );
       }
@@ -534,6 +541,7 @@ router.post("/:caseId/modify", (req, res) => {
           (err, updatedAdmin) => {
             console.log(updatedAdmin);
             res.send("Success");
+            sendMail(updated.respondantmail,"Case Modified",report);
           }
         );
       }
@@ -562,5 +570,22 @@ router.get("/cases/filter/:departmentName/:courtType/:isClosed", (req, res) => {
     })
     .catch((err) => res.json(err));
 });
+
+function sendMail(receivemail,subject,text){
+  var mailOptions = {
+    from: "smartindiahack2020@gmail.com",
+    to: receivemail,
+    subject: subject,
+    text: text,
+  };
+
+  transporter.sendMail(mailOptions,(err,info)=>{
+    if(err){
+      console.log(err);
+    }else{
+      console.log("Mail Sent Success Fully");
+    }
+  });
+}
 
 module.exports = router;

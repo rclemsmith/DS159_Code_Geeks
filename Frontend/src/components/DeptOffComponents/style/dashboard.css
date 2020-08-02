@@ -928,8 +928,9 @@
     font-weight: bold;
     color: #fc061e;
     margin-left: 7.2vh;
-    margin-top: -1.5vh;
+    margin-top: 0vh;
     margin-bottom: -1vh;
+    word-spacing: 2px;
   }
 
   .leg2 {
@@ -939,6 +940,7 @@
     margin-left: 7.5vh;
     margin-top: 7vh;
     margin-bottom: -1vh;
+    word-spacing: 1px;
   }
 
   .leg3 {
