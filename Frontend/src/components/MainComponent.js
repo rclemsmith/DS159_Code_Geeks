@@ -26,6 +26,7 @@ import NOtppage from "./NodalOffComponents/NOtppage";
 import AddUser from "./NodalOffComponents/AddUser";
 import SOtpage from "./SecComponents/SOtpage";
 import LandPage from "./SecComponents/LandPage";
+import AddSummary from "./NodalOffComponents/AddSummary";
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +42,7 @@ class Main extends Component {
           <Route path="/:userId/dashboard" component={Dashboard}></Route>
           <Route path="/:userId/newcase" component={NewCase}></Route>
           <Route path="/:userId/myCases" component={Case}></Route>
+          <Route path="/:userId/addsummary" component={AddSummary}></Route>
           <Route path="/:userId/casePage" component={CasePage}></Route>
           <Route path="/:userId/addHearing" component={Hearing}></Route>
           <Route path="/:userId/curHearing" component={CurHearing} />

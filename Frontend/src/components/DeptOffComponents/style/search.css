@@ -268,26 +268,26 @@
 
 @media only screen and (min-width: 1200px) {
   .ss1 {
-    margin-top: 2vh;
+    margin-top: 1vh;
     margin-left: 0vh;
   }
   .ssearch-label {
     margin-left: 81vh;
-    margin-top: 3vh;
+    margin-top: 1vh;
     margin-bottom: 1vh;
-    width: 28vh;
+    width: 18%;
   }
 
   .ssearch-icon {
     position: absolute;
-
+    margin-top: 0vh;
     font-size: 17px;
     color: rgb(4, 21, 255);
     right: 10px;
   }
 
   .ssearchcard {
-    width: 390px;
+    width: 340px;
     border-radius: 10px;
     padding: 10px;
     word-spacing: 4px;
@@ -324,7 +324,6 @@
 
   .ssearchinp {
     letter-spacing: 0.5px;
-    margin-top: 0vh;
   }
 
   .deptsearch1 {
