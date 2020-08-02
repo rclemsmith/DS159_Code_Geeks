@@ -494,9 +494,8 @@ class NewCase extends Component {
     formData.append("casetype", this.ctype.value);
     formData.append("casename", this.casename.value);
     formData.append("caseno", this.state.caseid);
-    formData.append("oppositionlawyer");
-    formData.append("respondantname", this.state.resp);
-    formData.append("respondantdesignation", this.state.respdes);
+    formData.append("oppositionlawyer",this.state.apllawyer);
+    formData.append("respondants",JSON.stringify(this.state.respondent));
     console.log(formData);
     axios
       .post(

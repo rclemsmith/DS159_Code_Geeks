@@ -16,9 +16,12 @@ router.post("/:departmentName", (req, res) => {
       cases.forEach((entry) => {
         var count = 0;
         tags.forEach((tag) => {
-          if (entry.synopsis.toLowerCase().includes(tag.toLowerCase())) {
-            count++;
+          if(entry.synopsis){
+            if (entry.synopsis.toLowerCase().includes(tag.toLowerCase())) {
+              count++;
+            }
           }
+          
         });
         if (count == tags.length) {
           result.push(entry);

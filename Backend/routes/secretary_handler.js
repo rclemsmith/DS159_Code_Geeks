@@ -90,4 +90,13 @@ router.get("/cases", (req, res) => {
     .catch((err) => res.json(err));
 });
 
+router.get("/:caseId/sec", (req, res) => {
+  Case.findById(req.params.caseId).then((seccase) => {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "application/json");
+    res.json(seccase);
+    console.log(seccase);
+  });
+});
+
 module.exports = router;
