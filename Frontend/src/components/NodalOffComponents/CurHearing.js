@@ -34,7 +34,7 @@ class CurHearing extends Component {
     console.log(this.props.location.state.curdoc);
     console.log(this.props.location.state.curfact);
     return (
-      <div style={{ backgroundColor: "rgb(240,240,240)", overflow: "hidden" }}>
+      <div style={{ backgroundColor: "rgb(240,240,240)", overflow: "scroll",height:'100vh' }}>
         <SideNavBar history={this.props.history} />
         <Head name="Hearing Report" />
         <div className="ch1">

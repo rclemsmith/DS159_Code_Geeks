@@ -34,7 +34,7 @@ class CasePage extends Component {
       courtname: null,
     };
     this.toggleModal = this.toggleModal.bind(this);
-
+    this.handleSummary = this.handleSummary.bind(this);
     this.toggleMModal = this.toggleMModal.bind(this);
     this.handleHearing = this.handleHearing.bind(this);
     this.handleActive = this.handleActive.bind(this);
@@ -93,6 +93,16 @@ class CasePage extends Component {
     });
   }
 
+  handleSummary(event) {
+    event.preventDefault();
+
+    var info = this.props.location.state.info;
+    this.props.history.push({
+      pathname: "/" + localStorage.getItem("userId") + "/addSummary",
+      state: { caseinfo: info },
+    });
+  }
+
   handleUpd(event) {
     event.preventDefault();
     this.props.history.push({
@@ -128,10 +138,8 @@ class CasePage extends Component {
 
   componentDidMount() {
     axios
-      .get(url + 
-        "/department/admin/" +
-          this.props.location.state.info +
-          "/hearing"
+      .get(
+        url + "/department/admin/" + this.props.location.state.info + "/hearing"
       )
       .then((res) => {
         console.log("Inside Axios");
@@ -164,8 +172,9 @@ class CasePage extends Component {
       .catch((err) => console.log(err));
 
     axios
-      .get(url + 
-        "/department/admin/" +
+      .get(
+        url +
+          "/department/admin/" +
           this.props.location.state.info +
           "/casedetails"
       )
@@ -251,7 +260,7 @@ class CasePage extends Component {
     console.log(this.state.curcase._id);
 
     return (
-      <div style={{ backgroundColor: "rgb(240,240,240)", overflow: "hidden" }}>
+      <div style={{ backgroundColor: "rgb(240,240,240)", overflow: "scroll" }}>
         <SideNavBar history={this.props.history}></SideNavBar>
         <Head name="Case Page" />
         <div className="cp1">
@@ -308,7 +317,7 @@ class CasePage extends Component {
                   <>
                     <span>Active</span>
                     <div className="cp6" hidden={this.state.c2}>
-                      <span className="cp7">Hearing Update :</span>
+                      <span className="cp7">New Hearing :</span>
                       <i
                         style={{ marginLeft: "15px" }}
                         onClick={this.handleHearing}
@@ -351,6 +360,15 @@ class CasePage extends Component {
             </div>
           </div>
           <div className="cpedit">
+            <button className="btn btn-primary" onClick={this.handleSummary}>
+              <i
+                style={{ marginRight: "15px" }}
+                className="fa fa-plus-circle"
+              ></i>
+              Add Summary
+            </button>
+
+            <span style={{ marginRight: "3vh" }}></span>
             <button className="btn btn-primary" onClick={this.handleCaseUpdate}>
               <i style={{ marginRight: "15px" }} className="fa fa-edit"></i>
               Update
@@ -380,10 +398,7 @@ class CasePage extends Component {
           <ModalBody>
             <div className="card cpll1">
               <img
-                src={url + 
-                  "/image/" +
-                  this.state.limage
-                }
+                src={url + "/image/" + this.state.limage}
                 alt="Display Picture"
                 height="200px"
               />
@@ -418,7 +433,7 @@ class CasePage extends Component {
                   <i className="fa fa-map-pin"></i>
                   <span className="cpll18">{this.state.lpincode}</span>
                 </p>
-                <div className="cpll19">
+                <div style={{marginTop:'3vh'}} className="cpll19">
                   <button className="btn btn-light" onClick={this.handleUpd}>
                     <i
                       style={{ marginRight: "10px" }}

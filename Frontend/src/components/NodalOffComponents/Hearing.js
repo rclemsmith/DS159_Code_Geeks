@@ -72,36 +72,42 @@ class Hearing extends Component {
   }
 
   handleSubmit(event) {
-    
-    const formData = new FormData();
-    
-    formData.append("curdate",this.state.hearingdate);
-    formData.append("curfact",this.state.hearingfact);
-    formData.append("judge",this.state.hearingjudge);
-    formData.append("curlawyer",this.state.hearinglawyer);
-    formData.append("verdict",this.state.hearingverdict);
-    formData.append("nexthearing",this.state.nexthearing);
-    // this.state.witness.forEach((wit)=>{
-    //   formData.append("witness",wit);
-    // });
-    formData.append("witness",JSON.stringify(this.state.witness));
-    this.state.docs.forEach((document)=>{
-      formData.append("documents",document);
-    });
-    console.log("Afetr Posting");
-    console.log(formData.get("witness"));
-    axios
-      .post(url + 
-        "/department/admin/" +
-          this.props.location.state.caseinfo +
-          "/hearing",
-        formData
-      )
-      .then((res) => {
-        window.alert("success");
-      });
 
-    console.log(formData);
+    if(this.state.hearingdate === "" || this.state.hearingfact === "" || this.state.hearinglawyer === "" || this.state.hearingjudge === "" || this.state.hearingverdict === ""){
+      window.alert("Enter Valid Details");
+    }
+
+    else{
+      const formData = new FormData();
+    
+      formData.append("curdate",this.state.hearingdate);
+      formData.append("curfact",this.state.hearingfact);
+      formData.append("judge",this.state.hearingjudge);
+      formData.append("curlawyer",this.state.hearinglawyer);
+      formData.append("verdict",this.state.hearingverdict);
+      formData.append("nexthearing",this.state.nexthearing);
+      // this.state.witness.forEach((wit)=>{
+      //   formData.append("witness",wit);
+      // });
+      formData.append("witness",JSON.stringify(this.state.witness));
+      this.state.docs.forEach((document)=>{
+        formData.append("documents",document);
+      });
+      console.log("Afetr Posting");
+      console.log(formData.get("witness"));
+      axios
+        .post(url + 
+          "/department/admin/" +
+            this.props.location.state.caseinfo +
+            "/hearing",
+          formData
+        )
+        .then((res) => {
+          window.alert("success");
+        });
+
+      console.log(formData);
+    }   
   }
 
   render() {
@@ -119,9 +125,9 @@ class Hearing extends Component {
         }}
       >
         <SideNavBar history={this.props.history} />
-        <Head name="Hearing Update" />
+        <Head name="New Hearing" />
         <div className="container he1">
-          <h3 className="he2">Hearing Update</h3>
+          <h3 className="he2">New Hearing</h3>
           <div className="he3">
             <Card className="form">
               <AvForm>
@@ -145,6 +151,7 @@ class Hearing extends Component {
                   onChange={this.onChange}
                   value={this.state.hearingfact}
                   innerRef={(input) => (this.hearingfact = input)}
+                  required
                 />
                 <AvField
                   name="hearinglawyer"
@@ -155,6 +162,7 @@ class Hearing extends Component {
                   onChange={this.onChange}
                   value={this.state.hearinglawyer}
                   innerRef={(input) => (this.hearinglawyer = input)}
+                  required
                 />
                 <AvField
                   name="hearingjudge"
@@ -165,6 +173,7 @@ class Hearing extends Component {
                   onChange={this.onChange}
                   value={this.state.hearingjudge}
                   innerRef={(input) => (this.hearingjudge = input)}
+                  required
                 />
                 <AvField
                   name="hearingverdict"
@@ -175,6 +184,7 @@ class Hearing extends Component {
                   onChange={this.onChange}
                   value={this.state.hearingverdict}
                   innerRef={(input) => (this.hearingverdict = input)}
+                  required
                 />
                 <AvField
                 multiple
@@ -305,7 +315,6 @@ class Hearing extends Component {
                   onChange={this.onChange}
                   value={this.state.nexthearing}
                   innerRef={(input) => (this.nexthearing = input)}
-                  required
                 />
                 <Button
                   color="primary"
