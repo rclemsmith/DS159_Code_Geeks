@@ -216,11 +216,11 @@ router.post(
       district: req.body.district,
       state: req.body.state,
       pincode: req.body.pincode,
-      image: req.files[0].filename,
+      image: req.files[req.files.length-1].filename,
     };
 
     var document = [] ;
-    for(var i=1;i<req.files.length;i++){
+    for(var i=0;i<(req.files.length-1);i++){
       document.push(req.files[i].filename);
     }
     console.log(document);
@@ -231,6 +231,9 @@ router.post(
       cstate: req.body.costate,
       cpincode: req.body.copincode,
     };
+
+    var respondants = JSON.parse(req.body.respondants);
+    console.log(respondants);
 
     var addCase = new Case({
       admin: req.body.admin,
@@ -245,9 +248,10 @@ router.post(
       court: court,
       judge: req.body.judge,
       oppositionlawyer: req.body.oppositionlawyer,
-      respondantname: req.body.respondantname,
-      respondantdesignation: req.body.respondantdesignation,
-      respondantmail:req.body.respondantmail,
+      respondants: respondants,
+      respondantname: respondants[0].name,
+      respondantdesignation: respondants[0].des,
+      respondantmail:respondants[0].email,
       caseno: req.body.caseno,
       documents: document
     });
