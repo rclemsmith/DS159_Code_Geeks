@@ -32,6 +32,7 @@ router.post("/login", passport.authenticate("superadmin"), (req, res) => {
         userId: req.user._id,
         name: req.user.name,
         otp: rand,
+        reports: req.user.reports
       });
     }
   });
@@ -66,6 +67,7 @@ router.post("/signup", (req, res, next) => {
           token: token,
           userId: req.user._id,
           name: req.user.name,
+          reports: req.user.reports
         });
       });
     }
