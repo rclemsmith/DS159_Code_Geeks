@@ -179,6 +179,8 @@ router.delete("/:caseId/delete", (req, res) => {
       deletedCase.name +
       " at " +
       now;
+
+    var mailReport = "<h2>The Nodal Officer has deleted the Following Case</h2><br><h4>Case No : " + deletedCase.caseno + "</h4>" + "<h4>Case Name : " + deletedCase.name + "</h4><br><h4> Synopsis : " + deletedCase.synopsis + "</h4><br><h4>Petitioner : " + deletedCase.opposition + "</h4><br><h4> Court : " + deletedCase.court.cname + "</h4><br><h4>Lawyer" + deletedCase.lawyer.lname+ "</h4>"
     SuperAdmin.findOneAndUpdate(
       { name: deletedCase.department },
       {
@@ -189,7 +191,7 @@ router.delete("/:caseId/delete", (req, res) => {
       (err, updatedAdmin) => {
         console.log(updatedAdmin);
         res.json(deletedCase);
-        sendMail(deletedCase.respondantmail,"Deleted Case",report);
+        sendMail(deletedCase.respondantmail, "Deleted Case", mailReport);
       }
     );
   });
@@ -197,7 +199,7 @@ router.delete("/:caseId/delete", (req, res) => {
 
 router.post(
   "/:userId/addCase",
-  multerUpload.array("image",10),
+  multerUpload.array("image", 10),
   (req, res, next) => {
 
     // console.log(req.files);
@@ -216,11 +218,11 @@ router.post(
       district: req.body.district,
       state: req.body.state,
       pincode: req.body.pincode,
-      image: req.files[req.files.length-1].filename,
+      image: req.files[req.files.length - 1].filename,
     };
 
-    var document = [] ;
-    for(var i=0;i<(req.files.length-1);i++){
+    var document = [];
+    for (var i = 0; i < (req.files.length - 1); i++) {
       document.push(req.files[i].filename);
     }
     console.log(document);
@@ -251,7 +253,7 @@ router.post(
       respondants: respondants,
       respondantname: respondants[0].name,
       respondantdesignation: respondants[0].des,
-      respondantmail:respondants[0].email,
+      respondantmail: respondants[0].email,
       caseno: req.body.caseno,
       documents: document
     });
@@ -272,6 +274,7 @@ router.post(
               " at " +
               now;
             console.log(report);
+            var mailReport = "<h2>The Nodal Officer has Created the Following Case</h2><br><h4>Case No : " + mycase.caseno + "</h4>" + "<h4>Case Name : " + mycase.name + "</h4><br><h4> Status : " + mycase.status + "</h4><br><h4>Petitioner : " + mycase.opposition + "</h4><br><h4> Court : " + mycase.court.cname + "</h4><br><h4>Lawyer : " + mycase.lawyer.lname+ "</h4>";
             SuperAdmin.findOneAndUpdate(
               { name: req.body.department },
               {
@@ -284,7 +287,7 @@ router.post(
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
                 res.json(mycase);
-                sendMail(mycase.respondantmail,"New Case",report);
+                sendMail(mycase.respondantmail, "New Case", mailReport);
               }
             );
           }
@@ -368,8 +371,10 @@ router.post(
             var report =
               " A new Hearing has been added to a case called " +
               foundCase.name +
-              " at with next Hearing date : " + hearing.nexthearingdate  +
+              " at with next Hearing date : " + hearing.nexthearingdate +
               now;
+            
+              var mailReport = "<h2>The Nodal Officer has Created a New Hearing to the Following Case</h2><br><h4>Case No : " + foundCase.caseno + "</h4>" + "<h4>Case Name : " + foundCase.name + "</h4><br><h4> Status : " + foundCase.status + "</h4><br><h4>Petitioner : " + foundCase.opposition + "</h4><br><h4> Court : " + foundCase.court.cname + "</h4><br><h4>Lawyer : " + foundCase.lawyer.lname+ "</h4><br><h4>Hearing Date: " + hearing.curhearingdate+"</h4><br><h4>Next Hearing Date: " + hearing.nexthearingdate+"</h4><br><h4>Interim Order: " + hearing.curhearingverdict+"</h4><br><h4>Hearing Details: " + hearing.curhearingfacts+"</h4>";
             SuperAdmin.findOneAndUpdate(
               { name: foundCase.department },
               {
@@ -383,7 +388,7 @@ router.post(
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
                 res.json(curhear);
-                sendMail(foundCase.respondantmail,"New Hearing",report);
+                sendMail(foundCase.respondantmail, "New Hearing", mailReport);
               }
             );
           });
@@ -430,6 +435,8 @@ router.post("/:hearingId/update", (req, res) => {
             foundCase.name +
             " at " +
             now;
+
+            var mailReport = "<h2>The Nodal Officer has updated a Hearing to the Following Case</h2><br><h4>Case No : " + foundCase.caseno + "</h4>" + "<h4>Case Name : " + foundCase.name + "</h4><br><h4> Status : " + foundCase.status + "</h4><br><h4>Petitioner : " + foundCase.opposition + "</h4><br><h4> Court : " + foundCase.court.cname + "</h4><br><h4>Lawyer : " + foundCase.lawyer.lname+ "</h4><br><h4>Hearing Date: " + req.body.curdate+"</h4><br><h4>Next Hearing Date: " + req.body.nexthearing+"</h4><br><h4>Interim Order: " + req.body.verdict+"</h4><br><h4>Hearing Details: " + req.body.curfact+"</h4>";
           SuperAdmin.findOneAndUpdate(
             { name: foundCase.department },
             {
@@ -440,8 +447,8 @@ router.post("/:hearingId/update", (req, res) => {
             (err, updatedAdmin) => {
               console.log(updatedAdmin);
               res.send("Success");
-              sendMail(foundCase.respondantmail,"Updated Hearing",report);
-              
+              sendMail(foundCase.respondantmail, "Updated Hearing", mailReport);
+
             }
           );
         });
@@ -450,21 +457,21 @@ router.post("/:hearingId/update", (req, res) => {
   );
 });
 
-router.post("/:caseId/synopsis",(req,res)=>{
+router.post("/:caseId/synopsis", (req, res) => {
   // Case.updateMany({},{$set : {synopsis : req.body.synopsis}})
   // .then((djn)=>{
   //   console.log("success");
   // });
-  Case.findByIdAndUpdate(req.params.caseId,{$set : {synopsis : req.body.synopsis}})
-  .then((updatedCase)=>{
-    console.log(updatedCase);
-    res.statusCode = 200;
-    res.setHeader("Content-Type", "application/json");
-    res.json({success : "Success"});
-  })
-  .catch((err)=>{
-    console.log(err);
-  });
+  Case.findByIdAndUpdate(req.params.caseId, { $set: { synopsis: req.body.synopsis } })
+    .then((updatedCase) => {
+      console.log(updatedCase);
+      res.statusCode = 200;
+      res.setHeader("Content-Type", "application/json");
+      res.json({ success: "Success" });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 router.post("/:caseId/lupd", multerUpload.single("image"), (req, res) => {
@@ -497,9 +504,11 @@ router.post("/:caseId/lupd", multerUpload.single("image"), (req, res) => {
         var now = new Date();
         var report =
           " The Layer for the case " +
-          foundCase.name +
+          updated.name +
           " was updated at " +
           now;
+
+          var mailReport = "<h2>The Nodal Officer has updated the Lawyer to the Following Case</h2><br><h4>Case No : " + updated.caseno + "</h4>" + "<h4>Case Name : " + updated.name + "</h4><br><h4> Status : " + updated.status + "</h4><br><h4>Petitioner : " + updated.opposition + "</h4><br><h4> Court : " + updated.court.cname + "</h4><br><h4>Lawyer : " + req.body.lname+ "</h4><br><h4> Lawyer Bar Council ID : " + req.body.uid+"</h4>";
         SuperAdmin.findOneAndUpdate(
           { name: updated.department },
           {
@@ -510,7 +519,7 @@ router.post("/:caseId/lupd", multerUpload.single("image"), (req, res) => {
           (err, updatedAdmin) => {
             console.log(updatedAdmin);
             res.send("Success");
-            sendMail(updated.respondantmail,"Lawyer Update",report);
+            sendMail(updated.respondantmail, "Lawyer Update", mailReport);
           }
         );
       }
@@ -535,6 +544,8 @@ router.post("/:caseId/modify", (req, res) => {
         var now = new Date();
         var report =
           " The case called" + updated.name + " was updated at " + now;
+
+        var mailReport = "<h2>The Nodal Officer has Modified Following Case</h2><br><h4>Case No : " + updated.caseno + "</h4>" + "<h4>Case Name : " + updated.name + "</h4><br><h4> Status : " + req.body.status + "</h4><br><h4>Petitioner : " + updated.opposition + "</h4><br><h4> Court : " + updated.court.cname + "</h4><br><h4>Facts : " + req.body.facts+ "</h4><br>";
         SuperAdmin.findOneAndUpdate(
           { name: updated.department },
           {
@@ -545,7 +556,7 @@ router.post("/:caseId/modify", (req, res) => {
           (err, updatedAdmin) => {
             console.log(updatedAdmin);
             res.send("Success");
-            sendMail(updated.respondantmail,"Case Modified",report);
+            sendMail(updated.respondantmail, "Case Modified", mailReport);
           }
         );
       }
@@ -575,18 +586,18 @@ router.get("/cases/filter/:departmentName/:courtType/:isClosed", (req, res) => {
     .catch((err) => res.json(err));
 });
 
-function sendMail(receivemail,subject,text){
+function sendMail(receivemail, subject, text) {
   var mailOptions = {
     from: "smartindiahack2020@gmail.com",
     to: receivemail,
     subject: subject,
-    text: text,
+    html: text,
   };
 
-  transporter.sendMail(mailOptions,(err,info)=>{
-    if(err){
+  transporter.sendMail(mailOptions, (err, info) => {
+    if (err) {
       console.log(err);
-    }else{
+    } else {
       console.log("Mail Sent Success Fully");
     }
   });
