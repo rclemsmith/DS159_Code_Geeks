@@ -190,7 +190,21 @@ class DeptCasePage extends Component {
                   >
                     {this.state.curcase.name}
                   </h1>
-                  <h4 style={{ fontWeight: "bold" }}>Case History :</h4>
+                  <div style={{marginBottom:'5vh'}} className="ho2">
+                    <span
+                      style={{
+                        marginTop: "7vh",
+                        fontWeight: "bold",
+                        fontSize: "23px",
+                        wordSpacing: "5px",
+                      }}
+                      className="ho1"
+                    >
+                      Case ID :{" "}
+                    </span>
+                    <span className="ho1">{this.state.curcase.caseno}</span>
+                  </div>
+                  <h4 style={{ fontWeight: "bold" }}>Case Details :</h4>
                   <div className="row">
                     {/* <img
                 src={casestudy}
@@ -203,6 +217,34 @@ class DeptCasePage extends Component {
                 }}
               ></img> */}
                     <p className="ccasedesc">{this.state.curcase.facts}</p>
+                  </div>
+                  <div className="ho2">
+                    <span
+                      style={{
+                        marginTop: "7vh",
+                        fontWeight: "bold",
+                        fontSize: "23px",
+                        wordSpacing: "5px",
+                      }}
+                      className="ho1"
+                    >
+                      Petitioner :{" "}
+                    </span>
+                    <span className="ho1">{this.state.curcase.opposition}</span>
+                  </div>
+                  <div className="ho2">
+                    <span
+                      style={{
+                        marginTop: "7vh",
+                        fontWeight: "bold",
+                        fontSize: "23px",
+                        wordSpacing: "5px",
+                      }}
+                      className="ho1"
+                    >
+                      Respondent :{" "}
+                    </span>
+                    <span className="ho1">{this.state.curcase.respondantname} - {this.state.curcase.respondantdesignation}</span>
                   </div>
                   <div className="ho2">
                     <span

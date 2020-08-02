@@ -310,6 +310,10 @@ class Case extends Component {
                     onClick={() => this.handleCurId(mycase._id)}
                   >
                     <h3 className="card-title mytitle">{mycase.name}</h3>
+                    <div style={{marginBottom:'2vh'}} className="my2">
+                      <span style={{wordSpacing:'29px'}} className="myspan">ID :</span>
+                      <span className="myspan1">{mycase.caseno}</span>
+                    </div>
                     <div className="my2">
                       <span className="myspan">Type :</span>
                       <span className="myspan1">{mycase.type}</span>
@@ -340,6 +344,10 @@ class Case extends Component {
                     onClick={() => this.handleCurId(mycase._id)}
                   >
                     <h3 className="card-title mytitle">{mycase.name}</h3>
+                    <div style={{marginBottom:'2vh'}} className="my2">
+                      <span style={{wordSpacing:'29px'}} className="myspan">ID :</span>
+                      <span className="myspan1">{mycase.caseno}</span>
+                    </div>
                     <div className="my2">
                       <span className="myspan">Type :</span>
                       <span className="myspan1">{mycase.type}</span>

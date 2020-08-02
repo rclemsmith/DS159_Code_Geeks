@@ -212,6 +212,7 @@
     font-size: 20px;
     text-align: justify;
     text-transform: capitalize;
+    word-spacing: 8px;
   }
 
   ::-webkit-scrollbar {
