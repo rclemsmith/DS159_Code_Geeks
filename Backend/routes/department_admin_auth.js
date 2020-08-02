@@ -448,9 +448,13 @@ router.post("/:caseId/synopsis",(req,res)=>{
   Case.findByIdAndUpdate(req.params.caseId,{$set : {synopsis : req.body.synopsis}})
   .then((updatedCase)=>{
     console.log(updatedCase);
-    res.send("Success");
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "application/json");
+    res.json({success : "Success"});
   })
-  .catch((err)=>res.json(err));
+  .catch((err)=>{
+    console.log(err);
+  });
 });
 
 router.post("/:caseId/lupd", multerUpload.single("image"), (req, res) => {

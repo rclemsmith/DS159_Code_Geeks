@@ -32,12 +32,14 @@ class AddSummary extends Component {
         data
       )
       .then((res) => {
+        window.alert("Successfully Added Synopsis : ");
+        console.log("Successfully Added Synopsis " + res.data);
         this.props.history.push(
           "/" + localStorage.getItem("userId") + "/casePage"
         );
       })
       .catch((err) => {
-        window.alert("Unsuccessful");
+        window.alert("Unsuccessful : " + err);
         window.location.reload();
       });
   }
