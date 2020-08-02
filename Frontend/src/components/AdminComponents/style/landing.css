@@ -155,7 +155,7 @@
     margin-top: 12vh;
   }
 
-  .landdpage2{
+  .landdpage2 {
     margin-left: 45vh;
     margin-top: 12vh;
   }
@@ -182,5 +182,10 @@
 
   .lppbt {
     margin-left: 20px;
+  }
+
+  .nerupu {
+    margin-top: 4vh;
+    margin-left: 27vh;
   }
 }

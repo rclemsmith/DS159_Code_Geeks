@@ -66,6 +66,8 @@ class Main extends Component {
           <Route path="/:secId/landpage" component={LandPage} />
           <Route path="/:secId/synopsis" component={Synopsis} />
           <Route path="/:userId/addUser" component={AddUser} />
+          <Route path="/:secId/casepg" component={DeptCasePage} />
+          <Route path="/:adminId/casepg" component={DeptCasePage}/>
         </Switch>
       </div>
     );

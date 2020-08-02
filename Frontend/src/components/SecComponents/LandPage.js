@@ -152,6 +152,9 @@ class LandPage extends Component {
                   <p className="act4">Case No : {active.caseno}</p>
                 </div>
                 <div>
+                  <p className="act4">Status : {active.status}</p>
+                </div>
+                <div>
                   <p className="act4">Type : {active.type}</p>
                 </div>
 

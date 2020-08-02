@@ -48,7 +48,7 @@ class DeptCurHearing extends Component {
                 <span className="cch13">Document:</span>
                 <span className="cch14">
                   <a
-                    href={"https://indiancourt.azurewebsites.net/image/" + c}
+                    href={url + "/image/" + c}
                     download
                   >
                     Click to download

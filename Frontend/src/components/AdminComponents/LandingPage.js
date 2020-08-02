@@ -19,12 +19,17 @@ class LandingPage extends Component {
       id: "",
       isModalOpen: false,
     };
+    this.handleFor = this.handleFor.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleFor(event) {
+    event.preventDefault();
   }
 
   handleLogout(event) {
@@ -242,6 +247,14 @@ class LandingPage extends Component {
                   })}
                 </tbody>
               </table>
+            </div>
+            <div>
+              <button
+                className="btn btn-primary nerupu"
+                onClick={this.handleFor}
+              >
+                Click here to see case details
+              </button>
             </div>
           </div>
         </div>

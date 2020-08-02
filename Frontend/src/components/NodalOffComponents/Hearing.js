@@ -178,7 +178,7 @@ class Hearing extends Component {
                 <AvField
                   name="hearingverdict"
                   id="hearingverdict"
-                  label="Verdict"
+                  label="Interim Order"
                   type="text"
                   className="he9"
                   onChange={this.onChange}
