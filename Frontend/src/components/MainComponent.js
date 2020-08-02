@@ -24,6 +24,8 @@ import Otppage from "./AdminComponents/Otppage";
 import OtpPage from "./DeptOffComponents/OtpPage";
 import NOtppage from "./NodalOffComponents/NOtppage";
 import AddUser from "./NodalOffComponents/AddUser";
+import SOtpage from "./SecComponents/SOtpage";
+import LandPage from "./SecComponents/LandPage";
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -57,6 +59,8 @@ class Main extends Component {
           <Route path="/verifyUser" component={Otppage} />
           <Route path="/verifyOfficial" component={OtpPage} />
           <Route path="/verifyNodal" component={NOtppage} />
+          <Route path="/verifySec" component={SOtpage} />
+          <Route path="/:secId/landpage" component={LandPage} />
           <Route path="/:userId/addUser" component={AddUser} />
         </Switch>
       </div>

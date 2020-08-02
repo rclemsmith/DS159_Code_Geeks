@@ -126,6 +126,38 @@ class Home extends Component {
         });
       }
     } else {
+      if (this.state.username.substring(0, 3) == "sec") {
+        this.setState({
+          btn1: true,
+          btn2: false,
+        });
+        axios
+          .post(url + "/secretary/login", {
+            username: this.state.username,
+            password: this.state.password,
+          })
+          .then((res) => {
+            if (res.data.success) {
+              this.props.history.push({
+                pathname: "/verifySec",
+                state: {
+                  dept: res.data.name,
+                  otp: res.data.otp,
+                  token: res.data.token,
+                  userId: res.data.userId,
+                },
+              });
+            }
+          })
+          .catch((err) => {
+            this.setState({
+              err: false,
+              btn1: false,
+              btn2: true,
+            });
+            console.log(err);
+          });
+      }
       if (this.state.username.substring(0, 5) == "nodal") {
         this.setState({
           btn1: true,
