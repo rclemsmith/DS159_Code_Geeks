@@ -19,7 +19,6 @@ class LandingPage extends Component {
       id: "",
       isModalOpen: false,
     };
-    this.handleUser = this.handleUser.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
@@ -32,8 +31,7 @@ class LandingPage extends Component {
     event.preventDefault();
     localStorage.removeItem("adminId");
     localStorage.removeItem("token");
-
-    window.location.href = "/";
+    window.location.href = "http://localhost:3000/";
   }
 
   handleSelect(id) {
@@ -61,10 +59,7 @@ class LandingPage extends Component {
     };
 
     axios
-      .post(
-        url +"/department/admin/signup",
-        data
-      )
+      .post(url + "/department/admin/signup", data)
       .then((res) => {
         if (res.data.success) {
           console.log(res);
@@ -77,13 +72,6 @@ class LandingPage extends Component {
       });
   }
 
-  handleUser(event){
-    event.preventDefault();
-    this.setState({
-      hide : false
-    });
-  }
-
   handleClose(event) {
     event.preventDefault();
     this.setState({
@@ -93,23 +81,14 @@ class LandingPage extends Component {
   }
   handleDelete(event) {
     event.preventDefault();
-    axios
-      .delete(
-        url +"/department/admin/" +
-          this.state.id
-      )
-      .then((res) => {
-        window.alert("Deleted Successfully");
-        window.location.reload();
-      });
+    axios.delete(url + "/department/admin/" + this.state.id).then((res) => {
+      window.alert("Deleted Successfully");
+    });
   }
 
   componentDidMount() {
     axios
-      .get(
-        url +"/department/admin/nodal/" +
-          this.props.location.state.dept
-      )
+      .get(url + "/department/admin/nodal/" + this.props.location.state.dept)
       .then((res) => {
         this.setState({
           nodalad: res.data,
@@ -155,7 +134,7 @@ class LandingPage extends Component {
           </button>
         </h3>
         <div className="cont123">
-          <div className="landpage2" hidden={this.state.hide}>
+          <div className="row landpage2" hidden={this.state.hide}>
             <div className="card landpg">
               <span style={{ marginTop: "10px" }} className="card-title">
                 DETAILS
