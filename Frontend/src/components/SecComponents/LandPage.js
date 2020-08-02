@@ -22,6 +22,7 @@ class LandPage extends Component {
     this.state = {
       cases: [],
       acase: [],
+      curcaseid: null,
       value: "",
       dept: "Ministry of Corporate Affairs",
       actid: null,
@@ -31,6 +32,7 @@ class LandPage extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.Dept = this.Dept.bind(this);
+    this.handleCurId = this.handleCurId.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   }
 
@@ -39,6 +41,12 @@ class LandPage extends Component {
       dept: e.target.value,
     });
   };
+
+  handleCurId(id) {
+    this.setState({
+      curcaseid: id,
+    });
+  }
 
   handleSearch(val) {
     axios
@@ -108,6 +116,12 @@ class LandPage extends Component {
   }
 
   render() {
+    if (this.state.curcaseid) {
+      this.props.history.push({
+        pathname: "/" + localStorage.getItem("secId") + "/synopsis",
+        state: { info: this.state.curcaseid },
+      });
+    }
     var n = [];
     var filter = [];
     this.state.acase.map((c) => {
@@ -130,7 +144,7 @@ class LandPage extends Component {
           <div className="col-12 col-xl-4">
             <div
               className="card act1"
-              // onClick={() => this.handleAct(active._id)}
+              onClick={() => this.handleCurId(active._id)}
             >
               <p className="card-title act2">{active.name}</p>
               <div className="card-body act3">
