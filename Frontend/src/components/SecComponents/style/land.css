@@ -31,6 +31,16 @@
   color: white;
 }
 
+.synp {
+  margin-left: 70vh;
+  margin-top: 10vh;
+}
+
+.synp:hover {
+  color: blue;
+  cursor: pointer;
+}
+
 .clth1 {
   margin-left: 50vh;
 
