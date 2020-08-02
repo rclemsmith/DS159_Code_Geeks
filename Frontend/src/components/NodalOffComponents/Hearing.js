@@ -28,7 +28,7 @@ class Hearing extends Component {
       state: "",
       pincode: "",
       count: 0,
-      docs: null,
+      docs: [],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCount = this.handleCount.bind(this);
@@ -85,13 +85,11 @@ class Hearing extends Component {
     //   formData.append("witness",wit);
     // });
     formData.append("witness",JSON.stringify(this.state.witness));
-    
     this.state.docs.forEach((document)=>{
       formData.append("documents",document);
     });
     console.log("Afetr Posting");
     console.log(formData.get("witness"));
-    axios.defaults.withCredentials = true;
     axios
       .post(url + 
         "/department/admin/" +

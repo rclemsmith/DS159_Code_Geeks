@@ -372,6 +372,7 @@ router.post(
               },
               (err, updatedAdmin) => {
                 console.log(updatedAdmin);
+                console.log("Before Sending Response");
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
                 res.json(curhear);
