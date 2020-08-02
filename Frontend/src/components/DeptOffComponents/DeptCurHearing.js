@@ -31,9 +31,16 @@ class DeptCurHearing extends Component {
             <span className="cch7">Lawyer :</span>
             <span className="cch8">{this.props.location.state.curlawyer}</span>
           </div>
+          
           <div className="cch9">
-            <h6 className="cch10">Facts :</h6>
+            <h6 className="cch10">Details :</h6>
             <p className="cch11">{this.props.location.state.curfact}</p>
+          </div>
+          <div className="cch12">
+            <span className="cch13">Interim Order :</span>
+            <span className="cch14">
+              {this.props.location.state.curverdict}
+            </span>
           </div>
           <div className="cch12">
             <span className="cch13">Next Hearing Date :</span>
@@ -41,17 +48,19 @@ class DeptCurHearing extends Component {
               {nex.replace(/T.*/, "").split("-").reverse().join("-")}
             </span>
           </div>
+          <span className="cch13">Documents:</span>
           {this.props.location.state.curdoc.map((c) => {
             console.log(c);
             return (
               <div className="cch12">
-                <span className="cch13">Document:</span>
+                <span className="cch13"></span>
                 <span className="cch14">
                   <a
+                  target = "_blank"
                     href={url + "/image/" + c}
                     download
                   >
-                    Click to download
+                    {c}
                   </a>
                 </span>
               </div>
