@@ -18,7 +18,7 @@ class Case extends Component {
       value: "",
       valu1: "",
       closecase: [],
-      casetype: "",
+      casetype: "Active",
       hide1: true,
       hide2: true,
     };
