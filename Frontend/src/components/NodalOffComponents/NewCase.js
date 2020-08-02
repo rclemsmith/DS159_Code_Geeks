@@ -3,6 +3,7 @@ import SideNavbar from "./SideNavBar";
 import axios from "axios";
 import Head from "./Head";
 import url from "../../backend_url";
+import _ from "lodash";
 import {
   AvForm,
   AvField,
@@ -34,10 +35,12 @@ class NewCase extends Component {
       card4: true,
       card5: true,
       isclosed: null,
+      apllawyer: "",
       case: "",
       caseid: "",
       type: "",
       resp: "",
+      resemail: "",
       facts: "",
       status: "",
       respdes: "",
@@ -61,9 +64,9 @@ class NewCase extends Component {
       lstate: "",
       add: false,
       image: null,
-      docs: []
+      docs: null,
+      rescount: 1
     };
-    this.handleDocs = this.handleDocs.bind(this);
     this.Case = this.Case.bind(this);
     this.Respdes = this.Respdes.bind(this);
     this.Resp = this.Resp.bind(this);
@@ -72,6 +75,7 @@ class NewCase extends Component {
     this.Status = this.Status.bind(this);
     this.Facts = this.Facts.bind(this);
     this.Dept = this.Dept.bind(this);
+    this.AplLawyer = this.AplLawyer.bind(this);
     this.Cpincode = this.Cpincode.bind(this);
     this.Cname = this.Cname.bind(this);
     this.Aname = this.Aname.bind(this);
@@ -91,6 +95,8 @@ class NewCase extends Component {
     this.Lstreet = this.Lstreet.bind(this);
     this.Ldist = this.Ldist.bind(this);
     this.Lstate = this.Lstate.bind(this);
+    this.handleDocs = this.handleDocs.bind(this);
+    this.handleResCount = this.handleResCount.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handleNext1 = this.handleNext1.bind(this);
     this.handleNext2 = this.handleNext2.bind(this);
@@ -104,6 +110,18 @@ class NewCase extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  AplLawyer = (e) => {
+    this.setState({
+      apllawyer: e.target.value,
+    });
+  };
+
+  Resemail = (e) => {
+    this.setState({
+      resemail: e.target.value,
+    });
+  };
 
   Case = (e) => {
     this.setState({
@@ -284,6 +302,12 @@ class NewCase extends Component {
       ldist: e.target.value,
     });
   };
+
+  handleResCount() {
+    this.setState({
+      rescount: this.state.rescount + 1,
+    },()=>{console.log(this.state.rescount)});
+  }
 
   handleDocs(event) {
     var documents = [];
@@ -502,30 +526,7 @@ class NewCase extends Component {
             <div className="new1" hidden={this.state.card0}>
               <div style={{marginBottom:'12vh'}} className="card new1">
                 <div style={{ marginBottom: "2vh" }} className="card-body new3">
-                  <h1 className="card-title new4"> New Case</h1>
-                  <AvGroup className="new5">
-                    <Label className="new6" for="casename">
-                      Case No
-                    </Label>
-                    <InputGroup>
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i
-                            class="fa fa-gavel"
-                            style={{ fontSize: "17px" }}
-                          ></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input
-                        name="caseno"
-                        id="caseno"
-                        onChange={this.Caseno}
-                        value={this.state.caseno}
-                        innerRef={(input) => (this.caseno = input)}
-                        placeholder="Name"
-                      />
-                    </InputGroup>
-                  </AvGroup>
+                  <h1 className="card-title new4"> New Case</h1>                  
                   <AvGroup className="new5">
                     <Label className="new6" for="casename">
                       Case Name
@@ -617,18 +618,30 @@ class NewCase extends Component {
                         placeholder="Name"
                       />
                     </InputGroup>
-                  </AvGroup>  
+                  </AvGroup>          
                   <AvGroup className="ncinput">
-                    <AvField
-                    multiple
-                      name="docs"
-                      id="docs"
-                      label="Document"
-                      type="file"
-                      onChange={this.handleDocs}
-                      innerRef={(input) => (this.docs = input)}
-                    />
-                  </AvGroup>     
+                    <Label className="nc" for="apllawyer">
+                      Applicant Lawyer
+                    </Label>
+                    <InputGroup>
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i
+                            class="fa fa-user-secret"
+                            style={{ fontSize: "17px" }}
+                          ></i>
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        name="apllawyer"
+                        id="apllawyer"
+                        onChange={this.AplLawyer}
+                        value={this.state.AplLawyer}
+                        innerRef={(input) => (this.apllawyer = input)}
+                        placeholder="Name"
+                      />
+                    </InputGroup>
+                  </AvGroup>                     
                               
                   <Button
                     color="primary"
@@ -647,56 +660,106 @@ class NewCase extends Component {
               </div>
             </div>
             <div className="new1" hidden={this.state.card1}>
-              <div style={{ marginBottom: "13vh" }} className="card new1">
+              <div style={{marginBottom:'3vh'}} className="card new1">
                 <div style={{ marginBottom: "2vh" }} className="card-body new3">
-                  <h1 style={{marginBottom:'3vh'}} className="card-title new4">Case Details</h1>                  
-                  <AvGroup>
-                    <Label className="nc" for="respdes">
-                      Respondent Designation{" "}
-                      <i
-                        style={{ marginLeft: "1vw", fontSize: "18px" }}
-                        class="fas fa-restroom"
-                        aria-hidden="true"
-                      ></i>
-                    </Label>
-                    <AvField
-                      value={this.state.Respdes}
-                      onChange={this.respdes}
-                      innerRef={(input) => (this.respdes = input)}
-                      type="select"
-                      name="respdes"
-                      id="respdes"
-                    >
-                      <option hidden>Select Designation</option>
-                      <option>Dr</option>
-                      <option>Mr</option>
-                      <option>Mrs</option>
-                      <option>Ms</option>
-                    </AvField>
-                  </AvGroup>
-                  <AvGroup className="ncinput">
-                    <Label className="nc" for="respname">
-                      Respondent Name
+                  <h1 style={{marginBottom:'3vh'}} className="card-title new4">Case Details</h1>  
+                  <div className="he10">
+                    <span className="he11">RESPONDENT</span>
+                    <span>
+                      <Button
+                        style={{marginTop:'-1vh'}}
+                        className="btn btn-primary he12"
+                        onClick={this.handleResCount}
+                      >
+                        <i className="fa fa-plus he13"></i>
+                      </Button>
+                    </span>
+                  </div>    
+                  {_.times(this.state.rescount, (i) => ( 
+                    <div>           
+                    <AvGroup>
+                      <Label className="nc" for="respdes">
+                        Respondent Designation{" "}
+                        <i
+                          style={{ marginLeft: "1vw", fontSize: "18px" }}
+                          class="fas fa-restroom"
+                          aria-hidden="true"
+                        ></i>
+                      </Label>
+                      <AvField
+                        value={this.state.Respdes}
+                        onChange={this.respdes}
+                        innerRef={(input) => (this.respdes = input)}
+                        type="select"
+                        name="respdes"
+                        id="respdes"
+                      >
+                        <option hidden>Select Designation</option>
+                        <option>Dr</option>
+                        <option>Mr</option>
+                        <option>Mrs</option>
+                        <option>Ms</option>
+                      </AvField>
+                    </AvGroup>
+                    <AvGroup className="ncinput">
+                      <Label className="nc" for="respname">
+                        Respondent Name
+                      </Label>
+                      <InputGroup>
+                        <InputGroupAddon addonType="prepend">
+                          <InputGroupText>
+                            <i
+                              class="fas fa-user-circle"
+                              style={{ fontSize: "17px" }}
+                            ></i>
+                          </InputGroupText>
+                        </InputGroupAddon>
+                        <Input
+                          name="respname"
+                          id="respname"
+                          onChange={this.Resp}
+                          value={this.state.resp}
+                          innerRef={(input) => (this.respname = input)}
+                          placeholder="Name"
+                        />
+                      </InputGroup>
+                    </AvGroup>
+                    <AvGroup className="ncinput">
+                    <Label className="nc" for="resemail">
+                      Mail
                     </Label>
                     <InputGroup>
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
                           <i
-                            class="fas fa-user-circle"
+                            class="fa fa-envelope"
                             style={{ fontSize: "17px" }}
                           ></i>
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
-                        name="respname"
-                        id="respname"
-                        onChange={this.Resp}
-                        value={this.state.resp}
-                        innerRef={(input) => (this.respname = input)}
-                        placeholder="Name"
+                        name="resemail"
+                        id="resemail"
+                        onChange={this.Resemail}
+                        value={this.state.resemail}
+                        type="email"
+                        innerRef={(input) => (this.resemail = input)}
                       />
                     </InputGroup>
                   </AvGroup>
+                    </div>
+                  ))}
+                  <AvGroup className="ncinput">
+                    <AvField
+                    multiple
+                      name="docs"
+                      id="docs"
+                      label="Document"
+                      type="file"
+                      onChange={this.handleDocs}
+                      innerRef={(input) => (this.docs = input)}
+                    />
+                  </AvGroup>   
                   <AvGroup>
                     <Label className="nc" for="cstatus">
                       Status{" "}
@@ -789,7 +852,7 @@ class NewCase extends Component {
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
                           <i
-                            class="fas fa-user-circle"
+                            class="fa fa-user-secret"
                             style={{ fontSize: "17px" }}
                           ></i>
                         </InputGroupText>

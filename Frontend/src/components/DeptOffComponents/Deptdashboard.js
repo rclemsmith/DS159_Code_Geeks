@@ -407,13 +407,13 @@ class Deptdashboard extends Component {
               <div className="row">
                 <div class="color-boxx1"></div>
                 <span className="leg2">
-                  Active Cases <span>&nbsp;&nbsp;&nbsp;</span> {closeca}
+                  Active Cases <span>&nbsp;</span> {activeca}
                 </span>
               </div>
               <div className="row">
                 <div class="color-boxx2"></div>
                 <span style={{marginTop:'6.5vh'}} className="leg3">
-                  Closed Cases <span></span> {activeca}
+                  Closed Cases <span></span> {closeca}
                 </span>
               </div>
             </div>
