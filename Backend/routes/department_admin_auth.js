@@ -275,35 +275,27 @@ router.post(
 );
 
 router.get("/active/:departmentName", (req, res) => {
-  Case.find(
-    { department: req.params.departmentName, isClosed: false },
-    (err, foundCases) => {
-      if (err) {
-        res.json(err);
-      } else {
-        res.statusCode = 200;
 
-        res.setHeader("Content-Type", "application/json");
-        res.json(foundCases);
-        console.log(foundCases);
-        console.log(req.params.departmentName);
-      }
-    }
-  );
+  Case.find({ department: req.params.departmentName, isClosed: false })
+    .sort({ createdAt: "desc" })
+    .then((foundCases) => {
+      console.log(foundCases);
+      res.statusCode = 200;
+      res.json(foundCases);
+    })
+    .catch((err)=>res.json(err));
+  
 });
 
 router.get("/closed/:departmentName", (req, res) => {
-  Case.find(
-    { department: req.params.departmentName, isClosed: true },
-    (err, foundCases) => {
-      if (err) {
-        res.json(err);
-      } else {
-        res.statusCode = 200;
-        res.json(foundCases);
-      }
-    }
-  );
+  Case.find({ department: req.params.departmentName, isClosed: true })
+    .sort({ createdAt: "desc" })
+    .then((foundCases) => {
+      console.log(foundCases);
+      res.statusCode = 200;
+      res.json(foundCases);
+    })
+    .catch((err)=>res.json(err));
 });
 
 router.get("/:caseId/casedetails", (req, res, next) => {
@@ -321,18 +313,18 @@ router.post(
   multerUpload.array("documents", 10),
   (req, res) => {
     // console.log(req.files);
-    console.log(req.user);
+    // console.log(req.user);
     try {
       var documents = [];
       req.files.forEach((file) => {
         documents.push(file.filename);
       });
-      console.log(documents);
+      // console.log(documents);
 
-      console.log(req.body);
+      // console.log(req.body);
       var witness1 = JSON.parse(req.body.witness);
       witness1.forEach((wit) => console.log(wit));
-      console.log(witness1);
+      // console.log(witness1);
 
       var hearing = new Hearing({
         caseid: req.params.caseId,
@@ -346,11 +338,11 @@ router.post(
       });
 
       hearing.curhearingwitness.push.apply(hearing.curhearingwitness, witness1);
-      console.log(hearing);
+      // console.log(hearing);
 
       Hearing.create(hearing)
         .then((curhear) => {
-          console.log(curhear);
+          // console.log(curhear);
           Case.findById(req.params.caseId, (err, foundCase) => {
             var now = new Date();
             var report =
@@ -519,14 +511,15 @@ router.post("/:caseId/modify", (req, res) => {
 });
 
 router.get("/cases/:departmentName", (req, res) => {
-  Case.find({ department: req.params.departmentName }, (err, foundCases) => {
-    if (err) {
-      res.json(err);
-    } else {
+  Case.find({ department: req.params.departmentName })
+    .sort({ createdAt: "desc" })
+    .then((foundCases) => {
+      console.log(foundCases);
       res.statusCode = 200;
       res.json(foundCases);
-    }
-  });
+    })
+    .catch((err)=>res.json(err));
+  
 });
 
 module.exports = router;

@@ -107,7 +107,7 @@ class Case extends Component {
 
     axios
       .get(url + 
-        "/admin/closed/" +
+        "/department/admin/closed/" +
           localStorage.getItem("deptname")
       )
       .then((res) => {

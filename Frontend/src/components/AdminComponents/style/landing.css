@@ -63,7 +63,7 @@
   }
 
   .landpage2 {
-    margin-left: 31vh;
+    margin-left: 0vh;
     margin-top: 12vh;
   }
 
@@ -151,7 +151,12 @@
   }
 
   .landpage2 {
-    margin-left: 50vh;
+    margin-left: 0vh;
+    margin-top: 12vh;
+  }
+
+  .landdpage2{
+    margin-left: 45vh;
     margin-top: 12vh;
   }
 

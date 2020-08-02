@@ -34,6 +34,10 @@ class NewCase extends Component {
       card5: true,
       isclosed: null,
       case: "",
+      caseno: "",
+      aname: "",
+      rname: "",
+
       type: "",
       facts: "",
       status: "",
@@ -59,12 +63,15 @@ class NewCase extends Component {
       image: null,
     };
     this.Case = this.Case.bind(this);
+    this.Cno = this.Cno.bind(this);
     this.Type = this.Type.bind(this);
     this.Status = this.Status.bind(this);
     this.Facts = this.Facts.bind(this);
     this.Dept = this.Dept.bind(this);
     this.Cpincode = this.Cpincode.bind(this);
     this.Cname = this.Cname.bind(this);
+    this.Aname = this.Aname.bind(this);
+    this.Rname = this.Rname.bind(this);
     this.Cstate = this.Cstate.bind(this);
     this.Cdistrict = this.Cdistrict.bind(this);
     this.Ccategory = this.Ccategory.bind(this);
@@ -125,6 +132,24 @@ class NewCase extends Component {
   Cname = (e) => {
     this.setState({
       cname: e.target.value,
+    });
+  };
+
+  Aname = (e) => {
+    this.setState({
+      aname: e.target.value,
+    });
+  };
+
+  Rname = (e) => {
+    this.setState({
+      rname: e.target.value,
+    });
+  };
+
+  Cno = (e) => {
+    this.setState({
+      caseno: e.target.value,
     });
   };
 
@@ -356,8 +381,9 @@ class NewCase extends Component {
     formData.append("casename", this.casename.value);
     console.log(formData);
     axios
-      .post(url + 
-        "/department/admin/" +
+      .post(
+        url +
+          "/department/admin/" +
           localStorage.getItem("userId") +
           "/addCase",
         formData
@@ -406,6 +432,29 @@ class NewCase extends Component {
                   <h1 className="card-title new4"> New Case</h1>
                   <AvGroup className="new5">
                     <Label className="new6" for="casename">
+                      Case No
+                    </Label>
+                    <InputGroup>
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i
+                            class="fa fa-gavel"
+                            style={{ fontSize: "17px" }}
+                          ></i>
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        name="caseno"
+                        id="caseno"
+                        onChange={this.Caseno}
+                        value={this.state.caseno}
+                        innerRef={(input) => (this.caseno = input)}
+                        placeholder="Name"
+                      />
+                    </InputGroup>
+                  </AvGroup>
+                  <AvGroup className="new5">
+                    <Label className="new6" for="casename">
                       Case Name
                     </Label>
                     <InputGroup>
@@ -452,7 +501,7 @@ class NewCase extends Component {
                   </AvGroup>
                   <AvGroup className="ncinput">
                     <Label className="nc" for="deptname">
-                      Opposition name/organization
+                      Applicant name
                     </Label>
                     <InputGroup>
                       <InputGroupAddon addonType="prepend">

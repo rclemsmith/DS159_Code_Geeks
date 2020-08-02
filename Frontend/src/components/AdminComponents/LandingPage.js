@@ -19,7 +19,6 @@ class LandingPage extends Component {
       id: "",
       isModalOpen: false,
     };
-    this.handleUser = this.handleUser.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.toggleModal = this.toggleModal.bind(this);

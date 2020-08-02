@@ -863,25 +863,31 @@
     margin-left: 1%;
   }
 
-  .newdash7 {
+  .dash7 {
     font-size: 30px;
+    color: white;
   }
 
-  .newdash2 {
+  .dash2 {
     margin-top: 0.5vh;
     width: 33vh;
     margin-left: 10vh;
   }
 
-  .newdash3 {
-    margin-top: 4.2vh;
+  .dash3 {
+    margin-top: -1vh;
     width: 23vh;
     margin-left: 0vh;
   }
 
-  .newdash5 {
+  .dash5 {
     margin-top: -2vh;
     width: 15vh;
+  }
+
+  .dash6{
+    background-color: black;
+    border-radius: 100%;
   }
 
   .newdash15 {
@@ -909,8 +915,12 @@
     border-radius: 50%;
   }
 
-  .legend {
+  
+  .legen {
     margin-top: 11vh;
+    margin-left: 20vh;
+  
+    
   }
 
   .leg1 {
@@ -918,7 +928,7 @@
     font-weight: bold;
     color: #fc061e;
     margin-left: 7.2vh;
-    margin-top: 1vh;
+    margin-top: -1.5vh;
     margin-bottom: -1vh;
   }
 
@@ -927,6 +937,7 @@
     font-weight: bold;
     color: #220dfc;
     margin-left: 7.5vh;
+    margin-top: 7vh;
     margin-bottom: -1vh;
   }
 
@@ -936,6 +947,7 @@
     color: #16e442;
     margin-left: 7vh;
     word-spacing: 8.5px;
+    margin-right: 3vh;
   }
 
   .vertical {

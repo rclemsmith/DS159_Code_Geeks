@@ -1,1 +1,1 @@
-module.exports = "https://indiancourt.azurewebsites.net/" ;
+module.exports = "http://localhost:3006" ;

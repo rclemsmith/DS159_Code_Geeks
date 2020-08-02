@@ -426,14 +426,14 @@
     text-decoration: underline;
   }
 
-  .newdash2 {
+  .newdash22 {
     margin-top: -1vh;
     width: 290px;
     height: 280px;
     margin-left: 25vh;
   }
 
-  .newdash3 {
+  .newdash33 {
     width: 200px;
     height: 220px;
   }
@@ -442,16 +442,16 @@
     margin-left: -400px;
   }
 
-  .newdash5 {
+  .newdash55 {
     width: 120px;
   }
 
-  .newdash6 {
+  .newdash66 {
     background-color: black;
     border-radius: 100%;
   }
 
-  .newdash7 {
+  .newdash77 {
     color: whitesmoke;
     margin-top: -10px;
   }
@@ -492,32 +492,36 @@
     margin-left: 40vh;
   }
 
-  .color-box {
+  .color-boxx {
     width: 20px;
     height: 20px;
     background-color: #fc061e;
+    border-radius: 50%;
   }
 
-  .color-box1 {
+  .color-boxx1 {
     width: 20px;
     height: 20px;
     background-color: #220dfc;
+    border-radius: 50%;
     margin-top: 8vh;
   }
 
-  .color-box2 {
+  .color-boxx2 {
     width: 20px;
     height: 20px;
-    background-color: #ff5e00;
+    background-color: #00ff00;
+    border-radius: 50%;
     margin-top: 8vh;
   }
 
-  .legend {
-    margin-left: 60vh;
+  .legendd {
+    margin-left: 20vh;
     margin-right: 15vh;
+    margin-top: 10vh;
   }
 
-  .leg1 {
+  .legg1 {
     font-size: 25px;
     font-weight: bold;
     color: #fc061e;
@@ -525,7 +529,7 @@
     word-spacing: 22px;
   }
 
-  .leg2 {
+  .legg2 {
     font-size: 25px;
     font-weight: bold;
     color: #220dfc;
@@ -534,7 +538,7 @@
     word-spacing: 13px;
   }
 
-  .leg4 {
+  .legg4 {
     font-size: 25px;
     font-weight: bold;
     color: #00ff00;

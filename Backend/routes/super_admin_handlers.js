@@ -45,6 +45,7 @@ router.post("/signup", (req, res, next) => {
   var superAdmin = new SuperAdmin({
     username: req.body.username,
     name: req.body.name,
+    email : req.body.email
   });
   SuperAdmin.register(superAdmin, req.body.password, (err, admin) => {
     console.log("Regsitered");

@@ -19,10 +19,9 @@ class Home extends Component {
     this.state = {
       username: "",
       password: "",
-      dept: "",
       user: false,
       pass: false,
-      dep: false,
+
       auth: false,
       authadmin: false,
       btn1: false,
@@ -32,7 +31,6 @@ class Home extends Component {
 
     this.Username = this.Username.bind(this);
     this.Password = this.Password.bind(this);
-    this.Department = this.Department.bind(this);
     this.handleSignin = this.handleSignin.bind(this);
   }
 
@@ -94,35 +92,6 @@ class Home extends Component {
     );
   };
 
-  Department = (e) => {
-    this.setState(
-      {
-        dept: e.target.value,
-      },
-      () => {
-        if (this.state.dept === "") {
-          this.setState(
-            {
-              dep: true,
-            },
-            () => {
-              console.log(this.state.dep);
-            }
-          );
-        } else {
-          this.setState(
-            {
-              dep: false,
-            },
-            () => {
-              console.log(this.state.dep);
-            }
-          );
-        }
-      }
-    );
-  };
-
   handleSignin(event) {
     if (
       this.state.username === "" ||
@@ -157,13 +126,13 @@ class Home extends Component {
         });
       }
     } else {
-      if (this.state.dept == "Nodal Officer") {
+      if (this.state.username.substring(0, 5) == "nodal") {
         this.setState({
           btn1: true,
           btn2: false,
         });
         axios
-          .post(url+"/department/admin/login", {
+          .post(url + "/department/admin/login", {
             username: this.state.username,
             password: this.state.password,
           })
@@ -188,13 +157,13 @@ class Home extends Component {
             });
             console.log(err);
           });
-      } else if (this.state.dept == "Department") {
+      } else if (this.state.username.substring(0, 4) == "dept") {
         this.setState({
           btn1: true,
           btn2: false,
         });
         axios
-          .post(url+"/department/users/login", {
+          .post(url + "/department/users/login", {
             username: this.state.username,
             password: this.state.password,
           })
@@ -219,13 +188,14 @@ class Home extends Component {
             });
             console.log(err);
           });
-      } else if (this.state.dept == "Admin") {
+      } else if (this.state.username.substring(0, 5) == "admin") {
+        console.log("inside admin");
         this.setState({
           btn1: true,
           btn2: false,
         });
         axios
-          .post(url+"/superadmin/login", {
+          .post(url + "/superadmin/login", {
             username: this.state.username,
             password: this.state.password,
           })
@@ -255,9 +225,10 @@ class Home extends Component {
   }
 
   render() {
+    console.log(this.state.username.substring(0, 5));
     return (
       <div className="homediv">
-        <Header name="Management System" />
+        <Header name="Management Information System" />
         <div className="row">
           <div className="col-6 col-md-6 col-sm-12">
             <img
@@ -273,7 +244,7 @@ class Home extends Component {
               <h6 className="valid" hidden={this.state.err}>
                 Please enter valid username/password
               </h6>
-              <InputGroup
+              {/* <InputGroup
                 style={{
                   marginBottom: "10%",
                   marginTop: "8%",
@@ -308,7 +279,7 @@ class Home extends Component {
                 className="warning"
               >
                 Department Required ..!!
-              </p>
+              </p> */}
 
               <InputGroup
                 style={{
