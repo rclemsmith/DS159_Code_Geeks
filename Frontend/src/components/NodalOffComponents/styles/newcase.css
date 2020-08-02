@@ -100,9 +100,8 @@
 @media only screen and (min-width: 1200px) {
   .new2 {
     margin-top: 3vh;
-    margin-left: 80vh;
+    margin-left: 70vh;
     width: 30%;
-    background-color: blue;
   }
 
   .new1,
@@ -130,4 +129,11 @@
   .newcasebtn1 {
     float: left;
   }
+
+  #prog{
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    height: 20px;
+  }
+   
 }
