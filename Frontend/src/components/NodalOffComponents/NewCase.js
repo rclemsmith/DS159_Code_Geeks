@@ -444,6 +444,9 @@ class NewCase extends Component {
     const deptname = localStorage.getItem("deptname");
     const formData = new FormData();
     formData.append("image", lawyerpic);
+    this.state.docs.forEach((document)=>{
+      formData.append("image",document);
+    });
     formData.append("admin", adminn);
     formData.append("opposition", this.deptname.value);
     formData.append("judge", this.cjudge.value);
@@ -469,6 +472,10 @@ class NewCase extends Component {
     formData.append("facts", this.desc.value);
     formData.append("casetype", this.ctype.value);
     formData.append("casename", this.casename.value);
+    formData.append("caseno",this.state.caseid);
+    formData.append("oppositionlawyer",);
+    formData.append("respondantname",this.state.resp);
+    formData.append("respondantdesignation",this.state.respdes);
     console.log(formData);
     axios
       .post(

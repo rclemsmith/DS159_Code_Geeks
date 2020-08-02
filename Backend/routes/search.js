@@ -7,43 +7,66 @@ const Case = require("../models/cases");
 router.post("/:departmentName", (req, res) => {
   var query = req.body.query;
   console.log(query);
+  var tags = query.split(" ");
+  console.log(tags);
   var result = [];
 
-  Case.find({department : req.params.departmentName})
+  Case.find({ department: req.params.departmentName })
     .then((cases) => {
-      console.log(cases);
-
-      cases.forEach(function (entry) {
-        if (entry.type.toLowerCase().includes(query.toLowerCase())) {
-          var put = {
-            name: entry.name,
-            type: entry.type,
-            facts: entry.facts,
-          };
-          result.push(put);
-        } else if (entry.name.toLowerCase().includes(query.toLowerCase())) {
-          var put = {
-            name: entry.name,
-            type: entry.type,
-            facts: entry.facts,
-          };
-          result.push(put);
-        } else if (entry.facts.toLowerCase().includes(query.toLowerCase())) {
-          var put = {
-            name: entry.name,
-            type: entry.type,
-            facts: entry.facts,
-          };
-          result.push(put);
+      cases.forEach((entry) => {
+        var count = 0;
+        tags.forEach((tag) => {
+          if (entry.synopsis.toLowerCase().includes(tag.toLowerCase())) {
+            count++;
+          }
+        });
+        if (count == tags.length) {
+          result.push(entry);
         }
       });
-
+      console.log(result);
       res.statusCode = 200;
       res.json(result);
 
-      console.log(result);
+      
     })
     .catch((err) => console.log(err));
+
+  // Case.find({department : req.params.departmentName})
+  //   .then((cases) => {
+  //     console.log(cases);
+
+  //     cases.forEach(function (entry) {
+  //       if (entry.type.toLowerCase().includes(query.toLowerCase())) {
+  //         var put = {
+  //           name: entry.name,
+  //           type: entry.type,
+  //           facts: entry.facts,
+  //         };
+  //         result.push(put);
+  //       } else if (entry.name.toLowerCase().includes(query.toLowerCase())) {
+  //         var put = {
+  //           name: entry.name,
+  //           type: entry.type,
+  //           facts: entry.facts,
+  //         };
+  //         result.push(put);
+  //       } else if (entry.facts.toLowerCase().includes(query.toLowerCase())) {
+  //         var put = {
+  //           name: entry.name,
+  //           type: entry.type,
+  //           facts: entry.facts,
+  //         };
+  //         result.push(put);
+  //       }
+  //     });
+
+  //     res.statusCode = 200;
+  //     res.json(result);
+
+  //     console.log(result);
+  //   })
+  //   .catch((err) => console.log(err));
 });
 
 module.exports = router;

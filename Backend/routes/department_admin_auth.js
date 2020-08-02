@@ -440,6 +440,23 @@ router.post("/:hearingId/update", (req, res) => {
   );
 });
 
+router.post("/:caseId/synopsis",(req,res)=>{
+  // Case.updateMany({},{$set : {synopsis : req.body.synopsis}})
+  // .then((djn)=>{
+  //   console.log("success");
+  // });
+  Case.findByIdAndUpdate(req.params.caseId,{$set : {synopsis : req.body.synopsis}})
+  .then((updatedCase)=>{
+    console.log(updatedCase);
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "application/json");
+    res.json({success : "Success"});
+  })
+  .catch((err)=>{
+    console.log(err);
+  });
+});
+
 router.post("/:caseId/lupd", multerUpload.single("image"), (req, res) => {
   var lawyer = {
     lname: req.body.lname,
