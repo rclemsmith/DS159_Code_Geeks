@@ -190,7 +190,7 @@
     margin-left: 9vh;
     margin-right: 9vh;
   }
-  
+
   .act1:hover {
     background-color: rgb(50, 50, 50);
     transition: ease-in-out;
@@ -224,20 +224,20 @@
     height: 100vh;
   }
 
-  .actssearch-label{
+  .actssearch-label {
     margin-top: 20vh;
-    margin-left: 76vh;
+    margin-left: 46vh;
     margin-bottom: 4vh;
     width: 50vh;
- }
+  }
 
- .fact{
-  margin-left: 9.7vh;
-  margin-top: -5.9vh;
-  font-weight: bold;
-  font-size: 19px;
-  text-align: justify;
-  margin-right: 1vh;
-  text-transform: capitalize;
+  .fact {
+    margin-left: 9.7vh;
+    margin-top: -5.9vh;
+    font-weight: bold;
+    font-size: 19px;
+    text-align: justify;
+    margin-right: 1vh;
+    text-transform: capitalize;
   }
 }
