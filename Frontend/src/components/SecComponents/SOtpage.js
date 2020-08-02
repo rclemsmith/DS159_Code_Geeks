@@ -37,7 +37,7 @@ class SOtpage extends Component {
         <div className="container">
           <div className="card otpbox">
             <p className="title headings">
-              Secretary Verification : OTP has been sent to Email .!
+              Secretary Verification : OTP has been sent to Email !
             </p>
             <div className="card-body">
               <Input

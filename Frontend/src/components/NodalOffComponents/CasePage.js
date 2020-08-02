@@ -277,7 +277,7 @@ class CasePage extends Component {
             <p className="ctitle" style={{ marginTop: "5vh" }}>
               Case ID : {this.state.curcase.caseno}
             </p>
-            <h4 style={{ fontWeight: "bold" }}>Case History :</h4>
+            <h4 style={{ fontWeight: "bold" }}>Case Details :</h4>
             {/* <img
                 src={casestudy}
                 width="100vw"

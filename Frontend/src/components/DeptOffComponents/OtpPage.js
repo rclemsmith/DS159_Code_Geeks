@@ -29,7 +29,7 @@ class Otppage extends Component {
       <div style={{backgroundColor:'rgb(240,240,240)',overflow:'hidden',paddingBottom:'44vh'}}>
         <div className="container">
           <div className="card otpbox">
-            <p className="title headings">Department Verification : OTP has been sent to Email .!</p>
+            <p className="title headings">Department Verification : OTP has been sent to Email !</p>
             <div className="card-body">
               <Input
                 type="text"

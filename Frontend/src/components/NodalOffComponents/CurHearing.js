@@ -71,8 +71,14 @@ class CurHearing extends Component {
               {this.props.location.state.curlawyer}
             </span>
           </div>
+          <div className="ch3">
+            <span className="ch7">Interim Order :</span>
+            <span className="curlawyer">
+              {this.props.location.state.curverdict}
+            </span>
+          </div>
           <div className="ch9">
-            <h6 className="ch10">Facts :</h6>
+            <h6 className="ch10">Detail :</h6>
             <p className="ch11">{this.props.location.state.curfact}</p>
           </div>
           <div className="ch12">

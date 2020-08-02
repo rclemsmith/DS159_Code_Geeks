@@ -96,7 +96,7 @@ class DeptSearch extends Component {
               className="ssearchinp"
               value={this.state.value}
               name="search-input"
-              placeholder="Search..."
+              placeholder="Search By Synopsis"
               onChange={(e) => this.handleChange(e)}
             />
             <InputGroupAddon addonType="append">
