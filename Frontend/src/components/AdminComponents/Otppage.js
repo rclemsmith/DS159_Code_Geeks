@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Input, Button } from "reactstrap";
-import './style/otp.css';
-
+import "./style/otp.css";
 
 class Otppage extends Component {
   constructor(props) {
@@ -26,11 +25,20 @@ class Otppage extends Component {
   }
 
   render() {
+    console.log(this.props.location.state.otp);
     return (
-      <div style={{backgroundColor:'rgb(240,240,240)',overflow:'hidden',paddingBottom:'44vh'}}>
+      <div
+        style={{
+          backgroundColor: "rgb(240,240,240)",
+          overflow: "hidden",
+          paddingBottom: "44vh",
+        }}
+      >
         <div className="container">
           <div className="card otpbox">
-            <p className="title headings">Admin Verification : OTP has been sent to Email .!</p>
+            <p className="title headings">
+              Admin Verification : OTP has been sent to Email .!
+            </p>
             <div className="card-body">
               <Input
                 type="text"

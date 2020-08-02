@@ -74,6 +74,8 @@ class NewCase extends Component {
     this.Dept = this.Dept.bind(this);
     this.Cpincode = this.Cpincode.bind(this);
     this.Cname = this.Cname.bind(this);
+    this.Aname = this.Aname.bind(this);
+    this.Rname = this.Rname.bind(this);
     this.Cstate = this.Cstate.bind(this);
     this.Cdistrict = this.Cdistrict.bind(this);
     this.Ccategory = this.Ccategory.bind(this);
@@ -154,6 +156,24 @@ class NewCase extends Component {
   Cname = (e) => {
     this.setState({
       cname: e.target.value,
+    });
+  };
+
+  Aname = (e) => {
+    this.setState({
+      aname: e.target.value,
+    });
+  };
+
+  Rname = (e) => {
+    this.setState({
+      rname: e.target.value,
+    });
+  };
+
+  Cno = (e) => {
+    this.setState({
+      caseno: e.target.value,
     });
   };
 
@@ -427,8 +447,9 @@ class NewCase extends Component {
     formData.append("casename", this.casename.value);
     console.log(formData);
     axios
-      .post(url + 
-        "/department/admin/" +
+      .post(
+        url +
+          "/department/admin/" +
           localStorage.getItem("userId") +
           "/addCase",
         formData
@@ -475,6 +496,29 @@ class NewCase extends Component {
               <div style={{marginBottom:'12vh'}} className="card new1">
                 <div style={{ marginBottom: "2vh" }} className="card-body new3">
                   <h1 className="card-title new4"> New Case</h1>
+                  <AvGroup className="new5">
+                    <Label className="new6" for="casename">
+                      Case No
+                    </Label>
+                    <InputGroup>
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i
+                            class="fa fa-gavel"
+                            style={{ fontSize: "17px" }}
+                          ></i>
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        name="caseno"
+                        id="caseno"
+                        onChange={this.Caseno}
+                        value={this.state.caseno}
+                        innerRef={(input) => (this.caseno = input)}
+                        placeholder="Name"
+                      />
+                    </InputGroup>
+                  </AvGroup>
                   <AvGroup className="new5">
                     <Label className="new6" for="casename">
                       Case Name

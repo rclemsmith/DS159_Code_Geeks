@@ -6,6 +6,10 @@ var caseSchema = new Schema({
   type: String,
   facts: String,
   opposition: String,
+  oppositionlawyer : String,
+  respondantname : String,
+  respondantdesignation : String,
+  caseno : String,
   lawyer: {
     lname: String,
     gender: String,
@@ -34,7 +38,7 @@ var caseSchema = new Schema({
     cpincode: String,
   },
   judge: String,
-
+  documents: [],
   department: String,
   admin: String,
 });

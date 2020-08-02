@@ -196,8 +196,10 @@ router.delete("/:caseId/delete", (req, res) => {
 
 router.post(
   "/:userId/addCase",
-  multerUpload.single("image"),
+  multerUpload.array("image",10),
   (req, res, next) => {
+
+    // console.log(req.files);
     var lawyer = {
       lname: req.body.lname,
       gender: req.body.gender,
@@ -213,8 +215,14 @@ router.post(
       district: req.body.district,
       state: req.body.state,
       pincode: req.body.pincode,
-      image: req.file.filename,
+      image: req.files[0].filename,
     };
+
+    var document = [] ;
+    for(var i=1;i<req.files.length;i++){
+      document.push(req.files[i].filename);
+    }
+    console.log(document);
     var court = {
       cname: req.body.cname,
       ccategory: req.body.category,
@@ -235,6 +243,11 @@ router.post(
       lawyer: lawyer,
       court: court,
       judge: req.body.judge,
+      oppositionlawyer: req.body.oppositionlawyer,
+      respondantname: req.body.respondantname,
+      respondantdesignation: req.body.respondantdesignation,
+      caseno: req.body.caseno,
+      documents: document
     });
 
     Case.create(addCase)
@@ -283,8 +296,8 @@ router.get("/active/:departmentName", (req, res) => {
       res.statusCode = 200;
       res.json(foundCases);
     })
-    .catch((err)=>res.json(err));
-  
+    .catch((err) => res.json(err));
+
 });
 
 router.get("/closed/:departmentName", (req, res) => {
@@ -295,7 +308,7 @@ router.get("/closed/:departmentName", (req, res) => {
       res.statusCode = 200;
       res.json(foundCases);
     })
-    .catch((err)=>res.json(err));
+    .catch((err) => res.json(err));
 });
 
 router.get("/:caseId/casedetails", (req, res, next) => {
@@ -359,6 +372,7 @@ router.post(
               },
               (err, updatedAdmin) => {
                 console.log(updatedAdmin);
+                console.log("Before Sending Response");
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
                 res.json(curhear);
@@ -518,8 +532,18 @@ router.get("/cases/:departmentName", (req, res) => {
       res.statusCode = 200;
       res.json(foundCases);
     })
-    .catch((err)=>res.json(err));
-  
+    .catch((err) => res.json(err));
+
+});
+
+router.get("/cases/filter/:departmentName/:courtType/:isClosed", (req, res) => {
+  Case.find({ department: req.params.departmentName, 'court.ccategory': req.params.courtType, isClosed: req.params.isClosed })
+    .then((foundCases) => {
+      console.log(foundCases);
+      res.statusCode = 200;
+      res.json(foundCases);
+    })
+    .catch((err) => res.json(err));
 });
 
 module.exports = router;
