@@ -27,8 +27,6 @@ router.post("/:departmentName", (req, res) => {
       console.log(result);
       res.statusCode = 200;
       res.json(result);
-
-      
     })
     .catch((err) => console.log(err));
 
@@ -67,6 +65,60 @@ router.post("/:departmentName", (req, res) => {
   //     console.log(result);
   //   })
   //   .catch((err) => console.log(err));
+});
+
+router.post("/active/:departmentName", (req, res) => {
+  var query = req.body.query;
+  console.log(query);
+  var tags = query.split(" ");
+  console.log(tags);
+  var result = [];
+
+  Case.find({ department: req.params.departmentName, isClosed: false })
+    .then((cases) => {
+      cases.forEach((entry) => {
+        var count = 0;
+        tags.forEach((tag) => {
+          if (entry.synopsis.toLowerCase().includes(tag.toLowerCase())) {
+            count++;
+          }
+        });
+        if (count == tags.length) {
+          result.push(entry);
+        }
+      });
+      console.log(result);
+      res.statusCode = 200;
+      res.json(result);
+    })
+    .catch((err) => console.log(err));
+});
+
+router.post("/close/:departmentName", (req, res) => {
+  var query = req.body.query;
+  console.log(query);
+  var tags = query.split(" ");
+  console.log(tags);
+  var result = [];
+
+  Case.find({ department: req.params.departmentName, isClosed: true })
+    .then((cases) => {
+      cases.forEach((entry) => {
+        var count = 0;
+        tags.forEach((tag) => {
+          if (entry.synopsis.toLowerCase().includes(tag.toLowerCase())) {
+            count++;
+          }
+        });
+        if (count == tags.length) {
+          result.push(entry);
+        }
+      });
+      console.log(result);
+      res.statusCode = 200;
+      res.json(result);
+    })
+    .catch((err) => console.log(err));
 });
 
 module.exports = router;

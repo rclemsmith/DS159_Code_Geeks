@@ -23,14 +23,49 @@ class Active extends Component {
       value: "",
       actid: null,
     };
-
+    this.handleCourt = this.handleCourt.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleAct = this.handleAct.bind(this);
   }
 
+  handleCourt(event) {
+    event.preventDefault();
+    this.setState({
+      courttype: this.cotype.value,
+    });
+    if (this.cotype.value == "All Courts") {
+      axios
+        .get(
+          url +
+            "/department/users/cases/active/" +
+            this.props.location.state.dept
+        )
+        .then((res) => {
+          this.setState({
+            activecases: res.data,
+          });
+        });
+    } else {
+      axios
+        .get(
+          url +
+            "/department/admin/cases/filter/" +
+            this.props.location.state.dept +
+            "/" +
+            this.cotype.value +
+            "/false"
+        )
+        .then((res) => {
+          this.setState({
+            activecases: res.data,
+          });
+        });
+    }
+  }
+
   handleSearch(val) {
     axios
-      .post(url+"/search/" + this.props.location.state.dept, {
+      .post(url + "/search/active/" + this.props.location.state.dept, {
         query: val,
       })
       .then((res) => {
@@ -51,9 +86,8 @@ class Active extends Component {
 
   componentDidMount() {
     axios
-      .get(url +
-        "/department/users/cases/active/" +
-          this.props.location.state.dept
+      .get(
+        url + "/department/users/cases/active/" + this.props.location.state.dept
       )
       .then((res) => {
         this.setState({
@@ -89,9 +123,14 @@ class Active extends Component {
                   <p className="act4">Type : {active.type}</p>
                 </div>
 
-                <div className="row" style={{marginLeft:'0vh'}}>
-                  <p style={{wordSpacing:'4px'}} className="act4"> Facts : </p>
-                  <span className="fact">{active.facts.substring(0, 70)} ...</span>
+                <div className="row" style={{ marginLeft: "0vh" }}>
+                  <p style={{ wordSpacing: "4px" }} className="act4">
+                    {" "}
+                    Facts :{" "}
+                  </p>
+                  <span className="fact">
+                    {active.facts.substring(0, 70)} ...
+                  </span>
                 </div>
               </div>
             </div>
@@ -104,7 +143,10 @@ class Active extends Component {
       <div>
         <DeptHead name="Active Cases" />
 
-        <div style={{overflowY:'scroll',overflowX:'hidden'}} className="act8">
+        <div
+          style={{ overflowY: "scroll", overflowX: "hidden" }}
+          className="act8"
+        >
           <InputGroup className="actssearch-label">
             <Input
               className="ssearchinp"
@@ -114,11 +156,39 @@ class Active extends Component {
               onChange={(e) => this.handleChange(e)}
             />
             <InputGroupAddon addonType="append">
-              <InputGroupText style={{ width: "40px",marginTop:'-6.1vh',height:'5.2vh',boxShadow:'0px 0px 1px 1px rgb(220,220,220)' }}>
+              <InputGroupText
+                style={{
+                  width: "40px",
+                  marginTop: "-6.1vh",
+                  height: "5.2vh",
+                  boxShadow: "0px 0px 1px 1px rgb(220,220,220)",
+                }}
+              >
                 <i className="fa fa-search search-icon" />
               </InputGroupText>
             </InputGroupAddon>
           </InputGroup>
+          <Input
+            type="select"
+            label="Select Court"
+            className="courtcase"
+            name="cotype"
+            id="cotype"
+            onChange={this.handleCourt}
+            value={this.state.courttype}
+            innerRef={(input) => (this.cotype = input)}
+          >
+            <option>Select Court</option>
+            <option>All Courts</option>
+            <option>Supreme Court of India</option>
+            <option>High Court</option>
+            <option>District Courts</option>
+            <option>Executive and Revenue Court</option>
+            <option>Village Court </option>
+            <option>Panchayat</option>
+            <option> Rural Court</option>
+            <option>Judicial Academics</option>
+          </Input>
           <div className="row">{act}</div>{" "}
         </div>
       </div>
