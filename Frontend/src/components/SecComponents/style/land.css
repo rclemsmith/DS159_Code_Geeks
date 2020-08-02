@@ -14,3 +14,10 @@
   height: 100vh;
   overflow-y: scroll;
 }
+
+.ssearch-label {
+  margin-left: 81vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  width: 18%;
+}

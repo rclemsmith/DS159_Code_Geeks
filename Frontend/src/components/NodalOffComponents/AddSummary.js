@@ -34,9 +34,10 @@ class AddSummary extends Component {
       .then((res) => {
         window.alert("Successfully Added Synopsis : ");
         console.log("Successfully Added Synopsis " + res.data);
-        this.props.history.push(
-          "/" + localStorage.getItem("userId") + "/casePage"
-        );
+        this.props.history.push({
+          pathname: "/" + localStorage.getItem("userId") + "/casePage",
+          state: { info: this.props.location.state.caseinfo },
+        });
       })
       .catch((err) => {
         window.alert("Unsuccessful : " + err);

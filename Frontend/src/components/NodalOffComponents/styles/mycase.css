@@ -401,7 +401,14 @@
     margin-top: 4vh;
     width: 37vh;
     margin-left: 31vh;
-    box-shadow: 0px 0px 2px 2px rgb(220,220,220);
+    box-shadow: 0px 0px 2px 2px rgb(220, 220, 220);
+  }
+
+  .actcourtcase {
+    margin-top: -7vh;
+    width: 37vh;
+    margin-left: 131vh;
+    box-shadow: 0px 0px 2px 2px rgb(220, 220, 220);
   }
 
   .actcase {
@@ -502,10 +509,9 @@
     font-size: 25px;
   }
 
-  .ssearchinp{
+  .ssearchinp {
     margin-top: -6vh;
-    height: 5vh;    
+    height: 5vh;
     box-shadow: 0px 0px 2px 2px rgb(220, 220, 220);
   }
-  
 }
