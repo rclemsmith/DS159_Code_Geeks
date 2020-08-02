@@ -31,8 +31,7 @@ class LandingPage extends Component {
     event.preventDefault();
     localStorage.removeItem("adminId");
     localStorage.removeItem("token");
-
-    window.location.href = url;
+    window.location.href = "http://localhost:3000/";
   }
 
   handleSelect(id) {
