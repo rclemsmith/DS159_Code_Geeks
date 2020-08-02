@@ -70,5 +70,21 @@ router.post("/signup", (req, res, next) => {
     });
   });
 
+router.get("/cases",(req,res)=>{
+    Case.find()
+    .then((cases)=>{
+        res.json(cases);
+    })
+    .catch((err)=>res.json(err));
+});
+
+router.get("/cases/filter/:departmentName",(req,res)=>{
+    Case.find({department : req.params.departmentName})
+    .then((cases)=>{
+        res.json(cases);
+    })
+    .catch((err)=>res.json(err));
+});
+
 
 module.exports = router;
