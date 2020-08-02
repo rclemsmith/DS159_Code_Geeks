@@ -547,30 +547,7 @@ class NewCase extends Component {
             <div className="new1" hidden={this.state.card0}>
               <div style={{ marginBottom: "12vh" }} className="card new1">
                 <div style={{ marginBottom: "2vh" }} className="card-body new3">
-                  <h1 className="card-title new4"> New Case</h1>
-                  <AvGroup className="new5">
-                    <Label className="new6" for="casename">
-                      Case Name
-                    </Label>
-                    <InputGroup>
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i
-                            class="fa fa-gavel"
-                            style={{ fontSize: "17px" }}
-                          ></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input
-                        name="casename"
-                        id="casename"
-                        onChange={this.Case}
-                        value={this.state.case}
-                        innerRef={(input) => (this.casename = input)}
-                        placeholder="Name"
-                      />
-                    </InputGroup>
-                  </AvGroup>
+                  <h1 className="card-title new4"> New Case</h1>                  
                   <AvGroup className="new5">
                     <Label className="new6" for="caseid">
                       Case ID
@@ -591,6 +568,29 @@ class NewCase extends Component {
                         value={this.state.caseid}
                         innerRef={(input) => (this.caseid = input)}
                         placeholder="ID"
+                      />
+                    </InputGroup>
+                  </AvGroup>
+                  <AvGroup className="new5">
+                    <Label className="new6" for="casename">
+                      Case Name
+                    </Label>
+                    <InputGroup>
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i
+                            class="fa fa-gavel"
+                            style={{ fontSize: "17px" }}
+                          ></i>
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        name="casename"
+                        id="casename"
+                        onChange={this.Case}
+                        value={this.state.case}
+                        innerRef={(input) => (this.casename = input)}
+                        placeholder="Name"
                       />
                     </InputGroup>
                   </AvGroup>

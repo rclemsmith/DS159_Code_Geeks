@@ -274,6 +274,9 @@ class CasePage extends Component {
             >
               {this.state.curcase.name}
             </h2>
+            <p className="ctitle" style={{ marginTop: "5vh" }}>
+              Case ID : {this.state.curcase.caseno}
+            </p>
             <h4 style={{ fontWeight: "bold" }}>Case History :</h4>
             {/* <img
                 src={casestudy}
@@ -284,8 +287,14 @@ class CasePage extends Component {
                   marginLeft: "1.8vw",
                   marginTop: "2vh",
                 }}
-                ></img> */}
-            <p className="casedesc">{this.state.curcase.facts}</p>
+                ></img> */}               
+            <p className="casedesc">{this.state.curcase.facts}</p>            
+            <p className="ctitle" style={{ marginTop: "5vh" }}>
+              Petitioner : {this.state.curcase.opposition}
+            </p>
+            <p className="ctitle" style={{ marginTop: "5vh" }}>
+              Respondent : {this.state.curcase.respondantname} - {this.state.curcase.respondantdesignation}
+            </p>
             <div style={{ marginTop: "6vh" }} className="row">
               <p className="ctitle" style={{ marginLeft: "2vh" }}>
                 Lawyer Assigned :{" "}

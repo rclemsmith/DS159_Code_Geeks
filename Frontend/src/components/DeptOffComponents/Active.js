@@ -120,6 +120,9 @@ class Active extends Component {
               <p className="card-title act2">{active.name}</p>
               <div className="card-body act3">
                 <div>
+                  <p style={{wordSpacing:'33px'}} className="act4">ID : {active.caseno}</p>
+                </div>
+                <div>
                   <p className="act4">Type : {active.type}</p>
                 </div>
 

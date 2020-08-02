@@ -106,6 +106,9 @@ class Closed extends Component {
           <h3 className="card-title close2">{close.name}</h3>
           <div className="card-body close3">
             <div>
+                  <p style={{wordSpacing:'33px'}} className="act4">ID : {close.caseno}</p>
+                </div>
+            <div>
               <p className="close4">Type : {close.type}</p>
             </div>
 
