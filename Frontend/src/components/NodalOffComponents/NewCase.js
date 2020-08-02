@@ -27,16 +27,20 @@ class NewCase extends Component {
     super(props);
 
     this.state = {
-      card1: false,
+      card0: false,
+      card1: true,
       card2: true,
       card3: true,
       card4: true,
       card5: true,
       isclosed: null,
       case: "",
+      caseid: "",
       type: "",
+      resp: "",
       facts: "",
       status: "",
+      respdes: "",
       cname: "",
       cstate: "",
       cpincode: "",
@@ -57,8 +61,13 @@ class NewCase extends Component {
       lstate: "",
       add: false,
       image: null,
+      docs: null
     };
+    this.handleDocs = this.handleDocs.bind(this);
     this.Case = this.Case.bind(this);
+    this.Respdes = this.Respdes.bind(this);
+    this.Resp = this.Resp.bind(this);
+    this.CaseID = this.CaseID.bind(this);
     this.Type = this.Type.bind(this);
     this.Status = this.Status.bind(this);
     this.Facts = this.Facts.bind(this);
@@ -84,10 +93,12 @@ class NewCase extends Component {
     this.handleNext1 = this.handleNext1.bind(this);
     this.handleNext2 = this.handleNext2.bind(this);
     this.handleNext3 = this.handleNext3.bind(this);
-    this.handlePrev3 = this.handlePrev3.bind(this);
-    this.handlePrev = this.handlePrev.bind(this);
+    this.handleNext4 = this.handleNext4.bind(this);    
     this.handlePrev1 = this.handlePrev1.bind(this);
     this.handlePrev2 = this.handlePrev2.bind(this);
+    this.handlePrev3 = this.handlePrev3.bind(this);
+    this.handlePrev4 = this.handlePrev4.bind(this);
+    this.handlePrev5 = this.handlePrev5.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -98,9 +109,27 @@ class NewCase extends Component {
     });
   };
 
+  Resp = (e) => {
+    this.setState({
+      resp: e.target.value,
+    });
+  };
+
+  CaseID = (e) => {
+    this.setState({
+      caseid: e.target.value,
+    });
+  };
+
   Type = (e) => {
     this.setState({
       type: e.target.value,
+    });
+  };
+
+  Respdes = (e) => {
+    this.setState({
+      respdes: e.target.value,
     });
   };
 
@@ -236,48 +265,21 @@ class NewCase extends Component {
     });
   };
 
+  handleDocs(event) {
+    var documents = [];
+    for(var i=0;i<event.target.files.length;i++){
+      documents.push(event.target.files[i]);
+    }
+    this.setState({
+      docs: documents
+    },()=>{
+      console.log(this.state.docs);
+    });
+  }
+
   handleNext() {
     this.setState({
-      card1: true,
-      card2: false,
-      card3: true,
-      card4: true,
-      card5: true,
-    });
-  }
-
-  handleNext1() {
-    this.setState({
-      card3: false,
-      card1: true,
-      card2: true,
-      card4: true,
-      card5: true,
-    });
-  }
-
-  handleNext2() {
-    this.setState({
-      card1: true,
-      card2: true,
-      card3: true,
-      card4: false,
-      card5: true,
-    });
-  }
-
-  handleNext3() {
-    this.setState({
-      card1: true,
-      card2: true,
-      card3: true,
-      card4: true,
-      card5: false,
-    });
-  }
-
-  handlePrev() {
-    this.setState({
+      card0: true,
       card1: false,
       card2: true,
       card3: true,
@@ -286,18 +288,20 @@ class NewCase extends Component {
     });
   }
 
-  handlePrev1() {
+  handleNext1() {
     this.setState({
+      card0: true,
+      card3: true,
       card1: true,
       card2: false,
-      card3: true,
       card4: true,
       card5: true,
     });
   }
 
-  handlePrev2() {
+  handleNext2() {
     this.setState({
+      card0: true,
       card1: true,
       card2: true,
       card3: false,
@@ -306,8 +310,75 @@ class NewCase extends Component {
     });
   }
 
+  handleNext3() {
+    this.setState({
+      card0: true,
+      card1: true,
+      card2: true,
+      card3: true,
+      card4: false,
+      card5: true,
+    });
+  }
+
+  handleNext4() {
+    this.setState({
+      card0: true,
+      card1: true,
+      card2: true,
+      card3: true,
+      card4: true,
+      card5: false,
+    });
+  }
+
+  handlePrev1() {
+    this.setState({
+      card0: false,
+      card1: true,
+      card2: true,
+      card3: true,
+      card4: true,
+      card5: true,
+    });
+  }
+
+  handlePrev2() {
+    this.setState({
+      card0: true,
+      card1: false,
+      card2: true,
+      card3: true,
+      card4: true,
+      card5: true,
+    });
+  }
+
   handlePrev3() {
     this.setState({
+      card0: true,
+      card1: true,
+      card2: false,
+      card3: true,
+      card4: true,
+      card5: true,
+    });
+  }
+
+  handlePrev4() {
+    this.setState({
+      card0: true,
+      card1: true,
+      card2: true,
+      card3: false,
+      card4: true,
+      card5: true,
+    });
+  }
+
+  handlePrev5() {
+    this.setState({
+      card0: true,
       card1: true,
       card2: true,
       card3: true,
@@ -400,8 +471,8 @@ class NewCase extends Component {
         <SideNavbar history={this.props.history} />
         <div className="new2">
           <AvForm>
-            <div className="new1" hidden={this.state.card1}>
-              <div className="card new1">
+            <div className="new1" hidden={this.state.card0}>
+              <div style={{marginBottom:'12vh'}} className="card new1">
                 <div style={{ marginBottom: "2vh" }} className="card-body new3">
                   <h1 className="card-title new4"> New Case</h1>
                   <AvGroup className="new5">
@@ -427,6 +498,29 @@ class NewCase extends Component {
                       />
                     </InputGroup>
                   </AvGroup>
+                  <AvGroup className="new5">
+                    <Label className="new6" for="caseid">
+                      Case ID
+                    </Label>
+                    <InputGroup>
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i
+                            class="fa fa-id-badge"
+                            style={{ fontSize: "17px" }}
+                          ></i>
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        name="caseid"
+                        id="caseid"
+                        onChange={this.CaseID}
+                        value={this.state.caseid}
+                        innerRef={(input) => (this.caseid = input)}
+                        placeholder="ID"
+                      />
+                    </InputGroup>
+                  </AvGroup>
                   <AvGroup className="ncinput">
                     <Label className="nc" for="ctype">
                       Type{" "}
@@ -444,7 +538,7 @@ class NewCase extends Component {
                       name="ctype"
                       id="ctype"
                     >
-                      <option>Select Type</option>
+                      <option hidden>Select Type</option>
                       <option>Criminal</option>
 
                       <option>Civil</option>
@@ -452,7 +546,7 @@ class NewCase extends Component {
                   </AvGroup>
                   <AvGroup className="ncinput">
                     <Label className="nc" for="deptname">
-                      Opposition name/organization
+                      Applicant Name / Organization
                     </Label>
                     <InputGroup>
                       <InputGroupAddon addonType="prepend">
@@ -469,6 +563,86 @@ class NewCase extends Component {
                         onChange={this.Dept}
                         value={this.state.dept}
                         innerRef={(input) => (this.deptname = input)}
+                        placeholder="Name"
+                      />
+                    </InputGroup>
+                  </AvGroup>  
+                  <AvGroup className="ncinput">
+                    <AvField
+                    multiple
+                      name="docs"
+                      id="docs"
+                      label="Document"
+                      type="file"
+                      onChange={this.handleDocs}
+                      innerRef={(input) => (this.docs = input)}
+                    />
+                  </AvGroup>     
+                              
+                  <Button
+                    color="primary"
+                    className="newcasebtn"
+                    outline="none"
+                    onClick={this.handleNext}
+                  >
+                    Next
+                    <i
+                      style={{ marginLeft: "7px" }}
+                      class="fa fa-arrow-right"
+                      aria-hidden="true"
+                    ></i>
+                  </Button>
+                </div>
+              </div>
+            </div>
+            <div className="new1" hidden={this.state.card1}>
+              <div style={{ marginBottom: "13vh" }} className="card new1">
+                <div style={{ marginBottom: "2vh" }} className="card-body new3">
+                  <h1 style={{marginBottom:'3vh'}} className="card-title new4">Case Details</h1>                  
+                  <AvGroup>
+                    <Label className="nc" for="respdes">
+                      Respondent Designation{" "}
+                      <i
+                        style={{ marginLeft: "1vw", fontSize: "18px" }}
+                        class="fas fa-restroom"
+                        aria-hidden="true"
+                      ></i>
+                    </Label>
+                    <AvField
+                      value={this.state.Respdes}
+                      onChange={this.respdes}
+                      innerRef={(input) => (this.respdes = input)}
+                      type="select"
+                      name="respdes"
+                      id="respdes"
+                    >
+                      <option hidden>Select Designation</option>
+                      <option>Dr</option>
+                      <option>Mr</option>
+                      <option>Mrs</option>
+                      <option>Ms</option>
+                    </AvField>
+                  </AvGroup>
+                  <AvGroup className="ncinput">
+                    <Label className="nc" for="respname">
+                      Respondent Name
+                    </Label>
+                    <InputGroup>
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i
+                            class="fas fa-user-circle"
+                            style={{ fontSize: "17px" }}
+                          ></i>
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        name="respname"
+                        id="respname"
+                        onChange={this.Resp}
+                        value={this.state.resp}
+                        innerRef={(input) => (this.respname = input)}
+                        placeholder="Name"
                       />
                     </InputGroup>
                   </AvGroup>
@@ -489,7 +663,7 @@ class NewCase extends Component {
                       name="cstatus"
                       id="cstatus"
                     >
-                      <option disabled> </option>
+                      <option hidden>Select Status</option>
                       <option>Active</option>
                       <option>Closed</option>
                     </AvField>
@@ -522,12 +696,25 @@ class NewCase extends Component {
                       required
                     />
                   </AvGroup>
+                  <Button
+                    color="primary"
+                    className="newcasebtn1"
+                    outline="none"
+                    onClick={this.handlePrev1}
+                  >
+                    <i
+                      style={{ marginRight: "7px" }}
+                      class="fa fa-arrow-left"
+                      aria-hidden="true"
+                    ></i>
+                    Back
+                  </Button>
 
                   <Button
                     color="primary"
                     className="newcasebtn"
                     outline="none"
-                    onClick={this.handleNext}
+                    onClick={this.handleNext1}
                   >
                     Next
                     <i
@@ -540,7 +727,7 @@ class NewCase extends Component {
               </div>
             </div>
             <div className="l1" hidden={this.state.card2}>
-              <div style={{ marginBottom: "15vh" }} className="card l2">
+              <div style={{ marginBottom: "13vh" }} className="card l2">
                 <div className="card-body l3">
                   <h4 className="l4">Lawyer Details</h4>
                   <AvGroup className="ncinput">
@@ -582,7 +769,7 @@ class NewCase extends Component {
                       name="lgender"
                       id="lgender"
                     >
-                      <option disabled> </option>
+                      <option hidden>Select Gender</option>
                       <option>Male</option>
                       <option>Female</option>
                       <option>Others</option>
@@ -659,7 +846,7 @@ class NewCase extends Component {
                     color="primary"
                     className="newcasebtn1"
                     outline="none"
-                    onClick={this.handlePrev}
+                    onClick={this.handlePrev2}
                   >
                     <i
                       style={{ marginRight: "7px" }}
@@ -672,7 +859,7 @@ class NewCase extends Component {
                     color="primary"
                     className="newcasebtn"
                     outline="none"
-                    onClick={this.handleNext1}
+                    onClick={this.handleNext2}
                   >
                     Next
                     <i
@@ -715,7 +902,7 @@ class NewCase extends Component {
                   </AvGroup>
                   <AvGroup className="ncinput">
                     <Label className="nc" for="uid">
-                      UID
+                      Bar Council ID
                     </Label>
                     <InputGroup>
                       <InputGroupAddon addonType="prepend">
@@ -803,7 +990,7 @@ class NewCase extends Component {
                   </AvGroup> */}
                   <AvGroup style={{ marginTop: "3vh" }} className="ncinput">
                     <Label className="nc" for="image">
-                      Attach Lawyer's Photo
+                      Lawyer Photo
                     </Label>
                     <InputGroup>
                       <Input
@@ -822,7 +1009,7 @@ class NewCase extends Component {
                     color="primary"
                     className="newcasebtn1"
                     outline="none"
-                    onClick={this.handlePrev1}
+                    onClick={this.handlePrev3}
                   >
                     <i
                       style={{ marginRight: "7px" }}
@@ -835,7 +1022,7 @@ class NewCase extends Component {
                     color="primary"
                     className="newcasebtn"
                     outline="none"
-                    onClick={this.handleNext2}
+                    onClick={this.handleNext3}
                   >
                     Next
                     <i
@@ -945,7 +1132,7 @@ class NewCase extends Component {
                     color="primary"
                     className="newcasebtn1"
                     outline="none"
-                    onClick={this.handlePrev2}
+                    onClick={this.handlePrev4}
                   >
                     <i
                       style={{ marginRight: "7px" }}
@@ -958,7 +1145,7 @@ class NewCase extends Component {
                     color="primary"
                     className="newcasebtn"
                     outline="none"
-                    onClick={this.handleNext3}
+                    onClick={this.handleNext4}
                   >
                     Next
                     <i
@@ -971,7 +1158,7 @@ class NewCase extends Component {
               </div>
             </div>
             <div className="co1" hidden={this.state.card5}>
-              <div className="card co2">
+              <div style={{marginBottom:'2vh'}} className="card co2">
                 <div className="card-body co4">
                   <h4 className="card-title co3">Court Details</h4>
                   <AvGroup className="ncinput">
@@ -997,27 +1184,26 @@ class NewCase extends Component {
                     </InputGroup>
                   </AvGroup>
                   <AvGroup className="ncinput">
-                    <Label className="nc" for="cname">
+                    <Label className="nc" for="cotype">
                       Type
                     </Label>
-                    <InputGroup>
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i
-                            class="fa fa-balance-scale"
-                            style={{ fontSize: "17px" }}
-                          ></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input
-                        name="cotype"
-                        id="cotype"
-                        onChange={this.Ccategory}
-                        value={this.state.ccategory}
-                        innerRef={(input) => (this.cotype = input)}
-                      />
-                    </InputGroup>
-                  </AvGroup>
+                    <AvField
+                      value={this.state.ccategory}
+                      onChange={this.Ccategory}
+                      innerRef={(input) => (this.cotype = input)}
+                      type="select"
+                      name="cotype"
+                      id="cotype"
+                    >
+                      <option hidden>Select Court Type</option>
+                      <option>Supreme</option>
+                      <option>High</option>
+                      <option>District / Subordinate</option>
+                      <option>Executive and Revenue</option>
+                      <option>Villlage / Panchayat / Rural</option>
+                      <option>Judicial</option>
+                    </AvField>                    
+                  </AvGroup>                 
 
                   <AvGroup className="ncinput">
                     <Label className="nc" for="cdist">
@@ -1111,7 +1297,7 @@ class NewCase extends Component {
                     color="primary"
                     className="newcasebtn1"
                     outline="none"
-                    onClick={this.handlePrev2}
+                    onClick={this.handlePrev5}
                   >
                     <i
                       style={{ marginRight: "7px" }}

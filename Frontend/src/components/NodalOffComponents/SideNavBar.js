@@ -13,7 +13,7 @@ class SideNavBar extends Component {
     super(props);
 
     this.state = {
-      h : true,
+      h : false,
       nc : false,
       mc : false,
       nu : false
