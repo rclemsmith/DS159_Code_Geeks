@@ -8,6 +8,7 @@ import AvField from "availity-reactstrap-validation/lib/AvField";
 import AvForm from "availity-reactstrap-validation/lib/AvForm";
 import { Input, InputGroup, InputGroupAddon, InputGroupText } from "reactstrap";
 import url from "../../backend_url";
+var isClosed = false;
 class Case extends Component {
   constructor(props) {
     super(props);
@@ -18,19 +19,29 @@ class Case extends Component {
       value: "",
       valu1: "",
       closecase: [],
-      casetype: "",
+      casetype: "Active",
+      courttype: "",
       hide1: true,
       hide2: true,
+      isClosed: false,
     };
+    this.Courttype = this.Courttype.bind(this);
     this.Casetype = this.Casetype.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleCurId = this.handleCurId.bind(this);
+    this.handleCourt = this.handleCourt.bind(this);
   }
 
   Casetype = (e) => {
     this.setState({
       casetype: e.target.value,
+    });
+  };
+
+  Courttype = (e) => {
+    this.setState({
+      courttype: e.target.value,
     });
   };
 
@@ -46,6 +57,57 @@ class Case extends Component {
         });
       })
       .catch((err) => console.log(err));
+  }
+
+  handleCourt(event) {
+    event.preventDefault();
+    this.setState({
+      courttype: this.cotype.value,
+    });
+    if (this.cotype.value == "All Courts") {
+      axios
+        .get(
+          url + "/department/admin/active/" + localStorage.getItem("deptname")
+        )
+        .then((res) => {
+          this.setState({
+            mycases: res.data,
+          });
+        });
+
+      axios
+        .get(
+          url + "/department/admin/closed/" + localStorage.getItem("deptname")
+        )
+        .then((res) => {
+          this.setState({
+            closecase: res.data,
+          });
+        });
+    } else {
+      axios
+        .get(
+          url +
+            "/department/admin/cases/filter/" +
+            localStorage.getItem("deptname") +
+            "/" +
+            this.cotype.value +
+            "/" +
+            isClosed
+        )
+        .then((res) => {
+          if (isClosed == true && res.data != []) {
+            this.setState({
+              closecase: res.data,
+            });
+          } else if (isClosed == false && res.data != []) {
+            console.log("supreme");
+            this.setState({
+              mycases: res.data,
+            });
+          }
+        });
+    }
   }
 
   handleClose(val) {
@@ -110,9 +172,11 @@ class Case extends Component {
     if (this.state.casetype == "Active") {
       hide = false;
       hide1 = true;
+      isClosed = false;
     } else if (this.state.casetype == "Closed") {
       hide1 = false;
       hide = true;
+      isClosed = true;
     }
     // if (this.state.casetype == "Active") {
     //   axios
@@ -212,6 +276,28 @@ class Case extends Component {
             </InputGroupText>
           </InputGroupAddon>
         </InputGroup>
+
+        <Input
+          type="select"
+          label="Select Court"
+          className="actcourtcase"
+          name="cotype"
+          id="cotype"
+          onChange={this.handleCourt}
+          value={this.state.courttype}
+          innerRef={(input) => (this.cotype = input)}
+        >
+          <option>Select Court</option>
+          <option>All Courts</option>
+          <option>Supreme Court of India</option>
+          <option>High Court</option>
+          <option>District Courts</option>
+          <option>Executive and Revenue Court</option>
+          <option>Village Court </option>
+          <option>Panchayat</option>
+          <option> Rural Court</option>
+          <option>Judicial Academics</option>
+        </Input>
 
         <div className="my1">
           <div className="row roww" hidden={hide}>
