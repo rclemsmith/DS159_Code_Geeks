@@ -83,32 +83,36 @@ class SecDashboard extends Component {
       () => {
         if (this.state.dept == "All Dept") {
           console.log("true");
-          this.setState({
-            highact: this.props.location.state.high.active,
-            highclose: this.props.location.state.high.closed,
-            hightotal: this.props.location.state.high.total,
-            supremeact: this.props.location.state.sup.active,
-            supremeclose: this.props.location.state.sup.closed,
-            supremetotal: this.props.location.state.sup.total,
-            districtact: this.props.location.state.dis.active,
-            districtclose: this.props.location.state.dis.closed,
-            districttotal: this.props.location.state.dis.total,
-            execact: this.props.location.state.exec.active,
-            execclose: this.props.location.state.exec.closed,
-            exectotal: this.props.location.state.exec.total,
-            vilact: this.props.location.state.vil.active,
-            vilclose: this.props.location.state.vil.closed,
-            viltotal: this.props.location.state.vil.total,
-            panact: this.props.location.state.pan.active,
-            panclose: this.props.location.state.pan.closed,
-            pantotal: this.props.location.state.pan.total,
-            ruract: this.props.location.state.rur.active,
-            rurclose: this.props.location.state.rur.closed,
-            rurtotal: this.props.location.state.rur.total,
-            judact: this.props.location.state.jud.active,
-            judclose: this.props.location.state.jud.closed,
-            judtotal: this.props.location.state.jud.total,
-          });
+          axios.get(url + "/secretary/alltotalCounts")
+            .then((res) => {
+              this.setState({
+                highact: res.data.highCount.active,
+                highclose: res.data.highCount.closed,
+                hightotal: res.data.highCount.total,
+                supremeact: res.data.supremeCount.active,
+                supremeclose: res.data.supremeCount.closed,
+                supremetotal: res.data.supremeCount.total,
+                districtact: res.data.districtCount.active,
+                districtclose: res.data.districtCount.closed,
+                districttotal: res.data.districtCount.total,
+                execact: res.data.executiveCount.active,
+                execclose: res.data.executiveCount.closed,
+                exectotal: res.data.executiveCount.total,
+                vilact: res.data.villageCount.active,
+                vilclose: res.data.villageCount.closed,
+                viltotal: res.data.villageCount.total,
+                panact: res.data.panchayatCount.active,
+                panclose: res.data.panchayatCount.closed,
+                pantotal: res.data.panchayatCount.total,
+                ruract: res.data.ruralCount.active,
+                rurclose: res.data.ruralCount.closed,
+                rurtotal: res.data.ruralCount.total,
+                judact: res.data.judicialCount.active,
+                judclose: res.data.judicialCount.closed,
+                judtotal: res.data.judicialCount.total,
+              });
+            });
+
         } else {
           axios
             .get(url + "/secretary/typecount/" + this.dept.value + "/Civil")
@@ -175,32 +179,36 @@ class SecDashboard extends Component {
 
     if (this.state.dept == "All Dept") {
       console.log("true");
-      this.setState({
-        highact: this.props.location.state.high.active,
-        highclose: this.props.location.state.high.closed,
-        hightotal: this.props.location.state.high.total,
-        supremeact: this.props.location.state.sup.active,
-        supremeclose: this.props.location.state.sup.closed,
-        supremetotal: this.props.location.state.sup.total,
-        districtact: this.props.location.state.dis.active,
-        districtclose: this.props.location.state.dis.closed,
-        districttotal: this.props.location.state.dis.total,
-        execact: this.props.location.state.exec.active,
-        execclose: this.props.location.state.exec.closed,
-        exectotal: this.props.location.state.exec.total,
-        vilact: this.props.location.state.vil.active,
-        vilclose: this.props.location.state.vil.closed,
-        viltotal: this.props.location.state.vil.total,
-        panact: this.props.location.state.pan.active,
-        panclose: this.props.location.state.pan.closed,
-        pantotal: this.props.location.state.pan.total,
-        ruract: this.props.location.state.rur.active,
-        rurclose: this.props.location.state.rur.closed,
-        rurtotal: this.props.location.state.rur.total,
-        judact: this.props.location.state.jud.active,
-        judclose: this.props.location.state.jud.closed,
-        judtotal: this.props.location.state.jud.total,
-      });
+      axios.get(url + "/secretary/alltotalCounts")
+        .then((res) => {
+          this.setState({
+            highact: res.data.highCount.active,
+            highclose: res.data.highCount.closed,
+            hightotal: res.data.highCount.total,
+            supremeact: res.data.supremeCount.active,
+            supremeclose: res.data.supremeCount.closed,
+            supremetotal: res.data.supremeCount.total,
+            districtact: res.data.districtCount.active,
+            districtclose: res.data.districtCount.closed,
+            districttotal: res.data.districtCount.total,
+            execact: res.data.executiveCount.active,
+            execclose: res.data.executiveCount.closed,
+            exectotal: res.data.executiveCount.total,
+            vilact: res.data.villageCount.active,
+            vilclose: res.data.villageCount.closed,
+            viltotal: res.data.villageCount.total,
+            panact: res.data.panchayatCount.active,
+            panclose: res.data.panchayatCount.closed,
+            pantotal: res.data.panchayatCount.total,
+            ruract: res.data.ruralCount.active,
+            rurclose: res.data.ruralCount.closed,
+            rurtotal: res.data.ruralCount.total,
+            judact: res.data.judicialCount.active,
+            judclose: res.data.judicialCount.closed,
+            judtotal: res.data.judicialCount.total,
+          });
+        });
+
     }
 
     axios
@@ -449,7 +457,7 @@ class SecDashboard extends Component {
               <h3 className="ddhead3">Bar Chart ( Department - Wise )</h3>
               <CanvasJSChart
                 options={options}
-                /* onRef={ref => this.chart = ref} */
+              /* onRef={ref => this.chart = ref} */
               />
             </div>
           </div>
