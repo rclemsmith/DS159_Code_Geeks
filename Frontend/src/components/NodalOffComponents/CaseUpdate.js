@@ -38,19 +38,29 @@ class CaseUpdate extends Component {
   handleSubmit(event) {
     event.preventDefault();
     var data = {};
+
+    const formData = new FormData();
+    formData.append("facts",this.facts.value);
+    formData.append("status",this.status.value);
     if (this.status.value == "Closed") {
       data = {
         facts: this.facts.value,
         status: this.status.value,
         isClosed: true,
       };
+      formData.append("isClosed",true);
+
     } else {
       data = {
         facts: this.facts.value,
         status: this.status.value,
         isClosed: false,
       };
-    }    
+      formData.append("isClosed",true);
+    }   
+    this.state.docs.forEach((document) => {
+      formData.append("documents", document);
+    });
 
     axios
       .post(url + 

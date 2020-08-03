@@ -204,7 +204,7 @@ router.post(
     console.log("Lawyer Image");
     console.log(req.files.layerimage);
     console.log("Respondant Docs");
-    console.log(req.files.)
+    // console.log(req.files.)
 
 
     console.log(req.files);
@@ -548,8 +548,6 @@ router.post("/:caseId/modify", multerUpload.array("documents",10),(req, res) => 
         facts: req.body.facts,
         status: req.body.status,
         isClosed: req.body.isClosed,
-        reply : req.body.reply,
-        
         mailPeriod : req.body.mailPeriod
       },
 
