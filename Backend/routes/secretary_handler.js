@@ -115,13 +115,26 @@ router.post("/login", passport.authenticate("secretary"), (req, res) => {
 router.get("/reports/:departmentName", (req, res) => {
   SuperAdmin.find({ name: req.params.departmentName })
     .then((admin) => {
-      res.status = 500;
+      res.status = 200;
       res.setHeader("Content-Type", "application/json");
       console.log(admin[0]);
       res.json({
         reports: admin[0].reports
       });
     });
+});
+
+router.get("/typecount/:departmentName",(req,res)=>{
+  Case.count({department : req.params.departmentName,type : "Civil"},(err,civilCount)=>{
+    Case.count({department : req.params.departmentName,type : "Criminal"},(err,criminalCount)=>{
+      res.status = 200;
+      res.setHeader("Content-Type", "application/json");
+      res.json({
+        civilCount: civilCount,
+        criminalCount: criminalCount
+      });
+    });
+  });
 });
 
 
