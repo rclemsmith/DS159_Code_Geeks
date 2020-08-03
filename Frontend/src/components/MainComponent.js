@@ -29,6 +29,8 @@ import LandPage from "./SecComponents/LandPage";
 import AddSummary from "./NodalOffComponents/AddSummary";
 import Synopsis from "./SecComponents/Synopsis";
 import AdminCase from "./AdminComponents/AdminCase";
+import AdDashboard from "./AdminComponents/AdDashboard";
+import AdminLog from "./AdminComponents/AdminLog";
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -70,6 +72,8 @@ class Main extends Component {
           <Route path="/:userId/addUser" component={AddUser} />
           <Route path="/:secId/casepg" component={DeptCasePage} />
           <Route path="/:adminId/casepg" component={DeptCasePage} />
+          <Route path="/:adminId/addashboard" component={AdDashboard} />
+          <Route path="/:adminId/logs" component={AdminLog} />
         </Switch>
       </div>
     );

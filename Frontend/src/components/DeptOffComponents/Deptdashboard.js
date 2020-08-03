@@ -4,6 +4,8 @@ import {
   buildStyles,
   CircularProgressbar,
 } from "react-circular-progressbar";
+// import Plot from "react-plotly.js";
+
 import "./style/dashboard.css";
 import Head from "../NodalOffComponents/Head";
 import axios from "axios";
@@ -70,9 +72,8 @@ class Deptdashboard extends Component {
 
   componentDidMount() {
     axios
-      .get(url + 
-        "/department/users/cases/cases/" +
-          this.props.location.state.dept
+      .get(
+        url + "/department/users/cases/cases/" + this.props.location.state.dept
       )
       .then((res) => {
         this.setState({
@@ -81,9 +82,8 @@ class Deptdashboard extends Component {
       });
 
     axios
-      .get(url + 
-        "/department/users/cases/hear/" +
-          this.props.location.state.dept
+      .get(
+        url + "/department/users/cases/hear/" + this.props.location.state.dept
       )
       .then((res) => {
         this.setState(
@@ -235,33 +235,6 @@ class Deptdashboard extends Component {
       }
     });
 
-    // var another = filtercase.map((key) => {
-    //   for (var nkey in key) {
-    //     filtercase[0][nkey].map((cs) => {
-    //       if (cs.createdAt.substring(5, 7) == "07") {
-    //         console.log(cs);
-    //         return (
-    //           <tr>
-    //             <td>July</td>
-    //             <td>{cs.name}</td>
-    //           </tr>
-    //         );
-    //       }
-    //     });
-    //   }
-    // });
-
-    // var display = filtercase.map((key) => {
-    //   for (var nkey in key) {
-    //     console.log(nkey);
-    //     return <td>{nkey}</td>;
-    //   }
-    // });
-    // console.log(filtercase);
-    // console.log(newyaer);
-    // console.log(cur);
-    // console.log(this.props.location.state.dept);
-    // console.log(this.state.cases);
     console.log(closeca);
     console.log(activeca);
     var chartData = {
@@ -302,7 +275,7 @@ class Deptdashboard extends Component {
     console.log(this.state.year);
     return (
       <>
-        <DeptHead name= {"Welcome " + this.props.location.state.offname}  />
+        <DeptHead name={"Welcome " + this.props.location.state.offname} />
         <div className="d1">
           <div className="row">
             <Button
@@ -398,7 +371,7 @@ class Deptdashboard extends Component {
                 </CircularProgressbarWithChildren>
               </div>
             </div>
-            <div  className="legen">
+            <div className="legen">
               <div className="row">
                 <div class="color-boxx"></div>
                 <span className="leg1">
@@ -413,7 +386,7 @@ class Deptdashboard extends Component {
               </div>
               <div className="row">
                 <div class="color-boxx2"></div>
-                <span style={{marginTop:'6.5vh'}} className="leg3">
+                <span style={{ marginTop: "6.5vh" }} className="leg3">
                   Closed Cases <span></span> {closeca}
                 </span>
               </div>
@@ -451,22 +424,21 @@ class Deptdashboard extends Component {
           </div>
           <p className="tablehead">MONTHLY CASE STATISTICS</p>
           <Input
-              name="year"
-              id="year"
-              type="select"
-              className="inn2"
-              placeholder="Select the year"
-              onChange={this.onChange}
-              value={this.state.year}
-              innerRef={(input) => (this.year = input)}
-            >
-              <option>Select the Year</option>
-              {newyaer.map((n) => {
-                return <option>{n}</option>;
-              })}
-            </Input>
-          <div className="iinn">            
-          </div>
+            name="year"
+            id="year"
+            type="select"
+            className="inn2"
+            placeholder="Select the year"
+            onChange={this.onChange}
+            value={this.state.year}
+            innerRef={(input) => (this.year = input)}
+          >
+            <option>Select the Year</option>
+            {newyaer.map((n) => {
+              return <option>{n}</option>;
+            })}
+          </Input>
+          <div className="iinn"></div>
           <div className="row tabless">
             <div className="col-12">
               <div className="table-responsive">
@@ -558,14 +530,7 @@ class Deptdashboard extends Component {
             <div className="row">
               <div className="col-md-4"></div>
               <div className="col-12 col-md-8 chartd">
-                <Bar
-                  data={chartData}
-                  width={100}
-                  height={50}
-                  options={{
-                    scales: { xAxes: [{ barPercentage: 0.3 }] },
-                  }}
-                />
+                {/* {Plotly.newPlot("myDiv", data, layout)} */}
               </div>
             </div>
             {/* 

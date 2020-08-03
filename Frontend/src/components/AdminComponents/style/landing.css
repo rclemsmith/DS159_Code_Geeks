@@ -86,7 +86,22 @@
   .lpadmin1 {
     background-color: rgb(240, 240, 240);
     height: 100vh;
+    margin-left: 26vh;
     overflow: hidden;
+  }
+
+  .lpadm1 {
+    background-color: rgb(240, 240, 240);
+    height: 100vh;
+    margin-left: 26vh;
+    overflow-y: scroll;
+  }
+
+  .lpadmin121 {
+    background-color: rgb(240, 240, 240);
+    height: 100vh;
+    margin-left: 26vh;
+    overflow-y: scroll;
   }
 
   .ad {
@@ -187,5 +202,43 @@
   .nerupu {
     margin-top: 4vh;
     margin-left: 27vh;
+  }
+
+  .alog1 {
+    margin-left: 10vh;
+    margin-top: 10vh;
+    color: black;
+    height: 110vh;
+    overflow-y: scroll;
+  }
+
+  .addash99 {
+    margin-left: 60vh;
+    margin-top: -45vh;
+  }
+
+  .addadate {
+    margin-left: 110vh;
+    margin-top: -40vh;
+  }
+
+  .adda12 {
+    margin-top: 2vh;
+    margin-left: 10vh;
+  }
+
+  .adlo1 {
+    border-top-left-radius: 20vh;
+    font-size: 19px;
+  }
+
+  .addatable {
+    margin-top: 15vh;
+    margin-left: -30vh;
+  }
+
+  .admdashcan {
+    margin-top: 10vh;
+    margin-left: 75vh;
   }
 }
