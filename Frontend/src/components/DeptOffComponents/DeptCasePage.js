@@ -211,7 +211,7 @@ class DeptCasePage extends Component {
                     </span>
                     <span className="ho1">{this.state.curcase.caseno}</span>
                   </div>
-                  <h4 style={{ fontWeight: "bold" }}>Case Details :</h4>
+                  <h4 style={{ fontWeight: "bold" }}>Case Details : </h4>
                   <div className="row">
                     {/* <img
                 src={casestudy}

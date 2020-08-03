@@ -102,7 +102,7 @@ class SecReport extends Component {
         <SecSideBar history={this.props.history} />
         <div className="lpadmin121">
           <h3 className="ad">
-            <span>&nbsp;&nbsp;</span>Welcome Admin
+            <span>&nbsp;&nbsp;</span>Welcome Secretary
           </h3>
 
           <div className="container alog1">

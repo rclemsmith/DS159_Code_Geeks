@@ -144,7 +144,7 @@ class SecSideBar extends Component {
                     fontSize: "24px",
                   }}
                 ></i>
-                Reports
+                Logs
               </h4>
             </NavItem>
             {/* <NavItem

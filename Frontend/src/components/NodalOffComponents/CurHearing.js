@@ -59,6 +59,10 @@ class CurHearing extends Component {
               className="fa fa-cloud-upload ch20"
             ></i>
           </div>
+          <div className="ch12">
+            <span className="ch13">Case ID:</span>
+            <span className="ch14">{this.props.location.state.curinvid}</span>
+          </div>
           <div className="ch3">
             <span className="ch4">CaseName :</span>
             <span className="curjudge">
@@ -98,14 +102,11 @@ class CurHearing extends Component {
             </span>
           </div>
           <p className="ctitle">Invoice:</p>
-          <div className="ch12">
-            <span className="ch13">Hearing ID:</span>
-            <span className="ch14">{this.props.location.state.curinvid}</span>
-          </div>
+          
           <div className="ch12">
             <span className="ch13">Charge:</span>
             <span className="ch14">
-              {this.props.location.state.curinvcharge}
+              {"Rs " + this.props.location.state.curinvcharge}
             </span>
           </div>
           <div className="ch12">

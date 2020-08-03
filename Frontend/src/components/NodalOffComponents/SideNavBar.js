@@ -48,7 +48,7 @@ class SideNavBar extends Component {
   }
 
   handleQR(){
-    
+
   }
 
   handleAdd() {
@@ -179,19 +179,6 @@ class SideNavBar extends Component {
                   style={{ marginLeft: "1vh", marginRight: "1.8vh" }}
                 ></i>
                 Log-out
-              </h4>
-            </NavItem>
-            <NavItem
-              className="navitem"
-              eventKey="case"
-              onClick={this.handleQR}
-            >
-              <h4 className="hh1">
-                <i
-                  className="fa fa-fw fa-sign-out"
-                  style={{ marginLeft: "1vh", marginRight: "1.8vh" }}
-                ></i>
-                QR - Code
               </h4>
             </NavItem>
           </Nav>

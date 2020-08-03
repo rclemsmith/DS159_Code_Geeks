@@ -228,9 +228,9 @@ class SecDashboard extends Component {
   }
 
   render() {
-    console.log(this.props.location.state.dis);
-    console.log(this.state.cri);
-    console.log(this.state.civ);
+    // console.log(this.props.location.state.dis);
+    // console.log(this.state.cri);
+    // console.log(this.state.civ);
     var options = {
       animationEnabled: true,
 
