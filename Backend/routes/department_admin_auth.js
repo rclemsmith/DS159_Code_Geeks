@@ -249,6 +249,7 @@ router.post(
       department: req.body.department,
       lawyer: lawyer,
       court: court,
+      mailPeriod : 5,
       judge: req.body.judge,
       oppositionlawyer: req.body.oppositionlawyer,
       respondants: respondants,
@@ -536,6 +537,9 @@ router.post("/:caseId/modify", (req, res) => {
         facts: req.body.facts,
         status: req.body.status,
         isClosed: req.body.isClosed,
+        reply : req.body.reply,
+        rejoinder : req.body.rejoinder,
+        mailPeriod : req.body.mailPeriod
       },
     },
     (err, updated) => {

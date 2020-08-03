@@ -110,11 +110,11 @@ app.get("/image/:filename", (req, res) => {
   });
 });
 
-app.get("/dummy",(req,res)=>{
-  Cases.updateMany({},{$set :{"lawyer.image" : "dd02fea32df10667d4ee6a3ae65093ce.jpg"}})
-  .then((done)=>{
-    res.send("Success");
-  });
+app.get("/dummy", (req, res) => {
+  Cases.updateMany({}, { $set: { "rejoinder": "Rejoinder Action","reply" : "Reply" } })
+    .then((done) => {
+      res.send("Success");
+    });
 });
 
 app.use("/client", clientRouter);
@@ -154,23 +154,22 @@ cron.schedule('0 0 0 * * *', () => {
         const date1 = new Date();
         const diffTime = Math.abs(hearing.nexthearingdate - date1);
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        if (diffDays < 5) {
-          console.log(diffDays + " days");
-          Cases.findById(hearing.caseid)
-            .then((foundCase) => {
-              if (foundCase != null) {
-                if (foundCase.respondantmail) {
-                  console.log(foundCase.respondantmail);
-                  var subject = "Upcoming Hearing Alert" ;
-                  var text = "Hello, You have a hearing coming up on " + hearing.nexthearingdate.toDateString() + " for the Case " + foundCase.name;
-                  console.log(text);
-                  sendMail(foundCase.respondantmail,subject,text);
+
+        console.log(diffDays + " days");
+        Cases.findById(hearing.caseid)
+          .then((foundCase) => {
+            if (foundCase != null) {
+              if (foundCase.respondantmail) {
+                console.log(foundCase.respondantmail);
+                var subject = "Upcoming Hearing Alert";
+                var text = "Hello, You have a hearing coming up on " + hearing.nexthearingdate.toDateString() + " for the Case " + foundCase.name;
+                console.log(text);
+                if (diffDays < (foundCase.mailPeriod + 1)) {
+                  sendMail(foundCase.respondantmail, subject, text);
                 }
-
               }
-
-            });
-        }
+            }
+          });
       });
     })
     .catch((err) => console.log(err));

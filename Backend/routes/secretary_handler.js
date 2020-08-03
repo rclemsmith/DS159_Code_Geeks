@@ -5,6 +5,7 @@ var passport = require("passport");
 const Case = require("../models/cases");
 const Secretary = require("../models/secretary");
 const transporter = require("../services/mailservice");
+const SuperAdmin = require("../models/superadmin");
 
 router.post("/login", passport.authenticate("secretary"), (req, res) => {
   rand = Math.floor(Math.random() * 100000 + Math.random() * 1000);
@@ -111,6 +112,28 @@ router.post("/login", passport.authenticate("secretary"), (req, res) => {
   });
 });
 
+router.get("/reports/:departmentName", (req, res) => {
+  SuperAdmin.find({ name: req.params.departmentName })
+    .then((admin) => {
+      res.status = 200;
+      res.setHeader("Content-Type", "application/json");
+      console.log(admin[0]);
+      res.json({
+        reports: admin[0].reports
+      });
+    });
+});
+
+router.get("/typecount/:departmentName/:caseType", (req, res) => {
+  Case.count({ department: req.params.departmentName, type: req.params.caseType }, (err, Count) => {
+    res.status = 200;
+    res.setHeader("Content-Type", "application/json");
+    res.json({
+      Count: Count,
+    });
+  });
+});
+
 
 
 router.post("/signup", (req, res, next) => {
@@ -146,33 +169,83 @@ router.post("/signup", (req, res, next) => {
 
 
 router.get("/counts/:departmentName", (req, res) => {
-  Case.count({ "court.ccategory": "Supreme Court of India", department: req.params.departmentName }, (err, countSupreme) => {
-    Case.count({ "court.ccategory": "High Court", department: req.params.departmentName }, (err, countHigh) => {
-      Case.count({ "court.ccategory": "District Courts", department: req.params.departmentName }, (err, countDistrict) => {
-        Case.count({ "court.ccategory": "Executive and Revenue Court", department: req.params.departmentName }, (err, countExec) => {
-          Case.count({ "court.ccategory": "Village Court", department: req.params.departmentName }, (err, countVillage) => {
-            Case.count({ "court.ccategory": "Panchayat", department: req.params.departmentName }, (err, countPanchayat) => {
-              Case.count({ "court.ccategory": "Rural Court", department: req.params.departmentName }, (err, countRural) => {
-                Case.count({ "court.ccategory": "Judicial Academics", department: req.params.departmentName }, (err, countJud) => {
+  Case.count({ "court.ccategory": "Supreme Court of India", isClosed: false, department: req.params.departmentName }, (err, acountSupreme) => {
+    Case.count({ "court.ccategory": "High Court", isClosed: false, department: req.params.departmentName }, (err, acountHigh) => {
+      Case.count({ "court.ccategory": "District Courts", isClosed: false, department: req.params.departmentName }, (err, acountDistrict) => {
+        Case.count({ "court.ccategory": "Executive and Revenue Court", isClosed: false, department: req.params.departmentName }, (err, acountExec) => {
+          Case.count({ "court.ccategory": "Village Court", isClosed: false, department: req.params.departmentName }, (err, acountVillage) => {
+            Case.count({ "court.ccategory": "Panchayat", isClosed: false, department: req.params.departmentName }, (err, acountPanchayat) => {
+              Case.count({ "court.ccategory": "Rural Court", isClosed: false, department: req.params.departmentName }, (err, acountRural) => {
+                Case.count({ "court.ccategory": "Judicial Academics", isClosed: false, department: req.params.departmentName }, (err, acountJud) => {
+                  Case.count({ "court.ccategory": "Supreme Court of India", isClosed: true, department: req.params.departmentName }, (err, ccountSupreme) => {
+                    Case.count({ "court.ccategory": "High Court", isClosed: true, department: req.params.departmentName }, (err, ccountHigh) => {
+                      Case.count({ "court.ccategory": "District Courts", isClosed: true, department: req.params.departmentName }, (err, ccountDistrict) => {
+                        Case.count({ "court.ccategory": "Executive and Revenue Court", isClosed: true, department: req.params.departmentName }, (err, ccountExec) => {
+                          Case.count({ "court.ccategory": "Village Court", isClosed: true, department: req.params.departmentName }, (err, ccountVillage) => {
+                            Case.count({ "court.ccategory": "Panchayat", isClosed: true, department: req.params.departmentName }, (err, ccountPanchayat) => {
+                              Case.count({ "court.ccategory": "Rural Court", isClosed: true, department: req.params.departmentName }, (err, ccountRural) => {
+                                Case.count({ "court.ccategory": "Judicial Academics", isClosed: true, department: req.params.departmentName }, (err, ccountJud) => {
+                                  var totalCount = acountDistrict + acountExec + acountHigh + acountJud + acountPanchayat + acountRural + acountSupreme + acountVillage + ccountDistrict + ccountExec + ccountHigh + ccountJud + ccountPanchayat + ccountRural + ccountSupreme + ccountVillage;
 
-                  var totalCount = countDistrict + countExec + countHigh + countJud + countPanchayat + countRural + countSupreme + countVillage;
+                                  res.statusCode = 200;
+                                  res.setHeader("Content-Type", "application/json");
+                                  res.json({
+                                    success: true,
+                                    department: req.params.departmentName,
+                                    supremeCount: {
+                                      active: acountSupreme,
+                                      closed: ccountSupreme,
+                                      total: acountSupreme + ccountSupreme
+                                    },
+                                    highCount: {
+                                      active: acountHigh,
+                                      closed: ccountHigh,
+                                      total: acountHigh + ccountHigh
+                                    },
+                                    districtCount: {
+                                      active: acountDistrict,
+                                      closed: ccountDistrict,
+                                      total: acountDistrict + ccountDistrict
+                                    },
+                                    executiveCount: {
+                                      active: acountExec,
+                                      closed: ccountExec,
+                                      total: acountExec + ccountExec
+                                    },
+                                    villageCount: {
+                                      active: acountVillage,
+                                      closed: ccountVillage,
+                                      total: acountVillage + ccountVillage
+                                    },
+                                    panchayatCount: {
+                                      active: acountPanchayat,
+                                      closed: ccountPanchayat,
+                                      total: acountPanchayat + ccountPanchayat
+                                    },
+                                    ruralCount: {
+                                      active: acountRural,
+                                      closed: ccountRural,
+                                      total: acountRural + ccountRural
+                                    },
+                                    judicialCount: {
+                                      active: acountJud,
+                                      closed: ccountJud,
+                                      total: acountJud + ccountJud
+                                    },
+                                    totalCounts: totalCount
+                                  });
 
-                  res.statusCode = 200;
-                  res.setHeader("Content-Type", "application/json");
-                  res.json({
-                    success: true,
-                    supremeCount: countSupreme,
-                    highCount: countHigh,
-                    districtCount: countDistrict,
-                    executiveCount: countExec,
-                    villageCount: countVillage,
-                    panchayatCount: countPanchayat,
-                    ruralCount: countRural,
-                    judicialCount: countJud,
-                    department: req.params.departmentName,
-                    totalCounts: totalCount
+
+
+                                });
+                              });
+                            });
+                          });
+                        });
+                      });
+                    });
+
                   });
-
                 });
               });
             });
