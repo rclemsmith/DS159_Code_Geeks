@@ -5,6 +5,7 @@ import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import axios from "axios";
 import { bind } from "lodash";
 import url from "../../backend_url";
+import SideBar from "./Sidebar";
 
 class LandingPage extends Component {
   constructor(props) {
@@ -97,7 +98,7 @@ class LandingPage extends Component {
 
   componentDidMount() {
     axios
-      .get(url + "/department/admin/nodal/" + this.props.location.state.dept)
+      .get(url + "/department/admin/nodal/" + localStorage.getItem("addept"))
       .then((res) => {
         this.setState({
           nodalad: res.data,
@@ -130,156 +131,162 @@ class LandingPage extends Component {
       plus = true;
     }
     return (
-      <div className="lpadmin1">
-        <h3 className="ad">
-          <span>&nbsp;&nbsp;</span>Welcome Admin
-          <button
-            className="btn btn-primary lpbtn11"
-            onClick={this.handleLogout}
-            style={{ float: "right", marginTop: "-4px", marginRight: "18px" }}
-          >
-            <i style={{ marginRight: "7px" }} className="fa fa-sign-out"></i>
-            Logout
-          </button>
-        </h3>
-        <div className="cont123">
-          <div className="row landpage2" hidden={this.state.hide}>
-            <div className="card landpg">
-              <span style={{ marginTop: "10px" }} className="card-title">
-                DETAILS
-              </span>
-              <span>
-                <button
-                  className="btn btn primary bt"
-                  onClick={this.handleClose}
-                >
-                  <i className="fa fa-close"></i>
-                </button>
-              </span>
-              <div className="card-body">
-                <AvForm>
-                  <AvField
-                    type="text"
-                    name="name"
-                    id="name"
-                    label="Name"
-                    onChange={this.onChange}
-                    innerRef={(input) => (this.name = input)}
-                  />
-                  <AvField
-                    name="email"
-                    id="email"
-                    type="email"
-                    onChange={this.onChange}
-                    label="E-Mail"
-                    innerRef={(input) => (this.email = input)}
-                    required
-                  />
-                  <AvField
-                    name="username"
-                    id="username"
-                    type="text"
-                    onChange={this.onChange}
-                    label="Username"
-                    innerRef={(input) => (this.username = input)}
-                    required
-                  />
-                  <AvField
-                    name="password"
-                    id="password"
-                    type="password"
-                    onChange={this.onChange}
-                    label="Password"
-                    innerRef={(input) => (this.password = input)}
-                    required
-                  />
+      <>
+        <SideBar history={this.props.history} />
+        <div className="lpadmin1">
+          <h3 className="ad">
+            <span>&nbsp;&nbsp;</span>Welcome Admin
+            <button
+              className="btn btn-primary lpbtn11"
+              onClick={this.handleLogout}
+              style={{ float: "right", marginTop: "-4px", marginRight: "18px" }}
+            >
+              <i style={{ marginRight: "7px" }} className="fa fa-sign-out"></i>
+              Logout
+            </button>
+          </h3>
+          <div className="cont123">
+            <div className="row landpage2" hidden={this.state.hide}>
+              <div className="card landpg">
+                <span style={{ marginTop: "10px" }} className="card-title">
+                  DETAILS
+                </span>
+                <span>
                   <button
-                    style={{ marginLeft: "45%" }}
-                    className="btn btn-primary"
-                    onClick={this.handleSubmit}
+                    className="btn btn primary bt"
+                    onClick={this.handleClose}
                   >
-                    Submit
+                    <i className="fa fa-close"></i>
                   </button>
-                </AvForm>
+                </span>
+                <div className="card-body">
+                  <AvForm>
+                    <AvField
+                      type="text"
+                      name="name"
+                      id="name"
+                      label="Name"
+                      onChange={this.onChange}
+                      innerRef={(input) => (this.name = input)}
+                    />
+                    <AvField
+                      name="email"
+                      id="email"
+                      type="email"
+                      onChange={this.onChange}
+                      label="E-Mail"
+                      innerRef={(input) => (this.email = input)}
+                      required
+                    />
+                    <AvField
+                      name="username"
+                      id="username"
+                      type="text"
+                      onChange={this.onChange}
+                      label="Username"
+                      innerRef={(input) => (this.username = input)}
+                      required
+                    />
+                    <AvField
+                      name="password"
+                      id="password"
+                      type="password"
+                      onChange={this.onChange}
+                      label="Password"
+                      innerRef={(input) => (this.password = input)}
+                      required
+                    />
+                    <button
+                      style={{ marginLeft: "45%" }}
+                      className="btn btn-primary"
+                      onClick={this.handleSubmit}
+                    >
+                      Submit
+                    </button>
+                  </AvForm>
+                </div>
+              </div>
+            </div>
+            <div className="col-xl-6">
+              <div className="table-responsive lptable2">
+                <table className="table" style={{ color: "#fff" }}>
+                  <thead className="thead-light">
+                    <tr>
+                      <th></th>
+                      <th colSpan="2">
+                        <p style={{ marginLeft: "100px" }} className="offt1">
+                          NODAL OFFICER
+                        </p>
+                        <i
+                          hidden={plus}
+                          style={{ fontSize: "21px", marginLeft: "10px" }}
+                          onClick={this.handleUser}
+                          className="fa fa-plus-circle"
+                        ></i>
+                      </th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <th className="tabhead">Name</th>
+                      <th className="tabhead">Username</th>
+                      <th className="tabhead">Email</th>
+                      <th className="tabhead">Remove</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {this.state.nodalad.map((n) => {
+                      console.log(this.state.nodalad);
+                      return (
+                        <tr onClick={() => this.handleSelect(n._id)}>
+                          <td style={{ textTransform: "capitalize" }}>
+                            {n.nodalname}
+                          </td>
+                          <td>{n.username}</td>
+                          <td>{n.email}</td>
+                          <td
+                            onClick={this.toggleModal}
+                            hidden={this.state.hid}
+                          >
+                            <i
+                              style={{ marginLeft: "30px" }}
+                              class="fa fa-times"
+                            ></i>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+              <div>
+                <button
+                  className="btn btn-primary nerupu"
+                  onClick={this.handleFor}
+                >
+                  Click here to see case details
+                </button>
               </div>
             </div>
           </div>
-          <div className="col-xl-6">
-            <div className="table-responsive lptable2">
-              <table className="table" style={{ color: "#fff" }}>
-                <thead className="thead-light">
-                  <tr>
-                    <th></th>
-                    <th colSpan="2">
-                      <p style={{ marginLeft: "100px" }} className="offt1">
-                        NODAL OFFICER
-                      </p>
-                      <i
-                        hidden={plus}
-                        style={{ fontSize: "21px", marginLeft: "10px" }}
-                        onClick={this.handleUser}
-                        className="fa fa-plus-circle"
-                      ></i>
-                    </th>
-                    <th></th>
-                  </tr>
-                  <tr>
-                    <th className="tabhead">Name</th>
-                    <th className="tabhead">Username</th>
-                    <th className="tabhead">Email</th>
-                    <th className="tabhead">Remove</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {this.state.nodalad.map((n) => {
-                    console.log(this.state.nodalad);
-                    return (
-                      <tr onClick={() => this.handleSelect(n._id)}>
-                        <td style={{ textTransform: "capitalize" }}>
-                          {n.nodalname}
-                        </td>
-                        <td>{n.username}</td>
-                        <td>{n.email}</td>
-                        <td onClick={this.toggleModal} hidden={this.state.hid}>
-                          <i
-                            style={{ marginLeft: "30px" }}
-                            class="fa fa-times"
-                          ></i>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-            <div>
-              <button
-                className="btn btn-primary nerupu"
-                onClick={this.handleFor}
-              >
-                Click here to see case details
-              </button>
-            </div>
-          </div>
-        </div>
-        <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-          <ModalHeader toggle={this.toggleModal}>DELETE</ModalHeader>
-          <ModalBody>
-            <p>Are you sure you want to delete</p>
-            <div>
-              <button className="btn btn-primary" onClick={this.handleDelete}>
-                YES
-              </button>
-            </div>
+          <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+            <ModalHeader toggle={this.toggleModal}>DELETE</ModalHeader>
+            <ModalBody>
+              <p>Are you sure you want to delete</p>
+              <div>
+                <button className="btn btn-primary" onClick={this.handleDelete}>
+                  YES
+                </button>
+              </div>
 
-            <div className="lppbt">
-              <button className="btn btn-primary " onClick={this.toggleModal}>
-                NO
-              </button>
-            </div>
-          </ModalBody>
-        </Modal>
-      </div>
+              <div className="lppbt">
+                <button className="btn btn-primary " onClick={this.toggleModal}>
+                  NO
+                </button>
+              </div>
+            </ModalBody>
+          </Modal>
+        </div>
+      </>
     );
   }
 }

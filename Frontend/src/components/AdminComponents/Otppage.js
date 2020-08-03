@@ -15,8 +15,9 @@ class Otppage extends Component {
     if (this.otp.value == this.props.location.state.otp) {
       localStorage.setItem("adminId", this.props.location.state.userId);
       localStorage.setItem("token", this.props.location.state.token);
+      localStorage.setItem("addept", this.props.location.state.dept);
       this.props.history.push({
-        pathname: "/" + localStorage.getItem("adminId") + "/adminPage",
+        pathname: "/" + localStorage.getItem("adminId") + "/addashboard",
         state: {
           dept: this.props.location.state.dept,
         },
