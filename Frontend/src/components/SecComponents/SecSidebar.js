@@ -8,7 +8,7 @@ import SideNav, {
   NavText,
 } from "@trendmicro/react-sidenav";
 import "../NodalOffComponents/styles/react-sidenav.css";
-class SideBar extends Component {
+class SecSideBar extends Component {
   constructor(props) {
     super(props);
 
@@ -182,4 +182,4 @@ class SideBar extends Component {
   }
 }
 
-export default SideBar;
+export default SecSideBar;

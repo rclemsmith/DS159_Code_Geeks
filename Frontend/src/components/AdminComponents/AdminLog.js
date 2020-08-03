@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import SideBar from "./Sidebar";
 import "./style/landing.css";
 
-var count = -1;
 class AdminLog extends Component {
   constructor(props) {
     super(props);
@@ -19,6 +18,7 @@ class AdminLog extends Component {
   }
 
   render() {
+    var count = 0;
     var arr = [];
     arr.push(this.state.logs.split(","));
     arr = arr.reverse();

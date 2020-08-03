@@ -16,8 +16,9 @@ class SOtpage extends Component {
     if (this.otp.value == this.props.location.state.otp) {
       localStorage.setItem("secId", this.props.location.state.userId);
       localStorage.setItem("token", this.props.location.state.token);
+      localStorage.setItem("secdept", this.props.location.state.dept);
       this.props.history.push({
-        pathname: "/" + localStorage.getItem("secId") + "/landpage",
+        pathname: "/" + localStorage.getItem("secId") + "/secdashboard",
         state: {
           dept: this.props.location.state.dept,
         },
