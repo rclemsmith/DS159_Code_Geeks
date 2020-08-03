@@ -378,10 +378,14 @@ router.post(
         curhearingverdict: req.body.verdict,
         nexthearingdate: req.body.nexthearing,
         documents: documents,
+        hearingcaseid:req.body.hearingcaseid,
+        invcharge : req.body.hearingcharge,
+        invstatus : req.body.invstatus
+
       });
 
       hearing.curhearingwitness.push.apply(hearing.curhearingwitness, witness1);
-      // console.log(hearing);
+      console.log(hearing);
 
       Hearing.create(hearing)
         .then((curhear) => {
@@ -441,6 +445,7 @@ router.post("/:hearingId/update", (req, res) => {
         curhearinglawyer: req.body.curlawyer,
         curhearingverdict: req.body.verdict,
         nexthearingdate: req.body.nexthearing,
+        invstatus : req.body.invtran
       },
       $push: { curhearingwitness: witness1 },
     },

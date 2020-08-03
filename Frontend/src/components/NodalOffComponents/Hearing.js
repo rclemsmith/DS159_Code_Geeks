@@ -101,7 +101,9 @@ class Hearing extends Component {
 
     else{    
       const formData = new FormData();
-    
+      formData.append("hearingcaseid",this.state.hearingcaseid);
+      formData.append("hearingcharge",this.state.hearingcharge);
+      formData.append("invstatus",this.state.invstatus);
       formData.append("curdate",this.state.hearingdate);
       formData.append("curfact",this.state.hearingfact);
       formData.append("judge",this.state.hearingjudge);

@@ -22,7 +22,10 @@ var HearingSchema = new Schema({
   nexthearingdate: Date,
   department: String,
   finalverdict : String,
-  documents : []
+  documents : [],
+  hearingcaseid : String,
+  invcharge : String,
+  invstatus : String
 });
 
 module.exports = mongoose.model("Hearing", HearingSchema);
