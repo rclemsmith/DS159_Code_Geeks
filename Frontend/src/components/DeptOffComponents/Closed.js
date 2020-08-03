@@ -111,13 +111,12 @@ class Closed extends Component {
             <div>
               <p className="close4">Type : {close.type}</p>
             </div>
-
-            <div className="row" style={{ marginLeft: "0vh" }}>
-              <p style={{ wordSpacing: "4px" }} className="close4">
-                Facts :{" "}
-              </p>
-              <span className="fact">{close.facts.substring(0, 70)} ...</span>
+            <div>
+              <p className="close4">Petitioner : {close.opposition}</p>
             </div>
+            <div>
+              <p className="close4">Type : {close.lawyer.lname}</p>
+            </div>            
           </div>
         </div>
       );

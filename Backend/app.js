@@ -111,9 +111,14 @@ app.get("/image/:filename", (req, res) => {
 });
 
 app.get("/dummy", (req, res) => {
-  Cases.updateMany({}, { $set: { "rejoinderDocs": [] } })
-    .then((done) => {
-      res.send("Success");
+  // Cases.updateMany({}, { $set: { "rejoinderDocs": [] } })
+  //   .then((done) => {
+  //     res.send("Success");
+  //   });
+
+    Hearing.updateMany({},{$set : {hearingcaseid : "AXSI9839", invcharge: "240" ,invstatus : "Not Paid" }})
+    .then((done)=>{
+        res.send("Success");
     });
 });
 

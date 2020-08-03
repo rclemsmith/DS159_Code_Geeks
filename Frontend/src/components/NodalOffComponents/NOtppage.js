@@ -14,8 +14,7 @@ class NOtppage extends Component {
   handleSubmit(event) {
     event.preventDefault();
     if (
-      this.otp.value == this.props.location.state.otp ||
-      this.otp.value == 1808
+      this.otp.value == this.props.location.state.otp
     ) {
       localStorage.setItem("userId", this.props.location.state.userId);
       localStorage.setItem("token", this.props.location.state.token);
