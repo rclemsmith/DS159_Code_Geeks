@@ -3,6 +3,7 @@ var router = express.Router();
 var authenticate = require("../authenticate");
 var passport = require("passport");
 const SuperAdmin = require("../models/superadmin");
+const Cases = require("../models/cases");
 
 const transporter = require("../services/mailservice");
 
@@ -16,6 +17,9 @@ router.post("/login", passport.authenticate("superadmin"), (req, res) => {
     subject: "Please confirm your Email account",
     text: " This is your OTP for Login : " + rand,
   };
+
+  
+
 
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
@@ -46,7 +50,7 @@ router.post("/signup", (req, res, next) => {
   var superAdmin = new SuperAdmin({
     username: req.body.username,
     name: req.body.name,
-    email : req.body.email
+    email: req.body.email
   });
   SuperAdmin.register(superAdmin, req.body.password, (err, admin) => {
     console.log("Regsitered");
