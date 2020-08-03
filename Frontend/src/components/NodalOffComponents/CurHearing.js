@@ -34,7 +34,13 @@ class CurHearing extends Component {
     console.log(this.props.location.state.curdoc);
     console.log(this.props.location.state.curfact);
     return (
-      <div style={{ backgroundColor: "rgb(240,240,240)", overflow: "scroll",height:'100vh' }}>
+      <div
+        style={{
+          backgroundColor: "rgb(240,240,240)",
+          overflow: "scroll",
+          height: "100vh",
+        }}
+      >
         <SideNavBar history={this.props.history} />
         <Head name="Hearing Report" />
         <div className="ch1">
@@ -91,16 +97,30 @@ class CurHearing extends Component {
                 .join("-")}
             </span>
           </div>
+          <p className="ctitle">Invoice:</p>
+          <div className="ch12">
+            <span className="ch13">Hearing ID:</span>
+            <span className="ch14">{this.props.location.state.curinvid}</span>
+          </div>
+          <div className="ch12">
+            <span className="ch13">Charge:</span>
+            <span className="ch14">
+              {this.props.location.state.curinvcharge}
+            </span>
+          </div>
+          <div className="ch12">
+            <span className="ch13">Status:</span>
+            <span className="ch14">
+              {this.props.location.state.curinvstatus}
+            </span>
+          </div>
+
           {this.props.location.state.curdoc.map((c) => {
             console.log(c);
             return (
               <div className="ch12">
-                <span className="ch13">Document:</span>
                 <span className="ch14">
-                  <a
-                    href={url +"/image/" + c}
-                    download
-                  >
+                  <a href={url + "/image/" + c} download>
                     Click to download
                   </a>
                 </span>

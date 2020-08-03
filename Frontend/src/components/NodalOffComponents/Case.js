@@ -169,15 +169,18 @@ class Case extends Component {
   render() {
     var hide = false;
     var hide1 = true;
-    if (this.state.casetype == "Active") {
+    if (this.state.casetype.substring(0, 6) == "Active") {
       hide = false;
       hide1 = true;
       isClosed = false;
-    } else if (this.state.casetype == "Closed") {
+    } else if (this.state.casetype.substring(0, 6) == "Closed") {
+      console.log(hide1);
       hide1 = false;
       hide = true;
       isClosed = true;
     }
+    console.log(this.state.casetype);
+    console.log(hide1);
     // if (this.state.casetype == "Active") {
     //   axios
     //     .get(
@@ -218,7 +221,6 @@ class Case extends Component {
           className="actclosecase"
           name="ctype"
           id="ctype"
-          onSelect={this.handleSel}
           onChange={this.Casetype}
           value={this.state.casetype}
           innerRef={(input) => (this.ctype = input)}
@@ -311,7 +313,9 @@ class Case extends Component {
                   >
                     <h3 className="card-title mytitle">{mycase.name}</h3>
                     <div className="my2">
-                      <span style={{wordSpacing:'29px'}} className="myspan">ID :</span>
+                      <span style={{ wordSpacing: "29px" }} className="myspan">
+                        ID :
+                      </span>
                       <span className="myspan1">{mycase.caseno}</span>
                     </div>
                     <div className="my2">
@@ -326,7 +330,7 @@ class Case extends Component {
                       <span className="myspan">Lawyer :</span>
                       <span className="myspan1">{mycase.lawyer.lname}</span>
                     </div>
-                    
+
                     {/* <div className="my3">
                       <span className="my4">Facts :</span>
                       <span className="card-text cardd-text">
@@ -349,8 +353,10 @@ class Case extends Component {
                     onClick={() => this.handleCurId(mycase._id)}
                   >
                     <h3 className="card-title mytitle">{mycase.name}</h3>
-                    <div style={{marginBottom:'2vh'}} className="my2">
-                      <span style={{wordSpacing:'29px'}} className="myspan">ID :</span>
+                    <div style={{ marginBottom: "2vh" }} className="my2">
+                      <span style={{ wordSpacing: "29px" }} className="myspan">
+                        ID :
+                      </span>
                       <span className="myspan1">{mycase.caseno}</span>
                     </div>
                     <div className="my2">
