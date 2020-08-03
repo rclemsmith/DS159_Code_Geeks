@@ -296,9 +296,16 @@ router.get("/reports/:departmentName", (req, res) => {
     res.status = 200;
     res.setHeader("Content-Type", "application/json");
     console.log(admin[0]);
-    res.json({
-      reports: admin[0].reports,
-    });
+    if(admin[0]){
+      res.json({
+        reports: admin[0].reports,
+      });
+    }else{
+      res.json({
+        reports: [],
+      });
+    }
+    
   });
 });
 

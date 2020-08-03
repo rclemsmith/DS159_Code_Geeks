@@ -13,10 +13,10 @@ class SideNavBar extends Component {
     super(props);
 
     this.state = {
-      h : false,
-      nc : false,
-      mc : false,
-      nu : false
+      h: false,
+      nc: false,
+      mc: false,
+      nu: false
     };
     this.handleUser = this.handleUser.bind(this);
     this.handleDash = this.handleDash.bind(this);
@@ -24,6 +24,7 @@ class SideNavBar extends Component {
     this.handleCase = this.handleCase.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.handleQR = this.handleQR.bind(this);
   }
 
   handleUser() {
@@ -32,8 +33,8 @@ class SideNavBar extends Component {
       nc: false,
       mc: false,
       nu: true
-    },() => {})
-    this.props.history.push("/" + localStorage.getItem("userId") + "/addUser");    
+    }, () => { })
+    this.props.history.push("/" + localStorage.getItem("userId") + "/addUser");
   }
 
   handleCase() {
@@ -42,8 +43,12 @@ class SideNavBar extends Component {
       nc: false,
       mc: true,
       nu: false
-    },() => {})
+    }, () => { })
     this.props.history.push("/" + localStorage.getItem("userId") + "/myCases");
+  }
+
+  handleQR(){
+    
   }
 
   handleAdd() {
@@ -52,7 +57,7 @@ class SideNavBar extends Component {
       nc: true,
       mc: false,
       nu: false
-    },() => {})
+    }, () => { })
     this.props.history.push("/" + localStorage.getItem("userId") + "/newCase");
   }
 
@@ -62,7 +67,7 @@ class SideNavBar extends Component {
       nc: false,
       mc: false,
       nu: false
-    },() => {})
+    }, () => { })
     this.props.history.push(
       "/" + localStorage.getItem("userId") + "/dashboard"
     );
@@ -174,6 +179,19 @@ class SideNavBar extends Component {
                   style={{ marginLeft: "1vh", marginRight: "1.8vh" }}
                 ></i>
                 Log-out
+              </h4>
+            </NavItem>
+            <NavItem
+              className="navitem"
+              eventKey="case"
+              onClick={this.handleQR}
+            >
+              <h4 className="hh1">
+                <i
+                  className="fa fa-fw fa-sign-out"
+                  style={{ marginLeft: "1vh", marginRight: "1.8vh" }}
+                ></i>
+                QR - Code
               </h4>
             </NavItem>
           </Nav>
