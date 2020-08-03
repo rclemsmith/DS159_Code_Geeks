@@ -232,7 +232,7 @@ class AdDashboard extends Component {
             <span>&nbsp;&nbsp;</span>Welcome Admin
           </h3>
           <div className="adda12">
-            <div className="newdash22">
+            <div style={{marginLeft:'0vh'}} className="newdash22">
               <CircularProgressbarWithChildren
                 value={100}
                 className="newdash66"
@@ -265,7 +265,7 @@ class AdDashboard extends Component {
             </div>
           </div>
           <div className="addash99">
-            <div className="legendd">
+            <div style={{marginTop:'14vh'}} className="legendd">
               <div style={{ marginTop: "3vh" }} className="row">
                 <div class="color-boxx"></div>
                 <span className="legg1">Total Cases {total}</span>
@@ -298,7 +298,7 @@ class AdDashboard extends Component {
           </div>
           <div className="addatable">
             <div className="inn">
-              <span>MONTHLY CASE STATISTICS</span>
+              <span style={{marginLeft:'1vh'}}>MONTHLY CASE STATISTICS</span>
               <Input
                 style={{ marginLeft: "46vh", marginTop: "-5vh" }}
                 name="year"
@@ -406,7 +406,7 @@ class AdDashboard extends Component {
               <div className="col-xl-8">
                 <div className="admdashcan">
                   <h3 className="ddhead3">Bar Chart ( Year - Wise )</h3>
-                  <CanvasJSChart
+                  <CanvasJSChart 
                     options={options}
                     /* onRef={ref => this.chart = ref} */
                   />

@@ -2,11 +2,22 @@
   margin-top: 50px;
 }
 
+.seccases{
+  margin-left: 18vh;
+  margin-right: 5vh;
+}
+
+.ssearchinpu{
+  width: 52vh;
+  margin-right: 18vh;
+  margin-left: 0.5vh;
+}
+
 .lanp1 {
   width: 50vh;
   margin-top: 130px;
-  margin-bottom: 20px;
-  margin-left: 77vh;
+  margin-bottom: 40px;
+  margin-left: 29vh;
 }
 
 .lpttttt {
@@ -14,6 +25,7 @@
   height: 100vh;
   overflow-y: scroll;
 }
+
 
 .ssearch-label {
   margin-left: 81vh;
@@ -23,7 +35,7 @@
 }
 
 .secinn2 {
-  margin-top: 5vh;
+  margin-top: -5vh;
 }
 
 .clt2 {
@@ -46,3 +58,14 @@
 
   margin-bottom: 10vh;
 }
+
+.act1{
+  border-radius: 5px;
+  padding-bottom: 0vh;
+}
+
+.act4{
+  margin-left: -2vh;
+}
+
+
