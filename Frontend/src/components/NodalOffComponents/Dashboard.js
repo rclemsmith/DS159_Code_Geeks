@@ -37,10 +37,7 @@ class Dashboard extends Component {
 
   componentDidMount() {
     axios
-      .get(url + 
-        "/department/admin/cases/" +
-          localStorage.getItem("deptname")
-      )
+      .get(url + "/department/admin/cases/" + localStorage.getItem("deptname"))
       .then((res) => {
         this.setState({
           cases: res.data,
@@ -91,7 +88,7 @@ class Dashboard extends Component {
     var cl = (closeca / total) * 100;
     var ac = (activeca / total) * 100;
     var n = this.state.date.getDate();
-    var n1 = this.state.date.getMonth() +1;
+    var n1 = this.state.date.getMonth() + 1;
     var n2 = this.state.date.getFullYear();
     var year = [];
     this.state.cases.map((dashcase) => {
@@ -193,10 +190,9 @@ class Dashboard extends Component {
         },
       ],
     };
-
     var options = {
       animationEnabled: true,
-      theme: "light2",
+
       title: {
         text: this.state.year,
       },
@@ -209,7 +205,7 @@ class Dashboard extends Component {
       },
       data: [
         {
-          type: "bar",
+          type: "column",
           dataPoints: [
             { y: cricount, label: "Criminal" },
             { y: civcount, label: "Civil" },
@@ -218,18 +214,6 @@ class Dashboard extends Component {
       ],
     };
 
-    console.log(filtercase);
-    console.log(newyaer);
-
-    // var julycount = 0;
-    // var julycountc = 0;
-    // july.map((seven) => {
-    //   if (seven.type == "Criminal") {
-    //     julycount += 1;
-    //   } else if (seven.type == "Civil") {
-    //     julycountc += 1;
-    //   }
-    // });
     return (
       <div
         style={{ backgroundColor: "rgb(240, 240, 240)", overflow: "hidden" }}
@@ -293,7 +277,9 @@ class Dashboard extends Component {
                 <hr className="newdash13" />
               </div>
               <div className="card-body newdash10">
-                <h3 className="newdash11">{n} : {n1} : {n2}</h3>
+                <h3 className="newdash11">
+                  {n} : {n1} : {n2}
+                </h3>
                 <p className="newdash11">
                   <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                 </p>
@@ -353,7 +339,7 @@ class Dashboard extends Component {
           <div className="inn">
             <span>MONTHLY CASE STATISTICS</span>
             <Input
-              style={{marginLeft:'46vh',marginTop:'-5vh'}}
+              style={{ marginLeft: "46vh", marginTop: "-5vh" }}
               name="year"
               id="year"
               type="select"
@@ -464,14 +450,7 @@ class Dashboard extends Component {
             >
               <h3 className="ddhead3">Bar Chart ( Year - Wise )</h3>
 
-              <Bar
-                data={chartData}
-                width={100}
-                height={50}
-                options={{
-                  scales: { xAxes: [{ barPercentage: 0.3 }] },
-                }}
-              />
+              <CanvasJSChart options={options} />
             </div>
           </div>
         </div>

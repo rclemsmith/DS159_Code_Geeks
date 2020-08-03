@@ -251,7 +251,7 @@ class Deptdashboard extends Component {
 
     var options = {
       animationEnabled: true,
-      theme: "light2",
+
       title: {
         text: this.state.year,
       },
@@ -264,7 +264,7 @@ class Deptdashboard extends Component {
       },
       data: [
         {
-          type: "bar",
+          type: "column",
           dataPoints: [
             { y: cricount, label: "Criminal" },
             { y: civcount, label: "Civil" },
@@ -272,7 +272,7 @@ class Deptdashboard extends Component {
         },
       ],
     };
-    console.log(this.state.year);
+
     return (
       <>
         <DeptHead name={"Welcome " + this.props.location.state.offname} />
@@ -533,8 +533,8 @@ class Deptdashboard extends Component {
                 {/* {Plotly.newPlot("myDiv", data, layout)} */}
               </div>
             </div>
-            {/* 
-            <CanvasJSChart options={options} /> */}
+
+            <CanvasJSChart options={options} />
           </div>
         </div>
       </>
