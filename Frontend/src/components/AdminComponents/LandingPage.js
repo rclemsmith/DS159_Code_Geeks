@@ -263,7 +263,7 @@ class LandingPage extends Component {
                   className="btn btn-primary nerupu"
                   onClick={this.handleFor}
                 >
-                  Click here to see case details
+                  Click here to see Case Details
                 </button>
               </div>
             </div>
