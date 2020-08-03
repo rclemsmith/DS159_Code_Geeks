@@ -18,6 +18,7 @@ class HearingUpdate extends Component {
       hearinglawyer: "",
       hearingverdict: "",
       nexthearing: "",
+      invtran: "",
       witnessdetail: [],
       witness: [],
       name: "",
@@ -174,6 +175,21 @@ class HearingUpdate extends Component {
                 value={this.state.hearingverdict}
                 innerRef={(input) => (this.hearingverdict = input)}
               />
+
+              <AvField
+                name="invtran"
+                id="invtran"
+                label="Invoice Transaction Status"
+                type="select"
+                className="he9"
+                onChange={this.onChange}
+                value={this.state.invtran}
+                innerRef={(input) => (this.invtran = input)}
+              >
+                <option hidden>Select Status</option>
+                <option>Paid</option>
+                <option>Not Paid</option>
+              </AvField>
 
               <div className="he10">
                 <span className="he11">ADD WITNESS DETAILS</span>
