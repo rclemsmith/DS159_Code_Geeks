@@ -113,6 +113,24 @@ router.post("/login", passport.authenticate("secretary"), (req, res) => {
                                                                   err,
                                                                   ccountJud
                                                                 ) => {
+                                                                  var actCount =
+                                                                    acountDistrict +
+                                                                    acountExec +
+                                                                    acountHigh +
+                                                                    acountJud +
+                                                                    acountPanchayat +
+                                                                    acountRural +
+                                                                    acountSupreme +
+                                                                    acountVillage;
+                                                                  var cloCount =
+                                                                    ccountDistrict +
+                                                                    ccountExec +
+                                                                    ccountHigh +
+                                                                    ccountJud +
+                                                                    ccountPanchayat +
+                                                                    ccountRural +
+                                                                    ccountSupreme +
+                                                                    ccountVillage;
                                                                   var totalCount =
                                                                     acountDistrict +
                                                                     acountExec +
@@ -145,7 +163,7 @@ router.post("/login", passport.authenticate("secretary"), (req, res) => {
                                                                       } else {
                                                                         console.log(
                                                                           "Email sent: " +
-                                                                          info.response
+                                                                            info.response
                                                                         );
                                                                         const token = authenticate.getToken(
                                                                           {
@@ -175,6 +193,8 @@ router.post("/login", passport.authenticate("secretary"), (req, res) => {
                                                                                 .user
                                                                                 .name,
                                                                             otp: rand,
+                                                                            actCount: actCount,
+                                                                            cloCount: cloCount,
                                                                             supremeCount: {
                                                                               active: acountSupreme,
                                                                               closed: ccountSupreme,
@@ -294,16 +314,22 @@ router.get("/typecount/:departmentName/:caseType", (req, res) => {
 });
 
 router.get("/allcount/:departmentName", (req, res) => {
-  Case.count({ department: req.params.departmentName, type: "Civil" }, (err, civilCount) => {
-    Case.count({ department: req.params.departmentName, type: "Criminal" }, (err, criminalCount) => {
-      res.status = 200;
-      res.setHeader("Content-Type", "application/json");
-      res.json({
-        civilCount: civilCount,
-        criminalCount : criminalCount
-      });
-    });
-  });
+  Case.count(
+    { department: req.params.departmentName, type: "Civil" },
+    (err, civilCount) => {
+      Case.count(
+        { department: req.params.departmentName, type: "Criminal" },
+        (err, criminalCount) => {
+          res.status = 200;
+          res.setHeader("Content-Type", "application/json");
+          res.json({
+            civilCount: civilCount,
+            criminalCount: criminalCount,
+          });
+        }
+      );
+    }
+  );
 });
 
 router.post("/signup", (req, res, next) => {
