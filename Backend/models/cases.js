@@ -13,6 +13,7 @@ var caseSchema = new Schema({
   respondantmail: String,
   synopsis: String,
   caseno : String,
+  mailPeriod : Number,
   lawyer: {
     lname: String,
     gender: String,

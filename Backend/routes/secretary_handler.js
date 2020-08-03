@@ -5,6 +5,7 @@ var passport = require("passport");
 const Case = require("../models/cases");
 const Secretary = require("../models/secretary");
 const transporter = require("../services/mailservice");
+const SuperAdmin = require("../models/superadmin");
 
 router.post("/login", passport.authenticate("secretary"), (req, res) => {
   rand = Math.floor(Math.random() * 100000 + Math.random() * 1000);
@@ -109,6 +110,18 @@ router.post("/login", passport.authenticate("secretary"), (req, res) => {
       });
     });
   });
+});
+
+router.get("/reports/:departmentName",(req,res)=>{
+  SuperAdmin.find({name : req.params.departmentName})
+    .then((admin)=>{
+      res.status = 500;
+      res.setHeader("Content-Type", "application/json");
+      console.log(admin[0]);
+      res.json({
+        reports : admin[0].reports
+      });
+    });
 });
 
 
