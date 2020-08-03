@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+
+import { CanvasJSChart } from "canvasjs-react-charts";
 import SecSideBar from "./SecSidebar";
 import "./style/land.css";
 import axios from "axios";
@@ -9,6 +11,7 @@ import {
   buildStyles,
 } from "react-circular-progressbar";
 import url from "../../backend_url";
+var uni = [];
 class SecDashboard extends Component {
   constructor(props) {
     super(props);
@@ -46,8 +49,11 @@ class SecDashboard extends Component {
       value: "",
       dept: "",
       actid: null,
+      civ: null,
+      cri: null,
     };
     this.handleSelect = this.handleSelect.bind(this);
+
     this.Dept = this.Dept.bind(this);
     this.Year = this.Year.bind(this);
   }
@@ -72,6 +78,22 @@ class SecDashboard extends Component {
     this.setState({
       dept: this.dept.value,
     });
+    axios
+      .get(url + "/secretary/typecount/" + this.dept.value + "/Civil")
+      .then((res) => {
+        this.setState({
+          civ: res.data,
+        });
+      });
+
+    axios
+      .get(url + "/secretary/typecount/" + this.dept.value + "/Criminal")
+      .then((res) => {
+        this.setState({
+          cri: res.data,
+        });
+      });
+
     axios.get(url + "/secretary/counts/" + this.dept.value).then((res) => {
       this.setState(
         {
@@ -128,9 +150,39 @@ class SecDashboard extends Component {
       .catch((err) => {
         console.log(err);
       });
+
+    uni.map((u) => {
+      axios.get();
+    });
   }
 
   render() {
+    console.log(this.state.cri);
+    console.log(this.state.civ);
+    var options = {
+      animationEnabled: true,
+
+      title: {
+        text: this.state.dept,
+      },
+      axisX: {
+        title: "Type",
+      },
+      axisY: {
+        title: "Count",
+        labelFormatter: this.addSymbols,
+      },
+      data: [
+        {
+          type: "column",
+          dataPoints: [
+            { y: this.state.cri, label: "Criminal" },
+            { y: this.state.civ, label: "Civil" },
+          ],
+        },
+      ],
+    };
+
     var closeca = localStorage.getItem("cloCounts");
     var activeca = localStorage.getItem("actCounts");
     var total = localStorage.getItem("total");
@@ -147,6 +199,8 @@ class SecDashboard extends Component {
     function onlyUnique(value, index, self) {
       return self.indexOf(value) === index;
     }
+
+    uni = n.filter(onlyUnique);
 
     var unique = n.filter(onlyUnique);
 
@@ -243,6 +297,7 @@ class SecDashboard extends Component {
                 })}
               </Input>
             </div>
+
             <div className="sectable11">
               <div className="table-responsive">
                 <table class="table">
@@ -316,6 +371,13 @@ class SecDashboard extends Component {
                   </tbody>
                 </table>
               </div>
+            </div>
+            <div className="secchar">
+              <h3 className="ddhead3">Bar Chart ( Department - Wise )</h3>
+              <CanvasJSChart
+                options={options}
+                /* onRef={ref => this.chart = ref} */
+              />
             </div>
           </div>
         </div>

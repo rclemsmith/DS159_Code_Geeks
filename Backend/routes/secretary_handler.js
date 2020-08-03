@@ -288,9 +288,7 @@ router.get("/typecount/:departmentName/:caseType", (req, res) => {
     (err, Count) => {
       res.status = 200;
       res.setHeader("Content-Type", "application/json");
-      res.json({
-        Count: Count,
-      });
+      res.json(Count);
     }
   );
 });
