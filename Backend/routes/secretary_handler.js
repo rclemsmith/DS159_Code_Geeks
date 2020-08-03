@@ -24,7 +24,7 @@ router.post("/login", passport.authenticate("secretary"), (req, res) => {
               Case.count({ "court.ccategory": "Rural Court" }, (err, countRural) => {
                 Case.count({ "court.ccategory": "Judicial Academics" }, (err, countJud) => {
 
-                  var totalCount = countDistrict + countExec + countHigh + countJud + countPanchayat + countRural + countSupreme + countVillage; 
+                  var totalCount = countDistrict + countExec + countHigh + countJud + countPanchayat + countRural + countSupreme + countVillage;
                   transporter.sendMail(mailOptions, function (error, info) {
                     if (error) {
                       console.log(error);
@@ -42,13 +42,13 @@ router.post("/login", passport.authenticate("secretary"), (req, res) => {
                         otp: rand,
                         supremeCount: countSupreme,
                         highCount: countHigh,
-                        districtCount : countDistrict,
-                        executiveCount : countExec,
-                        villageCount : countVillage,
-                        panchayatCount : countPanchayat,
-                        ruralCount : countRural,
-                        judicialCount : countJud,
-                        totalCounts : totalCount
+                        districtCount: countDistrict,
+                        executiveCount: countExec,
+                        villageCount: countVillage,
+                        panchayatCount: countPanchayat,
+                        ruralCount: countRural,
+                        judicialCount: countJud,
+                        totalCounts: totalCount
                       });
                     }
                   });
@@ -95,6 +95,45 @@ router.post("/signup", (req, res, next) => {
         });
       });
     }
+  });
+});
+
+
+router.get("/counts/:departmentName", (req, res) => {
+  Case.count({ "court.ccategory": "Supreme Court of India", department: req.params.departmentName }, (err, countSupreme) => {
+    Case.count({ "court.ccategory": "High Court", department: req.params.departmentName }, (err, countHigh) => {
+      Case.count({ "court.ccategory": "District Courts", department: req.params.departmentName }, (err, countDistrict) => {
+        Case.count({ "court.ccategory": "Executive and Revenue Court", department: req.params.departmentName }, (err, countExec) => {
+          Case.count({ "court.ccategory": "Village Court", department: req.params.departmentName }, (err, countVillage) => {
+            Case.count({ "court.ccategory": "Panchayat", department: req.params.departmentName }, (err, countPanchayat) => {
+              Case.count({ "court.ccategory": "Rural Court", department: req.params.departmentName }, (err, countRural) => {
+                Case.count({ "court.ccategory": "Judicial Academics", department: req.params.departmentName }, (err, countJud) => {
+
+                  var totalCount = countDistrict + countExec + countHigh + countJud + countPanchayat + countRural + countSupreme + countVillage;
+
+                  res.statusCode = 200;
+                  res.setHeader("Content-Type", "application/json");
+                  res.json({
+                    success: true,
+                    supremeCount: countSupreme,
+                    highCount: countHigh,
+                    districtCount: countDistrict,
+                    executiveCount: countExec,
+                    villageCount: countVillage,
+                    panchayatCount: countPanchayat,
+                    ruralCount: countRural,
+                    judicialCount: countJud,
+                    department: req.params.departmentName,
+                    totalCounts: totalCount
+                  });
+
+                });
+              });
+            });
+          });
+        });
+      });
+    });
   });
 });
 
