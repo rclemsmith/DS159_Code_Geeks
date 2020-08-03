@@ -199,8 +199,13 @@ router.delete("/:caseId/delete", (req, res) => {
 
 router.post(
   "/:userId/addCase",
-  multerUpload.array("image", 10),
+  multerUpload.fields([{name :"lawyerimage",maxCount : 1},{name : "respdocs", maxCount : 10},{name : "petdocs", maxCount : 10}]),
   (req, res, next) => {
+    console.log("Lawyer Image");
+    console.log(req.files.layerimage);
+    console.log("Respondant Docs");
+    console.log(req.files.)
+
 
     console.log(req.files);
     var lawyer = {
@@ -529,7 +534,13 @@ router.post("/:caseId/lupd", multerUpload.single("image"), (req, res) => {
   );
 });
 
-router.post("/:caseId/modify", (req, res) => {
+router.post("/:caseId/modify", multerUpload.array("documents",10),(req, res) => {
+
+  var docs = [];
+  req.files.forEach((file)=>{
+    docs.push(file.filename);
+  }); 
+  console.log(docs);
   Case.findByIdAndUpdate(
     req.params.caseId,
     {
@@ -538,9 +549,13 @@ router.post("/:caseId/modify", (req, res) => {
         status: req.body.status,
         isClosed: req.body.isClosed,
         reply : req.body.reply,
-        rejoinder : req.body.rejoinder,
+        
         mailPeriod : req.body.mailPeriod
       },
+
+      $push : {
+        rejoinderDocs : docs
+      }
     },
     (err, updated) => {
       if (err) {
