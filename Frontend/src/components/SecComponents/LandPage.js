@@ -14,6 +14,7 @@ import DeptHead from "../DeptOffComponents/DeptHead";
 import { Input, InputGroupText, InputGroupAddon, InputGroup } from "reactstrap";
 import { uniq } from "lodash";
 import "./style/land.css";
+import SecSideBar from "./SecSidebar";
 
 class LandPage extends Component {
   constructor(props) {
@@ -148,7 +149,7 @@ class LandPage extends Component {
             >
               <p className="card-title act2">{active.name}</p>
               <div className="card-body act3">
-              <div>
+                <div>
                   <p className="act4">Case No : {active.caseno}</p>
                 </div>
                 <div>
@@ -176,6 +177,7 @@ class LandPage extends Component {
 
     return (
       <div className="lpttttt">
+        <SecSideBar history={this.props.history} />
         <nav className="navbar  navbar-expand-sm bg-dark navbar-dark fixed-top">
           <Input
             className="ssearchinpu"

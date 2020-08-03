@@ -18,7 +18,7 @@ class SecSideBar extends Component {
       mc: false,
       nu: false,
     };
-    this.handleLog = this.handleLog.bind(this);
+    this.handleCases = this.handleCases.bind(this);
     this.handleUser = this.handleUser.bind(this);
     this.handleDash = this.handleDash.bind(this);
     this.handleCase = this.handleCase.bind(this);
@@ -54,7 +54,7 @@ class SecSideBar extends Component {
     this.props.history.push("/" + localStorage.getItem("userId") + "/myCases");
   }
 
-  handleLog() {
+  handleCases() {
     this.setState(
       {
         h: false,
@@ -64,7 +64,7 @@ class SecSideBar extends Component {
       },
       () => {}
     );
-    this.props.history.push("/" + localStorage.getItem("adminId") + "/logs");
+    this.props.history.push("/" + localStorage.getItem("secId") + "/landpage");
   }
 
   handleDash() {
@@ -120,7 +120,7 @@ class SecSideBar extends Component {
 
             <NavItem
               className={this.state.nc ? "navitem active" : "navitem"}
-              onClick={this.handleLog}
+              onClick={this.handleCases}
               eventKey="home"
             >
               <h4 className="hh1">
@@ -128,7 +128,7 @@ class SecSideBar extends Component {
                   className="fa fa-fw fa-list"
                   style={{ marginLeft: "1vh", marginRight: "1vh" }}
                 ></i>{" "}
-                Logs
+                Cases
               </h4>
             </NavItem>
 
