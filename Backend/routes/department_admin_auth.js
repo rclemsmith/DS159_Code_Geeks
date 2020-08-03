@@ -204,103 +204,105 @@ router.post(
     console.log("Lawyer Image");
     console.log(req.files.layerimage);
     console.log("Respondant Docs");
-    // console.log(req.files.)
+    console.log(req.files.respdocs);
+    console.log("Petionar Docs");
+    console.log(req.files.petdocs);
 
 
-    console.log(req.files);
-    var lawyer = {
-      lname: req.body.lname,
-      gender: req.body.gender,
-      exp: req.body.exp,
-      qualification: req.body.qualification,
-      mobile: req.body.mobile,
-      email: req.body.email,
-      uid: req.body.uid,
-      casesWon: req.body.won,
-      caseslost: req.body.lost,
-      skills: req.body.skills,
-      street: req.body.street,
-      district: req.body.district,
-      state: req.body.state,
-      pincode: req.body.pincode,
-      image: req.files[0].filename,
-    };
-    console.log(lawyer);
+    // console.log(req.files);
+    // var lawyer = {
+    //   lname: req.body.lname,
+    //   gender: req.body.gender,
+    //   exp: req.body.exp,
+    //   qualification: req.body.qualification,
+    //   mobile: req.body.mobile,
+    //   email: req.body.email,
+    //   uid: req.body.uid,
+    //   casesWon: req.body.won,
+    //   caseslost: req.body.lost,
+    //   skills: req.body.skills,
+    //   street: req.body.street,
+    //   district: req.body.district,
+    //   state: req.body.state,
+    //   pincode: req.body.pincode,
+    //   image: req.files[0].filename,
+    // };
+    // console.log(lawyer);
 
-    var document = [];
-    for (var i = 1; i < (req.files.length); i++) {
-      document.push(req.files[i].filename);
-    }
-    console.log(document);
-    var court = {
-      cname: req.body.cname,
-      ccategory: req.body.category,
-      cdistrict: req.body.codistrict,
-      cstate: req.body.costate,
-      cpincode: req.body.copincode,
-    };
+    // var document = [];
+    // for (var i = 1; i < (req.files.length); i++) {
+    //   document.push(req.files[i].filename);
+    // }
+    // console.log(document);
+    // var court = {
+    //   cname: req.body.cname,
+    //   ccategory: req.body.category,
+    //   cdistrict: req.body.codistrict,
+    //   cstate: req.body.costate,
+    //   cpincode: req.body.copincode,
+    // };
 
-    var respondants = JSON.parse(req.body.respondants);
-    console.log(respondants);
+    // var respondants = JSON.parse(req.body.respondants);
+    // console.log(respondants);
 
-    var addCase = new Case({
-      admin: req.body.admin,
-      name: req.body.casename,
-      type: req.body.casetype,
-      opposition: req.body.opposition,
-      facts: req.body.facts,
-      status: req.body.status,
-      isClosed: req.body.isClosed,
-      department: req.body.department,
-      lawyer: lawyer,
-      court: court,
-      mailPeriod : 5,
-      judge: req.body.judge,
-      oppositionlawyer: req.body.oppositionlawyer,
-      respondants: respondants,
-      respondantname: respondants[0].name,
-      respondantdesignation: respondants[0].des,
-      respondantmail: respondants[0].email,
-      caseno: req.body.caseno,
-      documents: document
-    });
+    // var addCase = new Case({
+    //   admin: req.body.admin,
+    //   name: req.body.casename,
+    //   type: req.body.casetype,
+    //   opposition: req.body.opposition,
+    //   facts: req.body.facts,
+    //   status: req.body.status,
+    //   isClosed: req.body.isClosed,
+    //   department: req.body.department,
+    //   lawyer: lawyer,
+    //   court: court,
+    //   mailPeriod : 5,
+    //   judge: req.body.judge,
+    //   oppositionlawyer: req.body.oppositionlawyer,
+    //   respondants: respondants,
+    //   respondantname: respondants[0].name,
+    //   respondantdesignation: respondants[0].des,
+    //   respondantmail: respondants[0].email,
+    //   caseno: req.body.caseno,
+    //   documents: document
+    // });
 
-    Case.create(addCase)
-      .then((mycase) => {
-        console.log(mycase);
-        DepartmentAdmin.findById(req.params.userId, (err, foundAdmin) => {
-          if (err) {
-            res.json(err);
-          } else {
-            var now = new Date();
-            var report =
-              " The Nodal Officer " +
-              foundAdmin.nodalname +
-              " has added a new case called " +
-              mycase.name +
-              " at " +
-              now;
-            console.log(report);
-            var mailReport = "<h2>The Nodal Officer has Created the Following Case</h2><br><h4>Case No : " + mycase.caseno + "</h4>" + "<h4>Case Name : " + mycase.name + "</h4><br><h4> Status : " + mycase.status + "</h4><br><h4>Petitioner : " + mycase.opposition + "</h4><br><h4> Court : " + mycase.court.cname + "</h4><br><h4>Lawyer : " + mycase.lawyer.lname+ "</h4>";
-            SuperAdmin.findOneAndUpdate(
-              { name: req.body.department },
-              {
-                $push: {
-                  reports: report,
-                },
-              },
-              (err, updatedAdmin) => {
-                console.log(updatedAdmin);
-                res.statusCode = 200;
-                res.setHeader("Content-Type", "application/json");
-                res.json(mycase);
-                sendMail(mycase.respondantmail, "New Case", mailReport);
-              }
-            );
-          }
-        });
-      })
-      .catch((err) => console.log(err));
+    // Case.create(addCase)
+    //   .then((mycase) => {
+    //     console.log(mycase);
+    //     DepartmentAdmin.findById(req.params.userId, (err, foundAdmin) => {
+    //       if (err) {
+    //         res.json(err);
+    //       } else {
+    //         var now = new Date();
+    //         var report =
+    //           " The Nodal Officer " +
+    //           foundAdmin.nodalname +
+    //           " has added a new case called " +
+    //           mycase.name +
+    //           " at " +
+    //           now;
+    //         console.log(report);
+    //         var mailReport = "<h2>The Nodal Officer has Created the Following Case</h2><br><h4>Case No : " + mycase.caseno + "</h4>" + "<h4>Case Name : " + mycase.name + "</h4><br><h4> Status : " + mycase.status + "</h4><br><h4>Petitioner : " + mycase.opposition + "</h4><br><h4> Court : " + mycase.court.cname + "</h4><br><h4>Lawyer : " + mycase.lawyer.lname+ "</h4>";
+    //         SuperAdmin.findOneAndUpdate(
+    //           { name: req.body.department },
+    //           {
+    //             $push: {
+    //               reports: report,
+    //             },
+    //           },
+    //           (err, updatedAdmin) => {
+    //             console.log(updatedAdmin);
+    //             res.statusCode = 200;
+    //             res.setHeader("Content-Type", "application/json");
+    //             res.json(mycase);
+    //             sendMail(mycase.respondantmail, "New Case", mailReport);
+    //           }
+    //         );
+    //       }
+    //     });
+    //   })
+    //   .catch((err) => console.log(err));
   }
 );
 
