@@ -308,7 +308,7 @@ class CasePage extends Component {
                 <div className="ch12">
                   <span className="ch14" style={{ marginLeft: "25vh" }}>
                     <a href={url + "/image/" + c} download>
-                      Click to download
+                      {c}
                     </a>
                   </span>
                 </div>
