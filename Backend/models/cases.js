@@ -13,6 +13,8 @@ var caseSchema = new Schema({
   respondantmail: String,
   reply : "",
   rejoinder : "",
+  rejoinderDocs : [],
+  respondantDocs : [],
   synopsis: String,
   caseno : String,
   mailPeriod : Number,

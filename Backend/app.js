@@ -111,7 +111,7 @@ app.get("/image/:filename", (req, res) => {
 });
 
 app.get("/dummy", (req, res) => {
-  Cases.updateMany({}, { $set: { "rejoinder": "Rejoinder Action","reply" : "Reply" } })
+  Cases.updateMany({}, { $set: { "rejoinderDocs": [] } })
     .then((done) => {
       res.send("Success");
     });
