@@ -12,6 +12,8 @@ class CasePage extends Component {
     super(props);
 
     this.state = {
+      curdocs: [],
+      petdocs: [],
       c1: true,
       c2: null,
       items: [],
@@ -182,6 +184,8 @@ class CasePage extends Component {
         this.setState(
           {
             curcase: res.data,
+            curdocs: res.data.rejoinderDocs,
+            petdocs: res.data.documents,
           },
           () => {
             this.setState({
@@ -244,6 +248,9 @@ class CasePage extends Component {
         curlawyer: cur[0].curhearinglawyer,
         curverdict: cur[0].curhearingverdict,
         curwitness: cur[0].curhearingwitness,
+        curinvid: cur[0].hearingcaseid,
+        curinvcharge: cur[0].invcharge,
+        curinvstatus: cur[0].invstatus,
         curdoc: cur[0].documents,
         next: cur[0].nexthearingdate,
         casename: this.state.curcase.name,
@@ -256,6 +263,7 @@ class CasePage extends Component {
     console.log(this.state.curcase);
     console.log(this.state.items);
     console.log(this.state.c2);
+    console.log(this.state.curdocs);
 
     console.log(this.state.curcase._id);
 
@@ -287,14 +295,42 @@ class CasePage extends Component {
                   marginLeft: "1.8vw",
                   marginTop: "2vh",
                 }}
-                ></img> */}               
-            <p className="casedesc">{this.state.curcase.facts}</p>            
+                ></img> */}
+            <p className="casedesc">{this.state.curcase.facts}</p>
             <p className="ctitle" style={{ marginTop: "5vh" }}>
               Petitioner : {this.state.curcase.opposition}
             </p>
+
+            <p className="ctitle">Petitioner Documents:</p>
+            {this.state.petdocs.map((c) => {
+              console.log(c);
+              return (
+                <div className="ch12">
+                  <span className="ch14" style={{ marginLeft: "25vh" }}>
+                    <a href={url + "/image/" + c} download>
+                      Click to download
+                    </a>
+                  </span>
+                </div>
+              );
+            })}
             <p className="ctitle" style={{ marginTop: "5vh" }}>
-              Respondent : {this.state.curcase.respondantname} - {this.state.curcase.respondantdesignation}
+              Respondent : {this.state.curcase.respondantname} -{" "}
+              {this.state.curcase.respondantdesignation}
             </p>
+            <p className="ctitle">Rejoinder Documents:</p>
+            {this.state.curdocs.map((c) => {
+              console.log(c);
+              return (
+                <div className="ch12">
+                  <span className="ch14" style={{ marginLeft: "25vh" }}>
+                    <a href={url + "/image/" + c} download>
+                      Click to download
+                    </a>
+                  </span>
+                </div>
+              );
+            })}
             <div style={{ marginTop: "6vh" }} className="row">
               <p className="ctitle" style={{ marginLeft: "2vh" }}>
                 Lawyer Assigned :{" "}
@@ -442,7 +478,7 @@ class CasePage extends Component {
                   <i className="fa fa-map-pin"></i>
                   <span className="cpll18">{this.state.lpincode}</span>
                 </p>
-                <div style={{marginTop:'3vh'}} className="cpll19">
+                <div style={{ marginTop: "3vh" }} className="cpll19">
                   <button className="btn btn-light" onClick={this.handleUpd}>
                     <i
                       style={{ marginRight: "10px" }}
