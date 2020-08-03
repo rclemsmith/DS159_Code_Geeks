@@ -224,8 +224,8 @@ class Case extends Component {
           innerRef={(input) => (this.ctype = input)}
         >
           <option disabled></option>
-          <option>Active</option>
-          <option>Closed</option>
+          <option>Active - {this.state.mycases.length}</option>
+          <option>Closed - {this.state.closecase.length}</option>
         </Input>
 
         {/* <div hidden={!(hide && hide1)} style={{textAlign:'center',marginLeft:'25vh',marginTop:'25vh'}}>
@@ -310,7 +310,7 @@ class Case extends Component {
                     onClick={() => this.handleCurId(mycase._id)}
                   >
                     <h3 className="card-title mytitle">{mycase.name}</h3>
-                    <div style={{marginBottom:'2vh'}} className="my2">
+                    <div className="my2">
                       <span style={{wordSpacing:'29px'}} className="myspan">ID :</span>
                       <span className="myspan1">{mycase.caseno}</span>
                     </div>
@@ -318,16 +318,21 @@ class Case extends Component {
                       <span className="myspan">Type :</span>
                       <span className="myspan1">{mycase.type}</span>
                     </div>
-                    {/* <div className="my2">
-                      <span className="myspan">Lawyer:</span>
+                    <div className="my2">
+                      <span className="myspan">Petitioner :</span>
+                      <span className="myspan1">{mycase.opposition}</span>
+                    </div>
+                    <div className="my2">
+                      <span className="myspan">Lawyer :</span>
                       <span className="myspan1">{mycase.lawyer.lname}</span>
-                    </div> */}
-                    <div className="my3">
+                    </div>
+                    
+                    {/* <div className="my3">
                       <span className="my4">Facts :</span>
                       <span className="card-text cardd-text">
                         {desc.charAt(0).toUpperCase() + desc.slice(1)}...
                       </span>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               );

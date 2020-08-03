@@ -53,11 +53,11 @@ class AddSummary extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{overflow:'scroll'}}>
         <SideNavBar history={this.props.history} />
         <Head name="Add Summary"></Head>
 
-        <div className="container addsum">
+        <div  className="container addsum">
           <AvForm>
             <AvGroup className="ncinput">
               <Label className="nc" for="desc">
