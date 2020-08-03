@@ -74,6 +74,10 @@ router.post("/:departmentName", (req, res) => {
             synopsis : entry.synopsis
           };
           result.push(entry);
+        }else if(entry.caseno.toLowerCase().includes(query.toLowerCase())){
+          result.push(entry);
+        }else if(entry.lawyer.lname.toLowerCase().includes(query.toLowerCase())){
+          result.push(entry);
         }
       });
 
