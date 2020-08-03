@@ -130,7 +130,7 @@ class SecSideBar extends Component {
               </h4>
             </NavItem>
 
-            <NavItem
+            {/* <NavItem
               className={this.state.nu ? "navitem active" : "navitem"}
               eventKey="case"
               onClick={this.handleUser}
@@ -146,7 +146,7 @@ class SecSideBar extends Component {
                 ></i>
                 Reports
               </h4>
-            </NavItem>
+            </NavItem> */}
             {/* <NavItem
               className="navitem"
               eventKey="case"

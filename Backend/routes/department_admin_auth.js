@@ -249,6 +249,7 @@ router.post(
       department: req.body.department,
       lawyer: lawyer,
       court: court,
+      mailPeriod : 5,
       judge: req.body.judge,
       oppositionlawyer: req.body.oppositionlawyer,
       respondants: respondants,
