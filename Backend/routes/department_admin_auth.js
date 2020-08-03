@@ -445,6 +445,7 @@ router.post("/:hearingId/update", (req, res) => {
         curhearinglawyer: req.body.curlawyer,
         curhearingverdict: req.body.verdict,
         nexthearingdate: req.body.nexthearing,
+        invstatus : req.body.invtran
       },
       $push: { curhearingwitness: witness1 },
     },

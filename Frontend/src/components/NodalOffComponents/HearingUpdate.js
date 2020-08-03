@@ -83,6 +83,7 @@ class HearingUpdate extends Component {
       verdict: this.state.hearingverdict,
       nexthearing: this.state.nexthearing,
       witness: this.state.witness,
+      invtran : this.state.invtran
     };
 
     axios
