@@ -18,9 +18,9 @@ class SideBar extends Component {
       mc: false,
       nu: false,
     };
+    this.handleLog = this.handleLog.bind(this);
     this.handleUser = this.handleUser.bind(this);
     this.handleDash = this.handleDash.bind(this);
-    this.handleAdd = this.handleAdd.bind(this);
     this.handleCase = this.handleCase.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
@@ -54,7 +54,7 @@ class SideBar extends Component {
     this.props.history.push("/" + localStorage.getItem("userId") + "/myCases");
   }
 
-  handleAdd() {
+  handleLog() {
     this.setState(
       {
         h: false,
@@ -64,7 +64,7 @@ class SideBar extends Component {
       },
       () => {}
     );
-    this.props.history.push("/" + localStorage.getItem("userId") + "/newCase");
+    this.props.history.push("/" + localStorage.getItem("adminId") + "/logs");
   }
 
   handleDash() {
@@ -115,6 +115,20 @@ class SideBar extends Component {
                   style={{ marginLeft: "1vh", marginRight: "1vh" }}
                 ></i>{" "}
                 Home
+              </h4>
+            </NavItem>
+
+            <NavItem
+              className={this.state.nc ? "navitem active" : "navitem"}
+              onClick={this.handleLog}
+              eventKey="home"
+            >
+              <h4 className="hh1">
+                <i
+                  className="fa fa-fw fa-list"
+                  style={{ marginLeft: "1vh", marginRight: "1vh" }}
+                ></i>{" "}
+                Logs
               </h4>
             </NavItem>
 
