@@ -202,7 +202,7 @@ router.post(
   multerUpload.array("image", 10),
   (req, res, next) => {
 
-    // console.log(req.files);
+    console.log(req.files);
     var lawyer = {
       lname: req.body.lname,
       gender: req.body.gender,
@@ -218,11 +218,12 @@ router.post(
       district: req.body.district,
       state: req.body.state,
       pincode: req.body.pincode,
-      image: req.files[req.files.length - 1].filename,
+      image: req.files[0].filename,
     };
+    console.log(lawyer);
 
     var document = [];
-    for (var i = 0; i < (req.files.length - 1); i++) {
+    for (var i = 1; i < (req.files.length); i++) {
       document.push(req.files[i].filename);
     }
     console.log(document);
