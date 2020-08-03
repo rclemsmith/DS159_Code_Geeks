@@ -6,6 +6,7 @@ import AvField from "availity-reactstrap-validation/lib/AvField";
 import AvForm from "availity-reactstrap-validation/lib/AvForm";
 import { Input, InputGroup, InputGroupAddon, InputGroupText } from "reactstrap";
 import url from "../../backend_url";
+import SideBar from "./Sidebar";
 var isClosed = false;
 class AdminCase extends Component {
   constructor(props) {
@@ -198,176 +199,185 @@ class AdminCase extends Component {
     }
     console.log(this.state.mycases);
     return (
-      <div
-        style={{
-          backgroundColor: "rgb(240,240,240)",
-          overflowX: "hidden",
-          overflowY: "scroll",
-          height: "100vh",
-          width: "100vw",
-        }}
-      >
-        <Input
-          type="select"
-          label="Select Case"
-          className="actclosecase"
-          name="ctype"
-          id="ctype"
-          onSelect={this.handleSel}
-          onChange={this.Casetype}
-          value={this.state.casetype}
-          innerRef={(input) => (this.ctype = input)}
-        >
-          <option disabled></option>
-          <option>Active</option>
-          <option>Closed</option>
-        </Input>
+      <>
+        <SideBar history={this.props.history} />
+        <div className="lpadm1">
+          <h3 className="ad">
+            <span>&nbsp;&nbsp;</span>Welcome Admin
+          </h3>
+          <div
+            className="admcase99"
+            style={{
+              backgroundColor: "rgb(240,240,240)",
+              overflowX: "hidden",
+              overflowY: "scroll",
+              height: "100vh",
+              width: "100vw",
+            }}
+          >
+            <Input
+              type="select"
+              label="Select Case"
+              className="actclosecase"
+              name="ctype"
+              id="ctype"
+              onSelect={this.handleSel}
+              onChange={this.Casetype}
+              value={this.state.casetype}
+              innerRef={(input) => (this.ctype = input)}
+            >
+              <option disabled></option>
+              <option>Active</option>
+              <option>Closed</option>
+            </Input>
 
-        {/* <div hidden={!(hide && hide1)} style={{textAlign:'center',marginLeft:'25vh',marginTop:'25vh'}}>
+            {/* <div hidden={!(hide && hide1)} style={{textAlign:'center',marginLeft:'25vh',marginTop:'25vh'}}>
           <i style={{fontSize:'120px',color:'rgba(0,0,0,0.2)'}} className="fa fa-fw fa-search"></i>
           <p style={{fontSize:'35px',fontWeight:'bold',marginTop:'1vh'}}>Search Through Your Cases</p>
         </div> */}
 
-        <InputGroup className="ssearch-label" hidden={hide}>
-          <Input
-            className="ssearchinp"
-            value={this.state.value}
-            name="search-input"
-            placeholder="Search By Synopsis"
-            onChange={(e) => this.handleChange(e)}
-          />
-          <InputGroupAddon addonType="append">
-            <InputGroupText
-              style={{
-                width: "40px",
-                marginTop: "-6vh",
-                height: "5vh",
-                boxShadow: "0px 0px 2px 2px rgb(220,220,220)",
-              }}
+            <InputGroup className="ssearch-label" hidden={hide}>
+              <Input
+                className="ssearchinp"
+                value={this.state.value}
+                name="search-input"
+                placeholder="Search By Synopsis"
+                onChange={(e) => this.handleChange(e)}
+              />
+              <InputGroupAddon addonType="append">
+                <InputGroupText
+                  style={{
+                    width: "40px",
+                    marginTop: "-6vh",
+                    height: "5vh",
+                    boxShadow: "0px 0px 2px 2px rgb(220,220,220)",
+                  }}
+                >
+                  <i className="fa fa-search search-icon" />
+                </InputGroupText>
+              </InputGroupAddon>
+            </InputGroup>
+
+            <InputGroup className="ssearch-label" hidden={hide1}>
+              <Input
+                className="ssearchinp"
+                value={this.state.valu1}
+                name="search-input"
+                placeholder="Search..."
+                onChange={(e) => this.handleCloseChange(e)}
+              />
+              <InputGroupAddon addonType="append">
+                <InputGroupText
+                  style={{
+                    width: "40px",
+                    marginTop: "-6vh",
+                    height: "5vh",
+                    boxShadow: "0px 0px 2px 2px rgb(220,220,220)",
+                  }}
+                >
+                  <i className="fa fa-search search-icon" />
+                </InputGroupText>
+              </InputGroupAddon>
+            </InputGroup>
+
+            <Input
+              type="select"
+              label="Select Court"
+              className="actcourtcase"
+              name="cotype"
+              id="cotype"
+              onChange={this.handleCourt}
+              value={this.state.courttype}
+              innerRef={(input) => (this.cotype = input)}
             >
-              <i className="fa fa-search search-icon" />
-            </InputGroupText>
-          </InputGroupAddon>
-        </InputGroup>
+              <option>Select Court</option>
+              <option>All Courts</option>
+              <option>Supreme Court of India</option>
+              <option>High Court</option>
+              <option>District Courts</option>
+              <option>Executive and Revenue Court</option>
+              <option>Village Court </option>
+              <option>Panchayat</option>
+              <option> Rural Court</option>
+              <option>Judicial Academics</option>
+            </Input>
 
-        <InputGroup className="ssearch-label" hidden={hide1}>
-          <Input
-            className="ssearchinp"
-            value={this.state.valu1}
-            name="search-input"
-            placeholder="Search..."
-            onChange={(e) => this.handleCloseChange(e)}
-          />
-          <InputGroupAddon addonType="append">
-            <InputGroupText
-              style={{
-                width: "40px",
-                marginTop: "-6vh",
-                height: "5vh",
-                boxShadow: "0px 0px 2px 2px rgb(220,220,220)",
-              }}
-            >
-              <i className="fa fa-search search-icon" />
-            </InputGroupText>
-          </InputGroupAddon>
-        </InputGroup>
-
-        <Input
-          type="select"
-          label="Select Court"
-          className="actcourtcase"
-          name="cotype"
-          id="cotype"
-          onChange={this.handleCourt}
-          value={this.state.courttype}
-          innerRef={(input) => (this.cotype = input)}
-        >
-          <option>Select Court</option>
-          <option>All Courts</option>
-          <option>Supreme Court of India</option>
-          <option>High Court</option>
-          <option>District Courts</option>
-          <option>Executive and Revenue Court</option>
-          <option>Village Court </option>
-          <option>Panchayat</option>
-          <option> Rural Court</option>
-          <option>Judicial Academics</option>
-        </Input>
-
-        <div className="my1">
-          <div className="row roww" hidden={hide}>
-            {this.state.mycases.map((mycase) => {
-              var desc = mycase.facts.substring(0, 55);
-              return (
-                <div className="col-xl-4">
-                  <div
-                    className="card cardd"
-                    onClick={() => this.handleCurId(mycase._id)}
-                  >
-                    <h3 className="card-title mytitle">{mycase.name}</h3>
-                    <div style={{ marginBottom: "2vh" }} className="my2">
-                      <span style={{ wordSpacing: "29px" }} className="myspan">
-                        ID :
-                      </span>
-                      <span className="myspan1">{mycase.caseno}</span>
-                    </div>
-                    <div className="my2">
-                      <span className="myspan">Type :</span>
-                      <span className="myspan1">{mycase.type}</span>
-                    </div>
-                    {/* <div className="my2">
+            <div className="my1">
+              <div className="row roww" hidden={hide}>
+                {this.state.mycases.map((mycase) => {
+                  var desc = mycase.facts.substring(0, 55);
+                  return (
+                    <div className="col-xl-4">
+                      <div
+                        className="card cardd"
+                        onClick={() => this.handleCurId(mycase._id)}
+                      >
+                        <h3 className="card-title mytitle">{mycase.name}</h3>
+                        <div style={{ marginBottom: "2vh" }} className="my2">
+                          <span
+                            style={{ wordSpacing: "29px" }}
+                            className="myspan"
+                          >
+                            ID :
+                          </span>
+                          <span className="myspan1">{mycase.caseno}</span>
+                        </div>
+                        <div className="my2">
+                          <span className="myspan">Type :</span>
+                          <span className="myspan1">{mycase.type}</span>
+                        </div>
+                        {/* <div className="my2">
                       <span className="myspan">Lawyer:</span>
                       <span className="myspan1">{mycase.lawyer.lname}</span>
                     </div> */}
-                    <div className="my3">
-                      <span className="my4">Facts :</span>
-                      <span className="card-text cardd-text">
-                        {desc.charAt(0).toUpperCase() + desc.slice(1)}...
-                      </span>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                  );
+                })}
+              </div>
 
-          <div className="row roww" hidden={hide1}>
-            {this.state.closecase.map((mycase) => {
-              var desc = mycase.facts.substring(0, 55);
-              return (
-                <div className="col-xl-4">
-                  <div
-                    className="card cardd"
-                    onClick={() => this.handleCurId(mycase._id)}
-                  >
-                    <h3 className="card-title mytitle">{mycase.name}</h3>
-                    <div style={{ marginBottom: "2vh" }} className="my2">
-                      <span style={{ wordSpacing: "29px" }} className="myspan">
-                        ID :
-                      </span>
-                      <span className="myspan1">{mycase.caseno}</span>
-                    </div>
-                    <div className="my2">
-                      <span className="myspan">Type :</span>
-                      <span className="myspan1">{mycase.type}</span>
-                    </div>
-                    {/* <div className="my2">
+              <div className="row roww" hidden={hide1}>
+                {this.state.closecase.map((mycase) => {
+                  var desc = mycase.facts.substring(0, 55);
+                  return (
+                    <div className="col-xl-4">
+                      <div
+                        className="card cardd"
+                        onClick={() => this.handleCurId(mycase._id)}
+                      >
+                        <h3 className="card-title mytitle">{mycase.name}</h3>
+                        <div style={{ marginBottom: "2vh" }} className="my2">
+                          <span
+                            style={{ wordSpacing: "29px" }}
+                            className="myspan"
+                          >
+                            ID :
+                          </span>
+                          <span className="myspan1">{mycase.caseno}</span>
+                        </div>
+                        <div className="my2">
+                          <span className="myspan">Type :</span>
+                          <span className="myspan1">{mycase.type}</span>
+                        </div>
+                        {/* <div className="my2">
                       <span className="myspan">Lawyer:</span>
                       <span className="myspan1">{mycase.lawyer.lname}</span>
                     </div> */}
-                    <div className="my3">
-                      <span className="my4">Facts :</span>
-                      <p className="card-text cardd-text">
-                        {desc.charAt(0).toUpperCase() + desc.slice(1)}...
-                      </p>
+                        <div className="my3">
+                          <span className="my4">Facts :</span>
+                          <p className="card-text cardd-text">
+                            {desc.charAt(0).toUpperCase() + desc.slice(1)}...
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              );
-            })}
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }

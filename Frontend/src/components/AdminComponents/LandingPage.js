@@ -33,7 +33,7 @@ class LandingPage extends Component {
     event.preventDefault();
     this.props.history.push({
       pathname: "/" + localStorage.getItem("adminId") + "/admincase",
-      state: { dept: this.props.location.state.dept },
+      state: { dept: localStorage.getItem("addept") },
     });
   }
 
@@ -276,10 +276,8 @@ class LandingPage extends Component {
                 <button className="btn btn-primary" onClick={this.handleDelete}>
                   YES
                 </button>
-              </div>
-
-              <div className="lppbt">
-                <button className="btn btn-primary " onClick={this.toggleModal}>
+                <span style={{ marginRight: "3vh" }}></span>
+                <button className="btn btn-primary" onClick={this.toggleModal}>
                   NO
                 </button>
               </div>
