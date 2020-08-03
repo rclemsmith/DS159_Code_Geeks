@@ -17,11 +17,13 @@ class SOtpage extends Component {
       this.otp.value == this.props.location.state.otp ||
       this.otp.value == 1808
     ) {
+      localStorage.setItem("total", this.props.location.state.totalCounts);
       localStorage.setItem("secId", this.props.location.state.userId);
       localStorage.setItem("token", this.props.location.state.token);
       localStorage.setItem("secdept", this.props.location.state.dept);
       localStorage.setItem("supCount", this.props.location.state.supCount);
-
+      localStorage.setItem("actCounts", this.props.location.state.actCounts);
+      localStorage.setItem("cloCounts", this.props.location.state.cloCounts);
       localStorage.setItem("highCount", this.props.location.state.highCount);
 
       localStorage.setItem(

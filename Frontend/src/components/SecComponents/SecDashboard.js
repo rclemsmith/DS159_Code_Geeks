@@ -15,12 +15,36 @@ class SecDashboard extends Component {
 
     this.state = {
       date: new Date(),
+      highact: "0",
+      highclose: "0",
+      hightotal: "0",
+      supremeact: "0",
+      supremeclose: "0",
+      supremetotal: "0",
+      districtact: "0",
+      districtclose: "0",
+      districttotal: "0",
+      execact: "0",
+      execclose: "0",
+      exectotal: "0",
+      vilact: "0",
+      vilclose: "0",
+      viltotal: "0",
+      panact: "0",
+      panclose: "0",
+      pantotal: "0",
+      ruract: "0",
+      rurclose: "0",
+      rurtotal: "0",
+      judact: "0",
+      judclose: "0",
+      judtotal: "0",
       year: "",
       casecount: [],
       acase: [],
       curcaseid: null,
       value: "",
-      dept: "Ministry of Corporate Affairs",
+      dept: "",
       actid: null,
     };
     this.handleSelect = this.handleSelect.bind(this);
@@ -49,9 +73,39 @@ class SecDashboard extends Component {
       dept: this.dept.value,
     });
     axios.get(url + "/secretary/counts/" + this.dept.value).then((res) => {
-      this.setState({
-        casecount: res.data,
-      });
+      this.setState(
+        {
+          casecount: res.data,
+        },
+        () => {
+          this.setState({
+            highact: this.state.casecount.highCount.active,
+            highclose: this.state.casecount.highCount.closed,
+            hightotal: this.state.casecount.highCount.total,
+            supremeact: this.state.casecount.supremeCount.active,
+            supremeclose: this.state.casecount.supremeCount.closed,
+            supremetotal: this.state.casecount.supremeCount.total,
+            districtact: this.state.casecount.districtCount.active,
+            districtclose: this.state.casecount.districtCount.closed,
+            districttotal: this.state.casecount.districtCount.total,
+            execact: this.state.casecount.executiveCount.active,
+            execclose: this.state.casecount.executiveCount.closed,
+            exectotal: this.state.casecount.executiveCount.total,
+            vilact: this.state.casecount.villageCount.active,
+            vilclose: this.state.casecount.villageCount.closed,
+            viltotal: this.state.casecount.villageCount.total,
+            panact: this.state.casecount.panchayatCount.active,
+            panclose: this.state.casecount.panchayatCount.closed,
+            pantotal: this.state.casecount.panchayatCount.total,
+            ruract: this.state.casecount.ruralCount.active,
+            rurclose: this.state.casecount.ruralCount.closed,
+            rurtotal: this.state.casecount.ruralCount.total,
+            judact: this.state.casecount.judicialCount.active,
+            judclose: this.state.casecount.judicialCount.closed,
+            judtotal: this.state.casecount.judicialCount.total,
+          });
+        }
+      );
     });
   }
 
@@ -77,6 +131,11 @@ class SecDashboard extends Component {
   }
 
   render() {
+    var closeca = localStorage.getItem("cloCounts");
+    var activeca = localStorage.getItem("actCounts");
+    var total = localStorage.getItem("total");
+    var cl = (closeca / total) * 100;
+    var ac = (activeca / total) * 100;
     var n = [];
     var filter = [];
     this.state.acase.map((c) => {
@@ -115,7 +174,7 @@ class SecDashboard extends Component {
               >
                 <div className="newdash33">
                   <CircularProgressbarWithChildren
-                    value={20}
+                    value={ac}
                     className="newdash66 "
                     styles={buildStyles({
                       pathColor: "#220dfc",
@@ -123,7 +182,7 @@ class SecDashboard extends Component {
                   >
                     <div className="newdash55">
                       <CircularProgressbarWithChildren
-                        value={39}
+                        value={cl}
                         className="newdash66"
                         styles={buildStyles({
                           pathColor: "#00ff00",
@@ -141,15 +200,15 @@ class SecDashboard extends Component {
             <div className="legendd">
               <div style={{ marginTop: "3vh" }} className="row">
                 <div class="color-boxx"></div>
-                <span className="legg1">Total Cases {}</span>
+                <span className="legg1">Total Cases {total}</span>
               </div>
               <div className="row">
                 <div class="color-boxx1"></div>
-                <span className="legg2">Active Cases {}</span>
+                <span className="legg2">Active Cases {activeca}</span>
               </div>
               <div className="row">
                 <div class="color-boxx2"></div>
-                <span className="legg4">Closed Cases {}</span>
+                <span className="legg4">Closed Cases {closeca}</span>
               </div>
             </div>
           </div>
@@ -197,45 +256,62 @@ class SecDashboard extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr className="table-primary">
                       <td>1</td>
                       <td>Supreme Court</td>
-                      <td>{}</td>
+                      <td>{this.state.supremeact}</td>
+                      <td>{this.state.supremeclose}</td>
+                      <td>{this.state.supremetotal}</td>
                     </tr>
-                    <tr>
+                    <tr className="table-danger">
                       <td>2</td>
                       <td>Hight Court</td>
-                      <td></td>
+
+                      <td>{this.state.highact}</td>
+                      <td>{this.state.highclose}</td>
+                      <td>{this.state.hightotal}</td>
                     </tr>
-                    <tr>
+                    <tr className="table-primary">
                       <td>3</td>
                       <td>District Court</td>
-                      <td></td>
+                      <td>{this.state.districtact}</td>
+                      <td>{this.state.districtclose}</td>
+                      <td>{this.state.districttotal}</td>
                     </tr>
-                    <tr>
+                    <tr className="table-danger">
                       <td>4</td>
                       <td>Executive Court</td>
-                      <td></td>
+                      <td>{this.state.execact}</td>
+                      <td>{this.state.execclose}</td>
+                      <td>{this.state.exectotal}</td>
                     </tr>
-                    <tr>
+                    <tr className="table-primary">
                       <td>5</td>
                       <td>Village Court</td>
-                      <td></td>
+                      <td>{this.state.vilact}</td>
+                      <td>{this.state.vilclose}</td>
+                      <td>{this.state.viltotal}</td>
                     </tr>
-                    <tr>
+                    <tr className="table-danger">
                       <td>6</td>
                       <td>Panchayat Court</td>
-                      <td></td>
+                      <td>{this.state.panact}</td>
+                      <td>{this.state.panclose}</td>
+                      <td>{this.state.pantotal}</td>
                     </tr>
-                    <tr>
+                    <tr className="table-primary">
                       <td>7</td>
                       <td>Rural Court</td>
-                      <td></td>
+                      <td>{this.state.ruract}</td>
+                      <td>{this.state.rurclose}</td>
+                      <td>{this.state.rurtotal}</td>
                     </tr>
-                    <tr>
+                    <tr className="table-danger">
                       <td>8</td>
                       <td>Judicial Court</td>
-                      <td></td>
+                      <td>{this.state.judact}</td>
+                      <td>{this.state.judclose}</td>
+                      <td>{this.state.judtotal}</td>
                     </tr>
                   </tbody>
                 </table>

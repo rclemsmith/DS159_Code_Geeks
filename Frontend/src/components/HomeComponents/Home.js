@@ -154,6 +154,8 @@ class Home extends Component {
                   ruralCount: res.data.ruralCount,
                   judicialCount: res.data.judicialCount,
                   totalCounts: res.data.totalCounts,
+                  actCounts: res.data.actCount,
+                  cloCounts: res.data.cloCount,
                 },
               });
             }
