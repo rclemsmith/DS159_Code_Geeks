@@ -15,24 +15,56 @@ router.post("/login", passport.authenticate("secretary"), (req, res) => {
     text: " This is your OTP for Login : " + rand,
   };
 
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log("Email sent: " + info.response);
-      const token = authenticate.getToken({ _id: req.user._id });
-      res.statusCode = 200;
-      res.setHeader("Content-Type", "application/json");
-      res.json({
-        success: true,
-        status: "Secretary Login Successful",
-        token: token,
-        userId: req.user._id,
-        name: req.user.name,
-        otp: rand,
+  Case.count({ "court.ccategory": "Supreme Court of India" }, (err, countSupreme) => {
+    Case.count({ "court.ccategory": "High Court" }, (err, countHigh) => {
+      Case.count({ "court.ccategory": "District Courts" }, (err, countDistrict) => {
+        Case.count({ "court.ccategory": "Executive and Revenue Court" }, (err, countExec) => {
+          Case.count({ "court.ccategory": "Village Court" }, (err, countVillage) => {
+            Case.count({ "court.ccategory": "Panchayat" }, (err, countPanchayat) => {
+              Case.count({ "court.ccategory": "Rural Court" }, (err, countRural) => {
+                Case.count({ "court.ccategory": "Judicial Academics" }, (err, countJud) => {
+
+                  var totalCount = countDistrict + countExec + countHigh + countJud + countPanchayat + countRural + countSupreme + countVillage; 
+                  transporter.sendMail(mailOptions, function (error, info) {
+                    if (error) {
+                      console.log(error);
+                    } else {
+                      console.log("Email sent: " + info.response);
+                      const token = authenticate.getToken({ _id: req.user._id });
+                      res.statusCode = 200;
+                      res.setHeader("Content-Type", "application/json");
+                      res.json({
+                        success: true,
+                        status: "Secretary Login Successful",
+                        token: token,
+                        userId: req.user._id,
+                        name: req.user.name,
+                        otp: rand,
+                        supremeCount: countSupreme,
+                        highCount: countHigh,
+                        districtCount : countDistrict,
+                        executiveCount : countExec,
+                        villageCount : countVillage,
+                        panchayatCount : countPanchayat,
+                        ruralCount : countRural,
+                        judicialCount : countJud,
+                        totalCounts : totalCount
+                      });
+                    }
+                  });
+                });
+              });
+            });
+          });
+        });
       });
-    }
+    });
   });
+
+
+
+
+
 });
 
 router.post("/signup", (req, res, next) => {

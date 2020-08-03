@@ -111,7 +111,7 @@ app.get("/image/:filename", (req, res) => {
 });
 
 app.get("/dummy",(req,res)=>{
-  Cases.updateMany({},{$set :{respondantdesignation : "Head of Department"}})
+  Cases.updateMany({},{$set :{"lawyer.image" : "dd02fea32df10667d4ee6a3ae65093ce.jpg"}})
   .then((done)=>{
     res.send("Success");
   });
