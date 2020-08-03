@@ -124,15 +124,12 @@ router.get("/reports/:departmentName", (req, res) => {
     });
 });
 
-router.get("/typecount/:departmentName",(req,res)=>{
-  Case.count({department : req.params.departmentName,type : "Civil"},(err,civilCount)=>{
-    Case.count({department : req.params.departmentName,type : "Criminal"},(err,criminalCount)=>{
-      res.status = 200;
-      res.setHeader("Content-Type", "application/json");
-      res.json({
-        civilCount: civilCount,
-        criminalCount: criminalCount
-      });
+router.get("/typecount/:departmentName/:caseType", (req, res) => {
+  Case.count({ department: req.params.departmentName, type: req.params.caseType }, (err, Count) => {
+    res.status = 200;
+    res.setHeader("Content-Type", "application/json");
+    res.json({
+      Count: Count,
     });
   });
 });
@@ -194,7 +191,7 @@ router.get("/counts/:departmentName", (req, res) => {
                                   res.setHeader("Content-Type", "application/json");
                                   res.json({
                                     success: true,
-                                    department : req.params.departmentName,
+                                    department: req.params.departmentName,
                                     supremeCount: {
                                       active: acountSupreme,
                                       closed: ccountSupreme,
