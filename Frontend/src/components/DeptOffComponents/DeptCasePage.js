@@ -171,6 +171,9 @@ class DeptCasePage extends Component {
         curwitness: cur[0].curhearingwitness,
         curdoc: cur[0].documents,
         next: cur[0].nexthearingdate,
+        curinvid: cur[0].hearingcaseid,
+        curinvcharge: cur[0].invcharge,
+        curinvstatus: cur[0].invstatus,
       },
     });
   }
@@ -236,7 +239,7 @@ class DeptCasePage extends Component {
                     </span>
                     <span className="ho1">{this.state.curcase.opposition}</span>
                   </div>
-                  <p className="ctitle">Petitioner Documents:</p>
+                  <p style ={{marginTop : "4vh"}}className="ctitle">Petitioner Documents:</p>
                   {this.state.petdocs.map((c) => {
                     console.log(c);
                     return (
@@ -263,7 +266,8 @@ class DeptCasePage extends Component {
                     </span>
                     <span className="ho1">{this.state.curcase.respondantname} - {this.state.curcase.respondantdesignation}</span>
                   </div>
-                  <p className="ctitle">Rejoinder Documents:</p>
+                  
+                  <p style ={{marginTop : "4vh"}} className="ctitle">Rejoinder Documents:</p>
                   {this.state.curdocs.map((c) => {
                     console.log(c);
                     return (
@@ -312,7 +316,7 @@ class DeptCasePage extends Component {
                     </span>
                     <span className="ho1">{this.state.courtname}</span>
                   </div>
-
+                  
                   <h4
                     style={{
                       marginTop: "7vh",

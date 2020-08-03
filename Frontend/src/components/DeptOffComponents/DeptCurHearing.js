@@ -31,7 +31,7 @@ class DeptCurHearing extends Component {
             <span className="cch7">Lawyer :</span>
             <span className="cch8">{this.props.location.state.curlawyer}</span>
           </div>
-          
+
           <div className="cch9">
             <h6 className="cch10">Details :</h6>
             <p className="cch11">{this.props.location.state.curfact}</p>
@@ -48,6 +48,23 @@ class DeptCurHearing extends Component {
               {nex.replace(/T.*/, "").split("-").reverse().join("-")}
             </span>
           </div>
+          <p className="cch13">Invoice Details:</p>
+          <div className="cch12">
+            <span className="cch13">Hearing ID:</span>
+            <span className="cch14">{this.props.location.state.curinvid}</span>
+          </div>
+          <div className="cch12">
+            <span className="cch13">Charge:</span>
+            <span className="cch14">
+              {this.props.location.state.curinvcharge}
+            </span>
+          </div>
+          <div className="cch12">
+            <span className="cch13">Status:</span>
+            <span className="cch14">
+              {this.props.location.state.curinvstatus}
+            </span>
+          </div>
           <span className="cch13">Documents:</span>
           {this.props.location.state.curdoc.map((c) => {
             console.log(c);
@@ -56,7 +73,7 @@ class DeptCurHearing extends Component {
                 <span className="cch13"></span>
                 <span className="cch14">
                   <a
-                  target = "_blank"
+                    target="_blank"
                     href={url + "/image/" + c}
                     download
                   >

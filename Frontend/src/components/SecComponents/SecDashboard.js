@@ -320,7 +320,7 @@ class SecDashboard extends Component {
                     </tr>
                     <tr className="table-danger">
                       <td>2</td>
-                      <td>Hight Court</td>
+                      <td>High Court</td>
 
                       <td>{this.state.highact}</td>
                       <td>{this.state.highclose}</td>

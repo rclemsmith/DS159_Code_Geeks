@@ -103,7 +103,7 @@ class Search extends Component {
               className="searchinp"
               value={this.state.value}
               name="search-input"
-              placeholder="Search By Synopsis"
+              placeholder="Search"
               onChange={(e) => this.handleChange(e)}
             />
             <InputGroupAddon addonType="append">

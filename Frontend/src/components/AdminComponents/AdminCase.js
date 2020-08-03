@@ -241,7 +241,7 @@ class AdminCase extends Component {
                 className="ssearchinp"
                 value={this.state.value}
                 name="search-input"
-                placeholder="Search By Synopsis"
+                placeholder="Search"
                 onChange={(e) => this.handleChange(e)}
               />
               <InputGroupAddon addonType="append">
