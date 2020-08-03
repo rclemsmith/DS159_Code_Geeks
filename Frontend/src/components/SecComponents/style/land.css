@@ -46,3 +46,15 @@
 
   margin-bottom: 10vh;
 }
+
+.secselec {
+  margin-left: -50vh;
+  width: 50vh;
+  margin-top: 20vh;
+  border: 2px solid black;
+}
+
+.sectable11 {
+  margin-left: -100vh;
+  width: fit-content;
+}
