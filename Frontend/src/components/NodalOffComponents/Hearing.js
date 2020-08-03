@@ -17,8 +17,11 @@ class Hearing extends Component {
       hearingjudge: "",
       hearinglawyer: "",
       hearingverdict: "",
+      hearingcaseid: "",
+      hearingcharge: "",
+      invstatus: "",
       nexthearing: "",
-
+      hide: false,
       witness: [],
       name: "",
       age: "",
@@ -34,6 +37,8 @@ class Hearing extends Component {
     this.handleCount = this.handleCount.bind(this);
     this.handleVictim = this.handleVictim.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleNext = this.handleNext.bind(this);
+    this.handleBack = this.handleBack.bind(this);
   }
 
   onChange = (e) => {
@@ -71,13 +76,30 @@ class Hearing extends Component {
     this.state.witness.push(data);
   }
 
-  handleSubmit(event) {
-
+  handleNext(event) {
     if(this.state.hearingdate === "" || this.state.hearingfact === "" || this.state.hearinglawyer === "" || this.state.hearingjudge === "" || this.state.hearingverdict === ""){
-      window.alert("Enter Valid Details");
+      window.alert("Null Values Found");
+    }
+    else{
+      this.setState({
+        hide : !this.state.hide
+      })
     }
 
-    else{
+  }
+
+  handleBack(event) {
+    this.setState({
+      hide: false
+    })
+  }
+
+  handleSubmit(event) {
+    if(this.state.hearingcaseid === "" || this.state.hearingcharge === "" || this.state.invstatus === ""){
+      window.alert("Null Values Found");
+    }
+
+    else{    
       const formData = new FormData();
     
       formData.append("curdate",this.state.hearingdate);
@@ -103,11 +125,11 @@ class Hearing extends Component {
           formData
         )
         .then((res) => {
-          window.alert("success");
+          window.alert("Hearing added !!");
         });
 
       console.log(formData);
-    }   
+    }
   }
 
   render() {
@@ -126,9 +148,9 @@ class Hearing extends Component {
       >
         <SideNavBar history={this.props.history} />
         <Head name="New Hearing" />
-        <div className="container he1">
+        <div className="container he1">          
+          <div className="he3" hidden={this.state.hide}>
           <h3 className="he2">New Hearing</h3>
-          <div className="he3">
             <Card className="form">
               <AvForm>
                 <AvField
@@ -316,10 +338,80 @@ class Hearing extends Component {
                   value={this.state.nexthearing}
                   innerRef={(input) => (this.nexthearing = input)}
                 />
+
                 <Button
                   color="primary"
                   outline="none"
+                  style={{float:'right'}}
+                  onClick={this.handleNext}
+                >
+                  Next
+                </Button>
+                {/* <Button
+                  color="primary"
+                  outline="none"
                   className="he31"
+                  onClick={this.handleSubmit}
+                >
+                  Submit
+                </Button> */}
+              </AvForm>
+            </Card>
+          </div>          
+          <div style={{marginBottom:'24vh'}} className="he3" hidden={!(this.state.hide)}>
+          <h3 className="he2">Invoice</h3>
+            <Card className="form">
+              <AvForm>
+                <AvField
+                  name="hearingcaseid"
+                  id="hearingcaseid"
+                  label="Case ID"
+                  type="text"
+                  className="he4"
+                  onChange={this.onChange}
+                  value={this.state.hearingcaseid}
+                  innerRef={(input) => (this.hearingcaseid = input)}
+                  required
+                />
+                <AvField
+                  name="hearingcharge"
+                  id="hearingcharge"
+                  label="Hearing Charge"
+                  type="text"
+                  className="he5"
+                  onChange={this.onChange}
+                  value={this.state.hearingcharge}
+                  innerRef={(input) => (this.hearingcharge = input)}
+                  required
+                />
+                <AvField
+                  name="invstatus"
+                  id="invstatus"
+                  label="Transaction Status"
+                  type="select"
+                  className="he7"
+                  onChange={this.onChange}
+                  value={this.state.invstatus}
+                  innerRef={(input) => (this.invstatus = input)}
+                  required
+                >
+                  <option hidden>Select Status</option>
+                  <option>Paid</option>
+
+                  <option>Not Paid</option>
+                  </AvField> 
+                <Button
+                  style={{float:'left'}}
+                  color="primary"
+                  outline="none"
+                  onClick={this.handleBack}
+                >
+                  Back
+                </Button>                
+                <Button
+                  style={{float:'right'}}
+                  color="primary"
+                  outline="none"
                   onClick={this.handleSubmit}
                 >
                   Submit
