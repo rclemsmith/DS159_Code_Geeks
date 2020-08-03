@@ -125,16 +125,13 @@ class Active extends Component {
                 <div>
                   <p className="act4">Type : {active.type}</p>
                 </div>
-
-                <div className="row" style={{ marginLeft: "0vh" }}>
-                  <p style={{ wordSpacing: "4px" }} className="act4">
-                    {" "}
-                    Facts :{" "}
-                  </p>
-                  <span className="fact">
-                    {active.facts.substring(0, 70)} ...
-                  </span>
+                <div>
+                  <p className="act4">Petitioner : {active.opposition}</p>
                 </div>
+                <div>
+                  <p className="act4">Lawyer : {active.lawyer.lname}</p>
+                </div>
+                
               </div>
             </div>
           </div>

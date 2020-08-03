@@ -29,6 +29,8 @@ class DeptCasePage extends Component {
       luid: null,
       courtname: null,
       isModalOpen: false,
+      curdocs: [],
+      petdocs: []
     };
     this.toggleModal = this.toggleModal.bind(this);
     this.handleHearing = this.handleHearing.bind(this);
@@ -106,7 +108,9 @@ class DeptCasePage extends Component {
       .then((res) => {
         this.setState(
           {
-            curcase: res.data,
+            curcase: res.data,            
+            curdocs: res.data.rejoinderDocs,
+            petdocs: res.data.documents,
           },
           () => {
             this.setState({
@@ -232,6 +236,19 @@ class DeptCasePage extends Component {
                     </span>
                     <span className="ho1">{this.state.curcase.opposition}</span>
                   </div>
+                  <p className="ctitle">Petitioner Documents:</p>
+                  {this.state.petdocs.map((c) => {
+                    console.log(c);
+                    return (
+                      <div className="ch12">
+                        <span className="ch14" style={{ marginLeft: "25vh" }}>
+                          <a href={url + "/image/" + c} download>
+                            Click to download
+                          </a>
+                        </span>
+                      </div>
+                    );
+                  })}
                   <div className="ho2">
                     <span
                       style={{
@@ -246,6 +263,19 @@ class DeptCasePage extends Component {
                     </span>
                     <span className="ho1">{this.state.curcase.respondantname} - {this.state.curcase.respondantdesignation}</span>
                   </div>
+                  <p className="ctitle">Rejoinder Documents:</p>
+                  {this.state.curdocs.map((c) => {
+                    console.log(c);
+                    return (
+                      <div className="ch12">
+                        <span className="ch14" style={{ marginLeft: "25vh" }}>
+                          <a href={url + "/image/" + c} download>
+                            Click to download
+                          </a>
+                        </span>
+                      </div>
+                    );
+                  })}
                   <div className="ho2">
                     <span
                       style={{
