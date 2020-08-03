@@ -508,7 +508,7 @@ class NewCase extends Component {
       formData.append("image", document);
     });
     formData.append("admin", adminn);
-    formData.append("opposition", this.deptname.value);
+    formData.append("opposition", this.pet.value);
     formData.append("judge", this.cjudge.value);
     formData.append("costate", this.cstate.value);
     formData.append("codistrict", this.cdist.value);
