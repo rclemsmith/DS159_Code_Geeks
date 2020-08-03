@@ -41,43 +41,49 @@ router.post("/:departmentName", (req, res) => {
         if (entry.type.toLowerCase().includes(query.toLowerCase())) {
           var put = {
             name: entry.name,
-            caseno : entry.caseno,
+            caseno: entry.caseno,
             type: entry.type,
             facts: entry.facts,
-            synopsis : entry.synopsis
+            synopsis: entry.synopsis
           };
           result.push(entry);
         } else if (entry.name.toLowerCase().includes(query.toLowerCase())) {
           var put = {
             name: entry.name,
             type: entry.type,
-            caseno : entry.caseno,
+            caseno: entry.caseno,
             facts: entry.facts,
-            synopsis : entry.synopsis
+            synopsis: entry.synopsis
           };
           result.push(entry);
         } else if (entry.facts.toLowerCase().includes(query.toLowerCase())) {
           var put = {
             name: entry.name,
             type: entry.type,
-            caseno : entry.caseno,
+            caseno: entry.caseno,
             facts: entry.facts,
-            synopsis : entry.synopsis
+            synopsis: entry.synopsis
           };
           result.push(entry);
-        } else if (entry.synopsis.toLowerCase().includes(query.toLowerCase())) {
-          var put = {
-            name: entry.name,
-            type: entry.type,
-            caseno : entry.caseno,
-            facts: entry.facts,
-            synopsis : entry.synopsis
-          };
+        }
+        else if (entry.caseno.toLowerCase().includes(query.toLowerCase())) {
           result.push(entry);
-        }else if(entry.caseno.toLowerCase().includes(query.toLowerCase())){
+        } else if (entry.lawyer.lname.toLowerCase().includes(query.toLowerCase())) {
           result.push(entry);
-        }else if(entry.lawyer.lname.toLowerCase().includes(query.toLowerCase())){
-          result.push(entry);
+        } else {
+          if (entry.synopsis) {
+            if (entry.synopsis.toLowerCase().includes(query.toLowerCase())) {
+              var put = {
+                name: entry.name,
+                type: entry.type,
+                caseno: entry.caseno,
+                facts: entry.facts,
+                synopsis: entry.synopsis
+              };
+              result.push(entry);
+            }
+
+          }
         }
       });
 
