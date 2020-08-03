@@ -14,8 +14,25 @@ class CaseUpdate extends Component {
     this.state = {
       facts: "",
       status: "",
+      docs: null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDoc = this.handleDoc.bind(this);
+  }
+
+  handleDoc(event) {
+    var documents = [];
+    for (var i = 0; i < event.target.files.length; i++) {
+      documents.push(event.target.files[i]);
+    }
+    this.setState(
+      {
+        docs: documents,
+      },
+      () => {
+        console.log(this.state.docs);
+      }
+    );
   }
 
   handleSubmit(event) {
@@ -33,7 +50,7 @@ class CaseUpdate extends Component {
         status: this.status.value,
         isClosed: false,
       };
-    }
+    }    
 
     axios
       .post(url + 
@@ -82,6 +99,31 @@ class CaseUpdate extends Component {
                 onChange={this.onChange}
                 innerRef={(input) => (this.facts = input)}
               />
+              <div className="row">
+                <div className="col">
+              <AvField
+                name="mailperiod"
+                id="mailperiod"
+                label="Mail Period"
+                type="number"
+                min="0"
+                value={this.state.mailperiod}
+                onChange={this.onChange}                
+                innerRef={(input) => (this.mailperiod = input)}
+              />
+              </div>
+              <div className="col">
+              <AvField
+                multiple
+                name="docs"
+                id="docs"
+                label="Rejoinder Documents"
+                type="file"
+                onChange={this.handleDoc}
+                innerRef={(input) => (this.docs = input)}
+              />
+              </div>
+              </div>
 
               <AvField
                 name="status"

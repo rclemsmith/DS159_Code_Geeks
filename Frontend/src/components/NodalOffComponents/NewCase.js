@@ -29,7 +29,7 @@ class NewCase extends Component {
     super(props);
 
     this.state = {
-      probar : 0,
+      probar : 17,
       card0: false,
       card1: true,
       card2: true,
@@ -67,6 +67,7 @@ class NewCase extends Component {
       add: false,
       image: null,
       docs: null,
+      resdocs: null,
       rescount: 0,
       respondent: [],
     };
@@ -100,6 +101,7 @@ class NewCase extends Component {
     this.Ldist = this.Ldist.bind(this);
     this.Lstate = this.Lstate.bind(this);
     this.handleDocs = this.handleDocs.bind(this);
+    this.handleResDocs = this.handleResDocs.bind(this);
     this.handleRes = this.handleRes.bind(this);
     this.handleResCount = this.handleResCount.bind(this);
     this.handleNext = this.handleNext.bind(this);
@@ -342,13 +344,28 @@ class NewCase extends Component {
     );
   }
 
+  handleResDocs(event) {
+    var documents = [];
+    for (var i = 0; i < event.target.files.length; i++) {
+      documents.push(event.target.files[i]);
+    }
+    this.setState(
+      {
+        resdocs: documents,
+      },
+      () => {
+        console.log(this.state.resdocs);
+      }
+    );
+  }
+
   handleNext() {
     if(this.state.caseid === "" || this.state.case === "" || this.state.type === "" || this.state.status === "" || this.state.facts === ""){
       window.alert("Null Values Found !!")
     }
     else{
     this.setState({
-      probar: Math.ceil(100/6),
+      probar: Math.ceil((100/6)*2),
       card0: true,
       card1: false,
       card2: true,
@@ -365,7 +382,7 @@ class NewCase extends Component {
     }
     else{
     this.setState({
-      probar: Math.ceil((100/6)*2),
+      probar: Math.ceil((100/6)*3),
       card0: true,
       card3: true,
       card1: true,
@@ -382,7 +399,7 @@ class NewCase extends Component {
     }
     else{
     this.setState({
-      probar: Math.ceil((100/6)*3),
+      probar: Math.ceil((100/6)*4),
       card0: true,
       card1: true,
       card2: true,
@@ -399,7 +416,7 @@ class NewCase extends Component {
     }
     else{
     this.setState({
-      probar: Math.ceil((100/6)*4),
+      probar: Math.ceil((100/6)*5),
       card0: true,
       card1: true,
       card2: true,
@@ -416,7 +433,7 @@ class NewCase extends Component {
     }
     else{
     this.setState({
-      probar: Math.ceil((100/6)*5),
+      probar: Math.ceil(100),
       card0: true,
       card1: true,
       card2: true,
@@ -429,7 +446,7 @@ class NewCase extends Component {
 
   handlePrev1() {
     this.setState({
-      probar: 0,
+      probar: Math.ceil(100/6),
       card0: false,
       card1: true,
       card2: true,
@@ -441,7 +458,7 @@ class NewCase extends Component {
 
   handlePrev2() {
     this.setState({
-      probar: Math.ceil((100/6)),
+      probar: Math.ceil((100/6)*2),
       card0: true,
       card1: false,
       card2: true,
@@ -453,7 +470,7 @@ class NewCase extends Component {
 
   handlePrev3() {
     this.setState({
-      probar: Math.ceil((100/6)*2),
+      probar: Math.ceil((100/6)*3),
       card0: true,
       card1: true,
       card2: false,
@@ -465,7 +482,7 @@ class NewCase extends Component {
 
   handlePrev4() {
     this.setState({
-      probar: Math.ceil((100/6)*3),
+      probar: Math.ceil((100/6)*4),
       card0: true,
       card1: true,
       card2: true,
@@ -477,7 +494,7 @@ class NewCase extends Component {
 
   handlePrev5() {
     this.setState({
-      probar: Math.ceil((100/6)*4),
+      probar: Math.ceil((100/6)*5),
       card0: true,
       card1: true,
       card2: true,
@@ -788,7 +805,7 @@ class NewCase extends Component {
                       multiple
                       name="docs"
                       id="docs"
-                      label="Document"
+                      label="Petitioner Documents"
                       type="file"
                       onChange={this.handleDocs}
                       innerRef={(input) => (this.docs = input)}
@@ -889,6 +906,18 @@ class NewCase extends Component {
                       </Button>
                     </div>
                     </div>
+
+                    <AvGroup className="ncinput">
+                    <AvField
+                      multiple
+                      name="resdocs"
+                      id="resdocs"
+                      label="Respondent Documents"
+                      type="file"
+                      onChange={this.handleResDocs}
+                      innerRef={(input) => (this.resdocs = input)}
+                    />
+                  </AvGroup>
                   
                   <Button
                     color="primary"

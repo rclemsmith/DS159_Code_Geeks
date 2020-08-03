@@ -537,6 +537,9 @@ router.post("/:caseId/modify", (req, res) => {
         facts: req.body.facts,
         status: req.body.status,
         isClosed: req.body.isClosed,
+        reply : req.body.reply,
+        rejoinder : req.body.rejoinder,
+        mailPeriod : req.body.mailPeriod
       },
     },
     (err, updated) => {

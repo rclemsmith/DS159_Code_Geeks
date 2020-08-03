@@ -113,24 +113,6 @@ router.post("/login", passport.authenticate("secretary"), (req, res) => {
                                                                   err,
                                                                   ccountJud
                                                                 ) => {
-                                                                  var actCount =
-                                                                    acountDistrict +
-                                                                    acountExec +
-                                                                    acountHigh +
-                                                                    acountJud +
-                                                                    acountPanchayat +
-                                                                    acountRural +
-                                                                    acountSupreme +
-                                                                    acountVillage;
-                                                                  var cloCount =
-                                                                    ccountDistrict +
-                                                                    ccountExec +
-                                                                    ccountHigh +
-                                                                    ccountJud +
-                                                                    ccountPanchayat +
-                                                                    ccountRural +
-                                                                    ccountSupreme +
-                                                                    ccountVillage;
                                                                   var totalCount =
                                                                     acountDistrict +
                                                                     acountExec +
@@ -193,8 +175,6 @@ router.post("/login", passport.authenticate("secretary"), (req, res) => {
                                                                                 .user
                                                                                 .name,
                                                                             otp: rand,
-                                                                            actCount: actCount,
-                                                                            cloCount: cloCount,
                                                                             supremeCount: {
                                                                               active: acountSupreme,
                                                                               closed: ccountSupreme,
@@ -293,13 +273,26 @@ router.post("/login", passport.authenticate("secretary"), (req, res) => {
 
 router.get("/reports/:departmentName", (req, res) => {
   SuperAdmin.find({ name: req.params.departmentName }).then((admin) => {
-    res.status = 500;
+    res.status = 200;
     res.setHeader("Content-Type", "application/json");
     console.log(admin[0]);
     res.json({
       reports: admin[0].reports,
     });
   });
+});
+
+router.get("/typecount/:departmentName/:caseType", (req, res) => {
+  Case.count(
+    { department: req.params.departmentName, type: req.params.caseType },
+    (err, Count) => {
+      res.status = 200;
+      res.setHeader("Content-Type", "application/json");
+      res.json({
+        Count: Count,
+      });
+    }
+  );
 });
 
 router.post("/signup", (req, res, next) => {
