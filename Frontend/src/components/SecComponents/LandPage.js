@@ -141,7 +141,6 @@ class LandPage extends Component {
 
     const cas = this.state.cases.map((active) => {
       return (
-        <div className="row">
           <div className="col-12 col-xl-4">
             <div
               className="card act1"
@@ -157,28 +156,17 @@ class LandPage extends Component {
                 </div>
                 <div>
                   <p className="act4">Type : {active.type}</p>
-                </div>
-
-                <div className="row" style={{ marginLeft: "0vh" }}>
-                  <p style={{ wordSpacing: "4px" }} className="act4">
-                    {" "}
-                    Facts :{" "}
-                  </p>
-                  <span className="fact">
-                    {active.facts.substring(0, 70)} ...
-                  </span>
-                </div>
+                </div>                
               </div>
             </div>
           </div>
-        </div>
       );
     });
 
     return (
       <div className="lpttttt">
         <SecSideBar history={this.props.history} />
-        <nav className="navbar  navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <nav style={{marginLeft:'26.5vh'}} className="navbar navbar-expand-sm bg-dark navbar-dark fixed-top ">
           <Input
             className="ssearchinpu"
             value={this.state.value}
@@ -200,10 +188,10 @@ class LandPage extends Component {
             Logout
           </button>
         </nav>
-        <div className="lanpp1"></div>
+        {/* <div className="lanpp1"></div> */}
         <div className="lanp1">
           {" "}
-          <div className="container">
+          {/* <div className="container"> */}
             <Input
               name="dept"
               id="dept"
@@ -213,15 +201,15 @@ class LandPage extends Component {
               value={this.state.dept}
               innerRef={(input) => (this.dept = input)}
             >
-              <option>Select the dept</option>
+              <option>Select Department</option>
               {unique.map((u) => {
                 return <option>{u}</option>;
               })}
             </Input>
-          </div>
+          {/* </div> */}
         </div>
 
-        <div className="row">{cas}</div>
+        <div className="row seccases">{cas}</div>
       </div>
     );
   }
