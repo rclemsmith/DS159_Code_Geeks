@@ -47,10 +47,11 @@ class SecDashboard extends Component {
       acase: [],
       curcaseid: null,
       value: "",
-      dept: "",
+      dept: "All Dept",
       actid: null,
       civ: null,
       cri: null,
+      lhighcourt: {},
     };
     this.handleSelect = this.handleSelect.bind(this);
 
@@ -75,63 +76,133 @@ class SecDashboard extends Component {
 
   handleSelect(event) {
     event.preventDefault();
-    this.setState({
-      dept: this.dept.value,
-    });
-    axios
-      .get(url + "/secretary/typecount/" + this.dept.value + "/Civil")
-      .then((res) => {
-        this.setState({
-          civ: res.data,
-        });
-      });
-
-    axios
-      .get(url + "/secretary/typecount/" + this.dept.value + "/Criminal")
-      .then((res) => {
-        this.setState({
-          cri: res.data,
-        });
-      });
-
-    axios.get(url + "/secretary/counts/" + this.dept.value).then((res) => {
-      this.setState(
-        {
-          casecount: res.data,
-        },
-        () => {
+    this.setState(
+      {
+        dept: this.dept.value,
+      },
+      () => {
+        if (this.state.dept == "All Dept") {
+          console.log("true");
           this.setState({
-            highact: this.state.casecount.highCount.active,
-            highclose: this.state.casecount.highCount.closed,
-            hightotal: this.state.casecount.highCount.total,
-            supremeact: this.state.casecount.supremeCount.active,
-            supremeclose: this.state.casecount.supremeCount.closed,
-            supremetotal: this.state.casecount.supremeCount.total,
-            districtact: this.state.casecount.districtCount.active,
-            districtclose: this.state.casecount.districtCount.closed,
-            districttotal: this.state.casecount.districtCount.total,
-            execact: this.state.casecount.executiveCount.active,
-            execclose: this.state.casecount.executiveCount.closed,
-            exectotal: this.state.casecount.executiveCount.total,
-            vilact: this.state.casecount.villageCount.active,
-            vilclose: this.state.casecount.villageCount.closed,
-            viltotal: this.state.casecount.villageCount.total,
-            panact: this.state.casecount.panchayatCount.active,
-            panclose: this.state.casecount.panchayatCount.closed,
-            pantotal: this.state.casecount.panchayatCount.total,
-            ruract: this.state.casecount.ruralCount.active,
-            rurclose: this.state.casecount.ruralCount.closed,
-            rurtotal: this.state.casecount.ruralCount.total,
-            judact: this.state.casecount.judicialCount.active,
-            judclose: this.state.casecount.judicialCount.closed,
-            judtotal: this.state.casecount.judicialCount.total,
+            highact: this.props.location.state.high.active,
+            highclose: this.props.location.state.high.closed,
+            hightotal: this.props.location.state.high.total,
+            supremeact: this.props.location.state.sup.active,
+            supremeclose: this.props.location.state.sup.closed,
+            supremetotal: this.props.location.state.sup.total,
+            districtact: this.props.location.state.dis.active,
+            districtclose: this.props.location.state.dis.closed,
+            districttotal: this.props.location.state.dis.total,
+            execact: this.props.location.state.exec.active,
+            execclose: this.props.location.state.exec.closed,
+            exectotal: this.props.location.state.exec.total,
+            vilact: this.props.location.state.vil.active,
+            vilclose: this.props.location.state.vil.closed,
+            viltotal: this.props.location.state.vil.total,
+            panact: this.props.location.state.pan.active,
+            panclose: this.props.location.state.pan.closed,
+            pantotal: this.props.location.state.pan.total,
+            ruract: this.props.location.state.rur.active,
+            rurclose: this.props.location.state.rur.closed,
+            rurtotal: this.props.location.state.rur.total,
+            judact: this.props.location.state.jud.active,
+            judclose: this.props.location.state.jud.closed,
+            judtotal: this.props.location.state.jud.total,
           });
+        } else {
+          axios
+            .get(url + "/secretary/typecount/" + this.dept.value + "/Civil")
+            .then((res) => {
+              this.setState({
+                civ: res.data,
+              });
+            });
+
+          axios
+            .get(url + "/secretary/typecount/" + this.dept.value + "/Criminal")
+            .then((res) => {
+              this.setState({
+                cri: res.data,
+              });
+            });
+
+          axios
+            .get(url + "/secretary/counts/" + this.dept.value)
+            .then((res) => {
+              this.setState(
+                {
+                  casecount: res.data,
+                },
+                () => {
+                  this.setState({
+                    highact: this.state.casecount.highCount.active,
+                    highclose: this.state.casecount.highCount.closed,
+                    hightotal: this.state.casecount.highCount.total,
+                    supremeact: this.state.casecount.supremeCount.active,
+                    supremeclose: this.state.casecount.supremeCount.closed,
+                    supremetotal: this.state.casecount.supremeCount.total,
+                    districtact: this.state.casecount.districtCount.active,
+                    districtclose: this.state.casecount.districtCount.closed,
+                    districttotal: this.state.casecount.districtCount.total,
+                    execact: this.state.casecount.executiveCount.active,
+                    execclose: this.state.casecount.executiveCount.closed,
+                    exectotal: this.state.casecount.executiveCount.total,
+                    vilact: this.state.casecount.villageCount.active,
+                    vilclose: this.state.casecount.villageCount.closed,
+                    viltotal: this.state.casecount.villageCount.total,
+                    panact: this.state.casecount.panchayatCount.active,
+                    panclose: this.state.casecount.panchayatCount.closed,
+                    pantotal: this.state.casecount.panchayatCount.total,
+                    ruract: this.state.casecount.ruralCount.active,
+                    rurclose: this.state.casecount.ruralCount.closed,
+                    rurtotal: this.state.casecount.ruralCount.total,
+                    judact: this.state.casecount.judicialCount.active,
+                    judclose: this.state.casecount.judicialCount.closed,
+                    judtotal: this.state.casecount.judicialCount.total,
+                  });
+                }
+              );
+            });
         }
-      );
-    });
+      }
+    );
   }
 
   componentDidMount() {
+    this.setState({
+      lhighcourt: localStorage.getItem("highCount"),
+    });
+
+    if (this.state.dept == "All Dept") {
+      console.log("true");
+      this.setState({
+        highact: this.props.location.state.high.active,
+        highclose: this.props.location.state.high.closed,
+        hightotal: this.props.location.state.high.total,
+        supremeact: this.props.location.state.sup.active,
+        supremeclose: this.props.location.state.sup.closed,
+        supremetotal: this.props.location.state.sup.total,
+        districtact: this.props.location.state.dis.active,
+        districtclose: this.props.location.state.dis.closed,
+        districttotal: this.props.location.state.dis.total,
+        execact: this.props.location.state.exec.active,
+        execclose: this.props.location.state.exec.closed,
+        exectotal: this.props.location.state.exec.total,
+        vilact: this.props.location.state.vil.active,
+        vilclose: this.props.location.state.vil.closed,
+        viltotal: this.props.location.state.vil.total,
+        panact: this.props.location.state.pan.active,
+        panclose: this.props.location.state.pan.closed,
+        pantotal: this.props.location.state.pan.total,
+        ruract: this.props.location.state.rur.active,
+        rurclose: this.props.location.state.rur.closed,
+        rurtotal: this.props.location.state.rur.total,
+        judact: this.props.location.state.jud.active,
+        judclose: this.props.location.state.jud.closed,
+        judtotal: this.props.location.state.jud.total,
+      });
+    }
+
     axios
       .get(url + "/secretary/cases/filter/" + this.state.dept)
       .then((res) => {
@@ -157,6 +228,7 @@ class SecDashboard extends Component {
   }
 
   render() {
+    console.log(this.props.location.state.dis);
     console.log(this.state.cri);
     console.log(this.state.civ);
     var options = {
@@ -292,6 +364,7 @@ class SecDashboard extends Component {
                 innerRef={(input) => (this.dept = input)}
               >
                 <option>Select the dept</option>
+                <option>All Dept</option>
                 {unique.map((u) => {
                   return <option>{u}</option>;
                 })}
@@ -320,7 +393,7 @@ class SecDashboard extends Component {
                     </tr>
                     <tr className="table-danger">
                       <td>2</td>
-                      <td>Hight Court</td>
+                      <td>High Court</td>
 
                       <td>{this.state.highact}</td>
                       <td>{this.state.highclose}</td>

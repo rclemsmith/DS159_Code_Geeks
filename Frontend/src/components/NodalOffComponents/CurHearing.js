@@ -121,7 +121,7 @@ class CurHearing extends Component {
               <div className="ch12">
                 <span className="ch14">
                   <a href={url + "/image/" + c} download>
-                    Click to download
+                    {c}
                   </a>
                 </span>
               </div>

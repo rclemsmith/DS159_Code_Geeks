@@ -21,7 +21,24 @@ class SOtpage extends Component {
       localStorage.setItem("secId", this.props.location.state.userId);
       localStorage.setItem("token", this.props.location.state.token);
       localStorage.setItem("secdept", this.props.location.state.dept);
-      localStorage.setItem("supCount", this.props.location.state.supCount);
+      localStorage.setItem("supCount", this.props.location.state.supremeCount);
+      localStorage.setItem("highCount", this.props.location.state.highCount);
+      localStorage.setItem("execCount", this.props.location.state.execCount);
+      localStorage.setItem(
+        "districtCount",
+        this.props.location.state.districtCount
+      );
+      localStorage.setItem(
+        "villageCount",
+        this.props.location.state.villageCount
+      );
+      localStorage.setItem("panCount", this.props.location.state.panCount);
+      localStorage.setItem("ruralCount", this.props.location.state.ruralCount);
+      localStorage.setItem(
+        "judicialCount",
+        this.props.location.state.judicialCount
+      );
+
       localStorage.setItem("actCounts", this.props.location.state.actCounts);
       localStorage.setItem("cloCounts", this.props.location.state.cloCounts);
       localStorage.setItem("highCount", this.props.location.state.highCount);
@@ -56,6 +73,14 @@ class SOtpage extends Component {
         pathname: "/" + localStorage.getItem("secId") + "/secdashboard",
         state: {
           dept: this.props.location.state.dept,
+          dis: this.props.location.state.districtCount,
+          sup: this.props.location.state.supremeCount,
+          high: this.props.location.state.highCount,
+          exec: this.props.location.state.execCount,
+          vil: this.props.location.state.villageCount,
+          pan: this.props.location.state.panCount,
+          rur: this.props.location.state.ruralCount,
+          jud: this.props.location.state.judicialCount,
         },
       });
     }
