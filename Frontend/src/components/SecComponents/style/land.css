@@ -2,12 +2,19 @@
   margin-top: 50px;
 }
 
-.seccases{
+.seccases {
   margin-left: 18vh;
   margin-right: 5vh;
 }
 
-.ssearchinpu{
+.secrep {
+  width: 50vh;
+  margin-top: 0vh;
+  margin-left: 50vh;
+  margin-bottom: 5vh;
+}
+
+.ssearchinpu {
   width: 52vh;
   margin-right: 18vh;
   margin-left: 0.5vh;
@@ -25,7 +32,6 @@
   height: 100vh;
   overflow-y: scroll;
 }
-
 
 .ssearch-label {
   margin-left: 81vh;
@@ -59,13 +65,29 @@
   margin-bottom: 10vh;
 }
 
-.act1{
+.secselec {
+  margin-left: -50vh;
+  width: 50vh;
+  margin-top: 20vh;
+  border: 2px solid black;
+}
+
+.sectable11 {
+  margin-top: 5vh;
+  font-size: 20px;
+  margin-left: -104vh;
+
+  width: 150vh;
+}
+.act1 {
   border-radius: 5px;
   padding-bottom: 0vh;
 }
 
-.act4{
+.act4 {
   margin-left: -2vh;
 }
 
-
+.secchar {
+  margin-left: -100vh;
+}

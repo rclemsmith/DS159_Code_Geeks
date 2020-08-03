@@ -145,7 +145,7 @@ class Home extends Component {
                   otp: res.data.otp,
                   token: res.data.token,
                   userId: res.data.userId,
-                  supCount: res.data.supremeCount,
+                  supCount: res.data.supremeCount.active,
                   highCount: res.data.highCount,
                   districtCount: res.data.districtCount,
                   executiveCount: res.data.executiveCount,
@@ -154,6 +154,8 @@ class Home extends Component {
                   ruralCount: res.data.ruralCount,
                   judicialCount: res.data.judicialCount,
                   totalCounts: res.data.totalCounts,
+                  actCounts: res.data.actCount,
+                  cloCounts: res.data.cloCount,
                 },
               });
             }

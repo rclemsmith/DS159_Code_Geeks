@@ -66,8 +66,8 @@ class NewCase extends Component {
       lstate: "",
       add: false,
       image: null,
-      docs: null,
-      resdocs: null,
+      docs: [],
+      resdocs: [],
       rescount: 0,
       respondent: [],
     };
@@ -520,9 +520,12 @@ class NewCase extends Component {
     const adminn = localStorage.getItem("userId");
     const deptname = localStorage.getItem("deptname");
     const formData = new FormData();
-    formData.append("image", lawyerpic);
+    formData.append("lawyerimage", lawyerpic);
     this.state.docs.forEach((document) => {
-      formData.append("image", document);
+      formData.append("petdocs", document);
+    });
+    this.state.resdocs.forEach((docu)=>{
+      formData.append("respdocs",docu);
     });
     formData.append("admin", adminn);
     formData.append("opposition", this.pet.value);

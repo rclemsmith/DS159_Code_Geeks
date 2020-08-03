@@ -36,9 +36,7 @@ class SecSideBar extends Component {
       },
       () => {}
     );
-    this.props.history.push(
-      "/" + localStorage.getItem("adminId") + "/adminPage"
-    );
+    this.props.history.push("/" + localStorage.getItem("secId") + "/secReport");
   }
 
   handleCase() {
@@ -132,23 +130,23 @@ class SecSideBar extends Component {
               </h4>
             </NavItem>
 
-            {/* <NavItem
+            <NavItem
               className={this.state.nu ? "navitem active" : "navitem"}
               eventKey="case"
               onClick={this.handleUser}
             >
               <h4 className="hh1">
                 <i
-                  className="fa fa-user-circle-o"
+                  className="fa fa-list"
                   style={{
                     marginLeft: "1.2vh",
                     marginRight: "2vh",
                     fontSize: "24px",
                   }}
                 ></i>
-                New User
+                Reports
               </h4>
-            </NavItem> */}
+            </NavItem>
             {/* <NavItem
               className="navitem"
               eventKey="case"

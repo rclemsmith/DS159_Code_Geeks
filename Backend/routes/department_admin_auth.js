@@ -199,9 +199,16 @@ router.delete("/:caseId/delete", (req, res) => {
 
 router.post(
   "/:userId/addCase",
-  multerUpload.array("image", 10),
+  multerUpload.fields([{name :"lawyerimage",maxCount : 1},{name : "respdocs", maxCount : 10},{name : "petdocs", maxCount : 10}]),
   (req, res, next) => {
+    // console.log("Lawyer Image");
+    // console.log(req.files.lawyerimage);
+    // console.log("Respondant Docs");
+    // console.log(req.files.respdocs);
+    // console.log("Petionar Docs");
+    // console.log(req.files.petdocs);
 
+    var lawyerimage = req.files.lawyerimage;
     console.log(req.files);
     var lawyer = {
       lname: req.body.lname,
@@ -218,14 +225,24 @@ router.post(
       district: req.body.district,
       state: req.body.state,
       pincode: req.body.pincode,
-      image: req.files[0].filename,
+      image: lawyerimage[0].filename,
     };
     console.log(lawyer);
 
+    console.log(lawyerimage[0].filename);
+
     var document = [];
-    for (var i = 1; i < (req.files.length); i++) {
-      document.push(req.files[i].filename);
+    for (var i = 0; i < (req.files.petdocs.length); i++) {
+      document.push(req.files.petdocs[i].filename);
     }
+    console.log(document);
+
+
+    var respDOcs = [];
+    for (var i = 0; i < (req.files.respdocs.length); i++) {
+      respDOcs.push(req.files.respdocs[i].filename);
+    }
+    console.log(respDOcs);
     console.log(document);
     var court = {
       cname: req.body.cname,
@@ -257,7 +274,8 @@ router.post(
       respondantdesignation: respondants[0].des,
       respondantmail: respondants[0].email,
       caseno: req.body.caseno,
-      documents: document
+      documents: document,
+      respondantDocs : respDOcs
     });
 
     Case.create(addCase)
@@ -529,7 +547,15 @@ router.post("/:caseId/lupd", multerUpload.single("image"), (req, res) => {
   );
 });
 
-router.post("/:caseId/modify", (req, res) => {
+router.post("/:caseId/modify", multerUpload.array("documents",10),(req, res) => {
+
+  var docs = [];
+  console.log(req.body);
+  console.log(req.files);
+  req.files.forEach((file)=>{
+    docs.push(file.filename);
+  }); 
+  console.log(docs);
   Case.findByIdAndUpdate(
     req.params.caseId,
     {
@@ -537,10 +563,12 @@ router.post("/:caseId/modify", (req, res) => {
         facts: req.body.facts,
         status: req.body.status,
         isClosed: req.body.isClosed,
-        reply : req.body.reply,
-        rejoinder : req.body.rejoinder,
         mailPeriod : req.body.mailPeriod
       },
+
+      $push : {
+        rejoinderDocs : docs
+      }
     },
     (err, updated) => {
       if (err) {

@@ -32,6 +32,7 @@ import AdminCase from "./AdminComponents/AdminCase";
 import AdDashboard from "./AdminComponents/AdDashboard";
 import AdminLog from "./AdminComponents/AdminLog";
 import SecDashboard from "./SecComponents/SecDashboard";
+import SecReport from "./SecComponents/SecReport";
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -76,6 +77,7 @@ class Main extends Component {
           <Route path="/:adminId/addashboard" component={AdDashboard} />
           <Route path="/:adminId/logs" component={AdminLog} />
           <Route path="/:secId/secdashboard" component={SecDashboard} />
+          <Route path="/:secId/secReport" component={SecReport} />
         </Switch>
       </div>
     );
