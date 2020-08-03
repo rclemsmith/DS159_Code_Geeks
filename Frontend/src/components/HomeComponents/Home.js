@@ -145,6 +145,15 @@ class Home extends Component {
                   otp: res.data.otp,
                   token: res.data.token,
                   userId: res.data.userId,
+                  supCount: res.data.supremeCount,
+                  highCount: res.data.highCount,
+                  districtCount: res.data.districtCount,
+                  executiveCount: res.data.executiveCount,
+                  villageCount: res.data.villageCount,
+                  panchayatCount: res.data.panchayatCount,
+                  ruralCount: res.data.ruralCount,
+                  judicialCount: res.data.judicialCount,
+                  totalCounts: res.data.totalCounts,
                 },
               });
             }

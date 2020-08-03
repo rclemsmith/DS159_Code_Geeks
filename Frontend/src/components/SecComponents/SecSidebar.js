@@ -78,7 +78,7 @@ class SecSideBar extends Component {
       () => {}
     );
     this.props.history.push(
-      "/" + localStorage.getItem("adminId") + "/addashboard"
+      "/" + localStorage.getItem("secId") + "/secdashboard"
     );
   }
 
@@ -88,7 +88,7 @@ class SecSideBar extends Component {
 
   handleLogout(event) {
     event.preventDefault();
-    localStorage.removeItem("adminId");
+    localStorage.removeItem("secId");
     localStorage.removeItem("token");
     window.location.href = "http://localhost:3000/";
   }
