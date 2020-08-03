@@ -14,7 +14,8 @@ class CaseUpdate extends Component {
     this.state = {
       facts: "",
       status: "",
-      docs: null
+      docs: [],
+      mailperiod : null,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDoc = this.handleDoc.bind(this);
@@ -42,6 +43,12 @@ class CaseUpdate extends Component {
     const formData = new FormData();
     formData.append("facts",this.facts.value);
     formData.append("status",this.status.value);
+    formData.append("mailPeriod",this.mailperiod.value);
+    console.log(formData.get("mailPeriod"));
+    this.state.docs.forEach((document) => {
+      formData.append("documents", document);
+      console.log(formData.get("documents"));
+    });
     if (this.status.value == "Closed") {
       data = {
         facts: this.facts.value,
@@ -56,18 +63,16 @@ class CaseUpdate extends Component {
         status: this.status.value,
         isClosed: false,
       };
-      formData.append("isClosed",true);
+      formData.append("isClosed",false);
     }   
-    this.state.docs.forEach((document) => {
-      formData.append("documents", document);
-    });
+    
 
     axios
       .post(url + 
         "/department/admin/" +
           this.props.location.state.caseid +
           "/modify",
-        data
+        formData
       )
       .then((res) => {
         this.props.history.push(

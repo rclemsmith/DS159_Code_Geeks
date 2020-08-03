@@ -537,6 +537,8 @@ router.post("/:caseId/lupd", multerUpload.single("image"), (req, res) => {
 router.post("/:caseId/modify", multerUpload.array("documents",10),(req, res) => {
 
   var docs = [];
+  console.log(req.body);
+  console.log(req.files);
   req.files.forEach((file)=>{
     docs.push(file.filename);
   }); 
